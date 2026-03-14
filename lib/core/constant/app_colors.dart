@@ -1,0 +1,10 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  static const List<Color> splashGradient = [
+    Color(0xFF4A0000),
+    Color(0xFF7A0000),
+    Color(0xFFB30000),
+  ];
+  static const Color white = Colors.white;
+}
