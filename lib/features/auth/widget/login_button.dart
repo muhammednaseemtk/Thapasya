@@ -1,27 +1,29 @@
 import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
-class CommonButton extends StatelessWidget {
+class LoginButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String txt;
-  const CommonButton({super.key, required this.onPressed, required this.txt});
+  const LoginButton({super.key, required this.onPressed, required this.txt});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45,
+      height: 50,
       width: 270,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.white,
+          backgroundColor: AppColors.brightRed,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(14)
           )
         ),
         onPressed: onPressed,
-        child: Text(txt),
-      ),
+        child: Text(txt,style: AppFonts.loginButton,),
+        )
     );
   }
 }

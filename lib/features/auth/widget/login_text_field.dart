@@ -18,22 +18,27 @@ class LoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: TextField(
-        cursorColor: AppColors.darkRed,
+        cursorColor: AppColors.brightRed,
         controller: controller,
         obscureText: obsecureTxt,
-        style: TextStyle(color: AppColors.darkRed),
+        style: TextStyle(color: AppColors.black),
         decoration: InputDecoration(
           hintText: txt,
           hintStyle: TextStyle(color: AppColors.textField),
           prefixIcon: Icon(icon),
-          prefixIconColor: AppColors.darkRed,
+          prefixIconColor: AppColors.brightRed,
           filled: true,
           fillColor: AppColors.white,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(13)
-          )
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: AppColors.brightRed),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: AppColors.brightRed),
+          ),
         ),
       ),
     );

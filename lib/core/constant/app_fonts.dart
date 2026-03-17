@@ -10,6 +10,23 @@ class AppFonts {
 
   static final TextStyle login = GoogleFonts.inconsolata(
     color: AppColors.white,
-    fontSize: 26
+    fontSize: 35,
+    fontWeight: FontWeight.bold
+  );
+
+  static final TextStyle loginSubtitle = GoogleFonts.inconsolata(
+    color: AppColors.white,
+    fontSize: 20
+  );
+
+  static final TextStyle forget = GoogleFonts.inconsolata(
+    color: AppColors.white,
+    fontSize: 16
+  );
+
+  static final TextStyle loginButton = GoogleFonts.inconsolata(
+    color: AppColors.white,
+    fontSize: 18,
+    fontWeight: FontWeight.w800
   );
 }
