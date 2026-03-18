@@ -8,13 +8,13 @@ class AppFonts {
     fontSize: 19
   );
 
-  static final TextStyle login = GoogleFonts.inconsolata(
+  static final TextStyle login = GoogleFonts.poppins(
     color: AppColors.white,
-    fontSize: 35,
-    fontWeight: FontWeight.bold
+    fontSize: 30,
+    fontWeight: FontWeight.w600
   );
 
-  static final TextStyle loginSubtitle = GoogleFonts.inconsolata(
+  static final TextStyle loginSubtitle = GoogleFonts.poppins(
     color: AppColors.white,
     fontSize: 20
   );
@@ -28,5 +28,11 @@ class AppFonts {
     color: AppColors.white,
     fontSize: 18,
     fontWeight: FontWeight.w800
+  );
+
+  static final TextStyle appName = GoogleFonts.inconsolata(
+    color: AppColors.black,
+    fontSize: 27,
+    fontWeight: FontWeight.w900
   );
 }

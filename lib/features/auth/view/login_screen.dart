@@ -1,6 +1,7 @@
 import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:Thapasya/core/constant/app_strings.dart';
+import 'package:Thapasya/core/routes/app_routes.dart';
 import 'package:Thapasya/features/auth/widget/login_button.dart';
 import 'package:Thapasya/features/auth/widget/login_text_field.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     'asset/image/thapasya_image2.png',
-                    height: 250,
+                    height: 260,
                   ),
                 ),
               ),
@@ -47,12 +48,11 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.only(
                     left: 28,
                     right: 28,
-                    bottom: MediaQuery.of(context).viewInsets.bottom + 85,
+                    bottom: MediaQuery.of(context).viewInsets.bottom + 95,
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       SizedBox(height: 20),
+                       SizedBox(height: 30),
 
                       Text(
                         AppStrings.loginHeading,
@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                         style: AppFonts.loginSubtitle,
                       ),
 
-                       SizedBox(height: 40),
+                       SizedBox(height: 55),
 
                       LoginTextField(
                         txt: AppStrings.emailHint,
@@ -101,14 +101,11 @@ class LoginScreen extends StatelessWidget {
 
                        SizedBox(height: 10),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LoginButton(
-                            onPressed: () {},
-                            txt: AppStrings.login,
-                          ),
-                        ],
+                      LoginButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.home);
+                        },
+                        txt: AppStrings.login,
                       ),
 
                        SizedBox(height: 30),
