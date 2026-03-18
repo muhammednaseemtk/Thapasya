@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Center(
                   child: Image.asset(
-                    'asset/image/thapasya_image2.png',
+                    'assets/images/thapasya_image2.png',
                     height: 260,
                   ),
                 ),

@@ -30,9 +30,14 @@ class AppFonts {
     fontWeight: FontWeight.w800
   );
 
-  static final TextStyle appName = GoogleFonts.inconsolata(
+  static final TextStyle appName = GoogleFonts.poppins(
     color: AppColors.black,
-    fontSize: 27,
-    fontWeight: FontWeight.w900
+    fontSize: 26,
+    fontWeight: FontWeight.w500
+  );
+
+  static const TextStyle poppinsSemiBold = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600
   );
 }

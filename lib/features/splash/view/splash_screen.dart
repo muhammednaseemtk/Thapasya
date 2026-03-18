@@ -13,16 +13,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  @override
-  void initState() {
-    super.initState();
-    goLogin();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   goLogin();
+  // }
 
-  Future<void> goLogin() async {
-    await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, AppRoutes.login);
-  }
+  // Future<void> goLogin() async {
+  //   await Future.delayed(Duration(seconds: 3));
+  //   Navigator.pushReplacementNamed(context, AppRoutes.login);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('asset/image/thapasya_image1.png',width: 250,),
+                Image.asset('assets/images/thapasya_image1.png',width: 250,),
         
                 Text(AppStrings.appSubtitle, style: AppFonts.appSubtitle),
               ],
