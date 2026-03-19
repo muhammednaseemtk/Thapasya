@@ -3,41 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppFonts {
-  static final TextStyle appSubtitle = GoogleFonts.shareTech(
-    color: AppColors.white,
-    fontSize: 19
-  );
-
-  static final TextStyle login = GoogleFonts.poppins(
-    color: AppColors.white,
-    fontSize: 30,
-    fontWeight: FontWeight.w600
-  );
-
-  static final TextStyle loginSubtitle = GoogleFonts.poppins(
-    color: AppColors.white,
-    fontSize: 20
-  );
-
-  static final TextStyle forget = GoogleFonts.inconsolata(
-    color: AppColors.white,
-    fontSize: 16
-  );
-
-  static final TextStyle loginButton = GoogleFonts.inconsolata(
-    color: AppColors.white,
-    fontSize: 18,
-    fontWeight: FontWeight.w800
-  );
-
-  static final TextStyle appName = GoogleFonts.poppins(
-    color: AppColors.black,
-    fontSize: 26,
-    fontWeight: FontWeight.w500
+  static final TextStyle poppinsBold = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    color: AppColors.white
   );
 
   static const TextStyle poppinsSemiBold = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600
+  );
+
+  static const TextStyle poppinsSemiBold1 = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.white,
+    fontSize: 30,
+    fontWeight: FontWeight.w600
+  );
+
+  static const TextStyle poppinsSemiBold2 = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w600
+  );
+
+  static const TextStyle poppinsRegular = TextStyle(
+    color: AppColors.white,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+    fontSize: 18
   );
 }

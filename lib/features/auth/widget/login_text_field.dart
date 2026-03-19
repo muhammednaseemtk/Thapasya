@@ -1,4 +1,5 @@
 import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,10 +24,10 @@ class LoginTextField extends StatelessWidget {
         cursorColor: AppColors.brightRed,
         controller: controller,
         obscureText: obsecureTxt,
-        style: TextStyle(color: AppColors.black),
+        style: AppFonts.poppinsSemiBold,
         decoration: InputDecoration(
           hintText: txt,
-          hintStyle: TextStyle(color: AppColors.textField),
+          hintStyle: TextStyle(color: AppColors.textField,),
           prefixIcon: Icon(icon),
           prefixIconColor: AppColors.brightRed,
           filled: true,

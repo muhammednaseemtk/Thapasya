@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
           )
         ),
         onPressed: onPressed,
-        child: Text(txt,style: AppFonts.loginButton,),
+        child: Text(txt,style: AppFonts.poppinsSemiBold2,),
         )
     );
   }

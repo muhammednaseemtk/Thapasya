@@ -56,14 +56,14 @@ class LoginScreen extends StatelessWidget {
 
                       Text(
                         AppStrings.loginHeading,
-                        style: AppFonts.login,
+                        style: AppFonts.poppinsSemiBold1,
                       ),
 
                        SizedBox(height: 5),
 
                       Text(
                         AppStrings.loginSubtitle,
-                        style: AppFonts.loginSubtitle,
+                        style: AppFonts.poppinsRegular,
                       ),
 
                        SizedBox(height: 55),
@@ -93,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                             onPressed: () {},
                             child: Text(
                               AppStrings.forgotPass,
-                              style: AppFonts.forget,
+                              style: AppFonts.poppinsBold,
                             ),
                           ),
                         ],

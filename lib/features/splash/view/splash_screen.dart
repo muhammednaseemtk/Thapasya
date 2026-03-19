@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Image.asset('assets/images/thapasya_image1.png',width: 250,),
         
-                Text(AppStrings.appSubtitle, style: AppFonts.appSubtitle),
+                Text(AppStrings.appSubtitle, style: AppFonts.poppinsRegular),
               ],
             ),
           ),
