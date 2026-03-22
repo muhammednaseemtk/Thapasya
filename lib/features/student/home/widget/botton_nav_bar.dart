@@ -1,5 +1,5 @@
-import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:glass_one_nav_bar/glass_one_nav_bar.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -13,23 +13,26 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingNavbar(
+    return GlassOneNavBar(
       currentIndex: currentIndex,
       onTap: onTap,
-
-      items:  [
-        FloatingNavbarItem(
+      items: [
+        GlassOneNavItem(
           icon: Icons.home_outlined,
+          activeIcon: Icons.home_rounded,
+          label: 'Home',
         ),
-        FloatingNavbarItem(
-          icon: Icons.menu_book_sharp,
+        GlassOneNavItem(
+          icon: Icons.explore_outlined,
+          activeIcon: Icons.explore_rounded,
+          label: 'Explore',
+        ),
+        GlassOneNavItem(
+          icon: Icons.settings_outlined,
+          activeIcon: Icons.settings_rounded,
+          label: 'Settings',
         ),
       ],
-
-      backgroundColor: Colors.white,
-      selectedItemColor: Colors.red,
-      unselectedItemColor: Colors.grey,
-      borderRadius: 30,
     );
   }
 }
