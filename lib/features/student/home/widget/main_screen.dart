@@ -1,4 +1,6 @@
-import 'package:Thapasya/features/student/coure/view/course_screen.dart';
+import 'package:Thapasya/features/student/attendance/view/attendance_screen.dart';
+import 'package:Thapasya/features/student/course/view/course_screen.dart';
+import 'package:Thapasya/features/student/fees/view/fees_screen.dart';
 import 'package:Thapasya/features/student/home/controller/main_controller.dart';
 import 'package:Thapasya/features/student/home/view/home_screen.dart';
 import 'package:Thapasya/features/student/home/widget/botton_nav_bar.dart';
@@ -13,7 +15,9 @@ class MainScreen extends StatelessWidget {
 
     final List<Widget> pages = [
       HomeScreen(),
-      CourseScreen()
+      AttendanceScreen(),
+      CourseScreen(),
+      FeesScreen()
     ];
 
     return Scaffold(

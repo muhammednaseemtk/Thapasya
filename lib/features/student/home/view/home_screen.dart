@@ -1,6 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
-import 'package:Thapasya/core/constant/app_strings.dart';
+import 'package:Thapasya/features/student/home/widget/common_app_bar.dart';
+import 'package:Thapasya/features/student/home/widget/recent_updates_card.dart';
+import 'package:Thapasya/features/student/home/widget/student_dashboard_card.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,24 +9,32 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: AppColors.white,
-        backgroundColor: AppColors.brightRed,
-        leadingWidth: 60,
-        leading: IconButton(
-          constraints: BoxConstraints(),
-          onPressed: () {},
-          icon: Icon(Icons.menu_book_outlined),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CommonAppBar(),
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: StudentDashboardCard(
+                studentName: 'Midlaj',
+                course: 'Bharatanatyam',
+                batch: 'Afternoon',
+                attendance: 2,
+                pendingFee: '2000',
+                nextClassTime: '1:00 PM',
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RecentUpdatesCard(),
+            ),
+          ],
         ),
-        titleSpacing: 1,
-        title: Text(AppStrings.appName, style: AppFonts.poppinsSemiBold),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person_outline_rounded, color: AppColors.white),
-          ),
-          SizedBox(width: 6),
-        ],
       ),
     );
   }

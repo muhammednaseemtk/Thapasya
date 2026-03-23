@@ -1,5 +1,6 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:glass_one_nav_bar/glass_one_nav_bar.dart';
+import 'package:glass_pill_nav/glass_pill_nav.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -13,24 +14,20 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassOneNavBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      style: GlassOneStyle(
-        
+    return GlassPillNav(
+      style: GlassPillNavStyle(
+        baseColor: AppColors.brightRed,
+        activeColor: AppColors.white,
+        blurSigma: 50,
       ),
       items: [
-        GlassOneNavItem(
-          icon: Icons.home_outlined,
-          activeIcon: Icons.home_rounded,
-          label: 'Home',
-        ),
-        GlassOneNavItem(
-          icon: Icons.explore_outlined,
-          activeIcon: Icons.explore_rounded,
-          label: 'Explore',
-        ),
+        GlassPillNavItem(icon: Icons.home,label: 'Home'),
+        GlassPillNavItem(icon: Icons.calendar_month,label: 'Attendance'),
+        GlassPillNavItem(icon: Icons.import_contacts,label: 'Course'),
+        GlassPillNavItem(icon: Icons.credit_card,label: 'Fees')
       ],
+      currentIndex: currentIndex,
+      onTabTap: onTap,
     );
   }
 }

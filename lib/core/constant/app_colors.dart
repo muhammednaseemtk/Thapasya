@@ -10,5 +10,6 @@ class AppColors {
   static const Color brightRed = Color(0xFFB30000);
   static const Color textField = Colors.grey;
   static const Color black = Colors.black;
-  static const Color transparent = Color(0xFFD95C5C);
+  static const Color transparent= Colors.transparent;
+  
 }

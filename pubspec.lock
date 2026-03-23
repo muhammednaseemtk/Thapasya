@@ -75,14 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  glass_one_nav_bar:
+  glass_pill_nav:
     dependency: "direct main"
     description:
-      name: glass_one_nav_bar
-      sha256: "911ca960c28c69b9eb1a7bc7156793d964dd1f6a3992b2e2fe1e043e6a666267"
+      name: glass_pill_nav
+      sha256: "666e43afd02b5c1fe919a6a83599ecddd36fd8e428e13ee4ff436d7841a93033"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.2"
   leak_tracker:
     dependency: transitive
     description:
@@ -234,4 +234,4 @@ packages:
     version: "15.0.2"
 sdks:
   dart: ">=3.10.7 <4.0.0"
-  flutter: ">=3.24.0"
+  flutter: ">=3.18.0-18.0.pre.54"
