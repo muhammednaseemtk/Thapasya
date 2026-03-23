@@ -16,6 +16,9 @@ class BottomNavBar extends StatelessWidget {
     return GlassOneNavBar(
       currentIndex: currentIndex,
       onTap: onTap,
+      style: GlassOneStyle(
+        
+      ),
       items: [
         GlassOneNavItem(
           icon: Icons.home_outlined,
@@ -26,11 +29,6 @@ class BottomNavBar extends StatelessWidget {
           icon: Icons.explore_outlined,
           activeIcon: Icons.explore_rounded,
           label: 'Explore',
-        ),
-        GlassOneNavItem(
-          icon: Icons.settings_outlined,
-          activeIcon: Icons.settings_rounded,
-          label: 'Settings',
         ),
       ],
     );
