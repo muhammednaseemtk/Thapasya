@@ -1,0 +1,39 @@
+import 'package:Thapasya/features/student/attendance/model/monthly_data.dart';
+import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+
+class MonthlyProgressItem extends StatelessWidget {
+  final MonthlyData data;
+
+  const MonthlyProgressItem({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 40,
+          child: Text(data.month),
+        ),
+        Expanded(
+          child: LinearPercentIndicator(
+            lineHeight: 8,
+            percent: data.percentage,
+            backgroundColor: Colors.grey.shade300,
+            progressColor: Colors.green,
+            barRadius: const Radius.circular(10),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+          ),
+        ),
+        SizedBox(
+          width: 50,
+          child: Text(
+            "${data.present}/${data.total}",
+            textAlign: TextAlign.end,
+            style: const TextStyle(color: Colors.green),
+          ),
+        ),
+      ],
+    );
+  }
+}
