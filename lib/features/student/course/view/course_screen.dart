@@ -67,6 +67,13 @@ class CourseScreen extends StatelessWidget {
               role: "Senior Bharatanatyam Faculty",
               rating: 5.0,
             ),
+
+             FacultyCard(
+              initials: "SK",
+              name: "Smt. Kavitha Rajan",
+              role: "Senior Bharatanatyam Faculty",
+              rating: 5.0,
+            ),
           ],
         ),
       ),

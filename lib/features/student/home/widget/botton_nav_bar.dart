@@ -1,6 +1,10 @@
 import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/features/student/attendance/view/attendance_screen.dart';
+import 'package:Thapasya/features/student/course/view/course_screen.dart';
+import 'package:Thapasya/features/student/fees/view/fees_screen.dart';
+import 'package:Thapasya/features/student/home/view/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:glass_pill_nav/glass_pill_nav.dart';
+import 'package:liquid_glass_navbar/liquid_glass_navbar.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -14,20 +18,30 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlassPillNav(
-      style: GlassPillNavStyle(
-        baseColor: AppColors.brightRed,
-        activeColor: AppColors.white,
-        blurSigma: 50,
-      ),
-      items: [
-        GlassPillNavItem(icon: Icons.home,label: 'Home'),
-        GlassPillNavItem(icon: Icons.calendar_month,label: 'Attendance'),
-        GlassPillNavItem(icon: Icons.import_contacts,label: 'Course'),
-        GlassPillNavItem(icon: Icons.credit_card,label: 'Fees')
-      ],
+    final List<Widget> pages = [
+      HomeScreen(),
+      AttendanceScreen(),
+      CourseScreen(),
+      FeesScreen(),
+    ];
+    return LiquidGlassNavBar(
+      itemColor: AppColors.brightRed,
+      backgroundColor: AppColors.white,
+      bubbleBorderColor: AppColors.brightRed,
+      bubbleColor: AppColors.white,
+      fontSize: 12,
+      bubbleWidth: 88,
+      blurStrength: 100,
+      bubbleHeight: 55,
       currentIndex: currentIndex,
-      onTabTap: onTap,
+      onPageChanged: onTap,
+      pages: pages,
+      items: [
+        LiquidGlassNavItem(icon: Icons.home_outlined, label: 'Home'),
+        LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attendance'),
+        LiquidGlassNavItem(icon: Icons.import_contacts_outlined, label: 'Course'),
+        LiquidGlassNavItem(icon: Icons.payment, label: 'Fees'),
+      ],
     );
   }
 }
