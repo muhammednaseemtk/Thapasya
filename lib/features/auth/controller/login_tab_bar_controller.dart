@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoginTabBarController with ChangeNotifier {
-  
-  int selectedIndex = 0;
+  int currentIndex = 0;
 
-  void changeTab(int index) {
-    selectedIndex = index;
+  void changeIndex(int index) {
+    currentIndex = index;
     notifyListeners();
   }
 }

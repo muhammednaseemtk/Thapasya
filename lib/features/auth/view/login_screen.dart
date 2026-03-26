@@ -5,6 +5,7 @@ import 'package:Thapasya/core/routes/app_routes.dart';
 import 'package:Thapasya/features/auth/controller/login_tab_bar_controller.dart';
 import 'package:Thapasya/features/auth/widget/login_button.dart';
 import 'package:Thapasya/features/auth/widget/login_tab_bar.dart';
+import 'package:Thapasya/features/auth/widget/login_tab_bar_item.dart';
 import 'package:Thapasya/features/auth/widget/login_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,14 +19,19 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = LoginTabBarItem.items(
+      emailController: emailController,
+      phoneController: phoneController,
+    );
     return Scaffold(
       resizeToAvoidBottomInset: true,
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 280,
+              Container(
+                height: 300,
                 width: double.infinity,
                 child: Center(
                   child: Image.asset(
@@ -46,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                     topRight: Radius.circular(45),
                   ),
                 ),
+
                 child: Padding(
                   padding: EdgeInsets.only(
                     left: 28,
@@ -54,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                       SizedBox(height: 25),
+                       SizedBox(height: 30),
 
                       Text(
                         AppStrings.loginHeading,
@@ -68,32 +75,18 @@ class LoginScreen extends StatelessWidget {
                         style: AppFonts.poppinsRegular,
                       ),
 
-                       SizedBox(height: 30),
-
-                       Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: LoginTabBar(),
-                       ),
-
                        SizedBox(height: 20),
+
+                       LoginTabBar(items: items),
+
+                       SizedBox(height: 20,),
 
                       Consumer<LoginTabBarController>(
                         builder: (context, controller, _) {
-                          if (controller.selectedIndex == 0) {
-                            return LoginTextField(
-                              txt: AppStrings.emailHint,
-                              controller: emailController,
-                              obsecureTxt: false,
-                              icon: Icons.mail_outline_outlined,
-                            );
-                          } else {
-                            return LoginTextField(
-                              txt: "Phone Number",
-                              controller: phoneController,
-                              obsecureTxt: false,
-                              icon: Icons.phone_outlined,
-                            );
-                          }
+                          return IndexedStack(
+                            index: controller.currentIndex,
+                            children: items.map((e) => e.widget).toList(),
+                          );
                         },
                       ),
 
