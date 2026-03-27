@@ -1,3 +1,4 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:Thapasya/features/student/attendance/widget/legend_item.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +11,11 @@ class AttendanceLegend extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: const [
         LegendItem(
-          color: Colors.green,
+          color: AppColors.green,
           label: "Present",
         ),
         LegendItem(
-          color: Colors.red,
+          color: AppColors.brightRed,
           label: "Absent",
         ),
         LegendItem(

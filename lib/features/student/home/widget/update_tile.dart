@@ -1,3 +1,5 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class UpdateTile extends StatelessWidget {
@@ -39,17 +41,12 @@ class UpdateTile extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
+                style:  AppFonts.poppinsSemiBold
               ),
-              const SizedBox(height: 4),
+               SizedBox(height: 4),
               Text(
                 subtitle,
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 13,
-                ),
+                style: AppFonts.poppinsBold2
               ),
             ],
           ),
@@ -59,8 +56,8 @@ class UpdateTile extends StatelessWidget {
           Container(
             width: 8,
             height: 8,
-            decoration: const BoxDecoration(
-              color: Colors.red,
+            decoration:  BoxDecoration(
+              color: AppColors.brightRed,
               shape: BoxShape.circle,
             ),
           ),

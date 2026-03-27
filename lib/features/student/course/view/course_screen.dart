@@ -1,3 +1,4 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:Thapasya/features/student/course/model/course_item.dart';
 import 'package:Thapasya/features/student/course/widget/course_card.dart';
 import 'package:Thapasya/features/student/course/widget/course_progress_card.dart';
@@ -11,6 +12,7 @@ class CourseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.screen,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: CommonAppBar(),

@@ -1,3 +1,4 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:Thapasya/features/student/fees/model/payment_item_model.dart';
 import 'package:Thapasya/features/student/fees/widget/fees_alert_card.dart';
 import 'package:Thapasya/features/student/fees/widget/fees_summary_card.dart';
@@ -12,6 +13,7 @@ class FeesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.screen,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: CommonAppBar(),

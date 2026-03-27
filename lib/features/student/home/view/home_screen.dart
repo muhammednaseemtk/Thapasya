@@ -1,3 +1,4 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:Thapasya/features/student/home/widget/common_app_bar.dart';
 import 'package:Thapasya/features/student/home/widget/recent_updates_card.dart';
 import 'package:Thapasya/features/student/home/widget/student_dashboard_card.dart';
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.screen,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: CommonAppBar(),

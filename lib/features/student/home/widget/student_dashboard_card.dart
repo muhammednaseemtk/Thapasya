@@ -1,4 +1,5 @@
 import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:Thapasya/features/student/home/widget/student_info_card.dart';
 import 'package:flutter/material.dart';
 
@@ -31,36 +32,17 @@ class StudentDashboardCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
-            "Good Morning 👋",
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 14,
-            ),
-          ),
+          Text("Good Morning", style: AppFonts.poppinsRegular),
 
-           SizedBox(height: 8),
+          SizedBox(height: 8),
 
-          Text(
-            studentName,
-            style:  TextStyle(
-              color: AppColors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(studentName, style: AppFonts.poppinsSemiBold4),
 
-           SizedBox(height: 6),
+          SizedBox(height: 6),
 
-          Text(
-            "$course - $batch",
-            style:  TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-            ),
-          ),
+          Text("$course - Level 3 | Batch: $batch", style: AppFonts.poppinsSemiBold2),
 
-          SizedBox(height: 8,),
+          SizedBox(height: 8),
 
           Row(
             children: [
@@ -68,19 +50,22 @@ class StudentDashboardCard extends StatelessWidget {
                 icon: Icons.calendar_today,
                 value: "$attendance%",
                 label: "Attendance",
+                labelStyle: AppFonts.poppinsBold1,
               ),
               StudentInfoCard(
                 icon: Icons.currency_rupee,
                 value: pendingFee,
                 label: "Pending Fee",
+                labelStyle: AppFonts.poppinsBold1,
               ),
               StudentInfoCard(
                 icon: Icons.access_time,
                 value: nextClassTime,
                 label: "Next Class",
+                labelStyle: AppFonts.poppinsBold1,
               ),
             ],
-          )
+          ),
         ],
       ),
     );

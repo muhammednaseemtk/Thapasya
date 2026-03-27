@@ -21,8 +21,8 @@ class MonthlyProgressItem extends StatelessWidget {
             percent: data.percentage,
             backgroundColor: Colors.grey.shade300,
             progressColor: Colors.green,
-            barRadius: const Radius.circular(10),
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            barRadius:  Radius.circular(10),
+            padding:  EdgeInsets.symmetric(horizontal: 8),
           ),
         ),
         SizedBox(
@@ -30,7 +30,7 @@ class MonthlyProgressItem extends StatelessWidget {
           child: Text(
             "${data.present}/${data.total}",
             textAlign: TextAlign.end,
-            style: const TextStyle(color: Colors.green),
+            style:  TextStyle(color: Colors.green),
           ),
         ),
       ],

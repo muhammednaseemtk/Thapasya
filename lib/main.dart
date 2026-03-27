@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => MainController()),
-    ChangeNotifierProvider(create: (_) => LoginTabBarController())
+    ChangeNotifierProvider(create: (_) => LoginTabBarController()),
   ], child: ThapasyaApp()));
 }
 

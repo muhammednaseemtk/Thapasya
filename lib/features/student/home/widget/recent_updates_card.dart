@@ -1,3 +1,5 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
+import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'update_tile.dart';
 
@@ -9,7 +11,7 @@ class RecentUpdatesCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color:  Color(0xFFF5F5F5),
+        color:  AppColors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -19,17 +21,11 @@ class RecentUpdatesCard extends StatelessWidget {
             children:  [
               Text(
                 "Recent Updates",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: AppFonts.poppinsSemiBold
               ),
               Text(
                 "See all",
-                style: TextStyle(
-                  color: Colors.red,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: AppFonts.poppinsSemiBold3
               ),
             ],
           ),
@@ -38,8 +34,8 @@ class RecentUpdatesCard extends StatelessWidget {
 
            UpdateTile(
             icon: Icons.info_outline,
-            iconBgColor: Color(0xFFFFE5E5),
-            iconColor: Colors.red,
+            iconBgColor: AppColors.lightRed,
+            iconColor: AppColors.brightRed,
             title: "Fee Due Reminder",
             subtitle: "Your monthly fee of ₹2,500 is due on March 25.",
             showDot: true,
@@ -52,8 +48,8 @@ class RecentUpdatesCard extends StatelessWidget {
 
            UpdateTile(
             icon: Icons.notifications_none,
-            iconBgColor: Color(0xFFFFE5E5),
-            iconColor: Colors.red,
+            iconBgColor: AppColors.lightRed,
+            iconColor: AppColors.brightRed,
             title: "Class Rescheduled",
             subtitle: "Thursday Bharatanatyam class moved to Friday 5 PM.",
             showDot: true,
@@ -65,8 +61,8 @@ class RecentUpdatesCard extends StatelessWidget {
 
            UpdateTile(
             icon: Icons.check_circle_outline,
-            iconBgColor: Color(0xFFE6F4EA),
-            iconColor: Colors.green,
+            iconBgColor: AppColors.lightGreen,
+            iconColor: AppColors.green,
             title: "Attendance Marked",
             subtitle:
                 "Your attendance for today's session has been recorded.",
@@ -77,8 +73,8 @@ class RecentUpdatesCard extends StatelessWidget {
 
           UpdateTile(
             icon: Icons.info_outline,
-            iconBgColor: Color(0xFFFFE5E5),
-            iconColor: Colors.red,
+            iconBgColor: AppColors.lightRed,
+            iconColor: AppColors.brightRed,
             title: "Fee Due Reminder",
             subtitle: "Your monthly fee of ₹2,500 is due on March 25.",
             showDot: true,

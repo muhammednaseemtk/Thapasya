@@ -18,19 +18,18 @@ class AttendanceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFB30000),
+        color:  Color(0xFFB30000),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         children: [
-          /// 🔵 Circular Chart
           CircularPercentIndicator(
             radius: 40,
             lineWidth: 8,
             percent: percentage / 100,
             center: Text(
               "$percentage%",
-              style: const TextStyle(
+              style:  TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -40,14 +39,13 @@ class AttendanceCard extends StatelessWidget {
             circularStrokeCap: CircularStrokeCap.round,
           ),
 
-          const SizedBox(width: 16),
+           SizedBox(width: 16),
 
-          /// 🔤 Text Section
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   "Overall Attendance",
                   style: TextStyle(
                     color: Colors.white,
@@ -56,19 +54,18 @@ class AttendanceCard extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 6),
+                 SizedBox(height: 6),
 
                 Text(
                   "$present present out of $total classes",
-                  style: const TextStyle(
+                  style:  TextStyle(
                     color: Colors.white70,
                     fontSize: 13,
                   ),
                 ),
 
-                const SizedBox(height: 10),
+                 SizedBox(height: 10),
 
-                /// Badge
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -76,7 +73,7 @@ class AttendanceCard extends StatelessWidget {
                     color: Colors.white24,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Row(
+                  child:  Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.check, color: Colors.white, size: 14),
