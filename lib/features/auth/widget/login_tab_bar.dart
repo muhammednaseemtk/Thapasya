@@ -19,7 +19,7 @@ class LoginTabBar extends StatelessWidget {
           initialIndex: controller.currentIndex,
           child: Builder(
             builder: (context) {
-              final tabController = DefaultTabController.of(context)!;
+              final tabController = DefaultTabController.of(context);
 
               return ButtonsTabBar(borderColor: AppColors.brightRed,
                 backgroundColor: AppColors.white,

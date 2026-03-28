@@ -14,15 +14,11 @@ class FeesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: CommonAppBar(),
-      ),
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            CommonAppBar(),
             SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),

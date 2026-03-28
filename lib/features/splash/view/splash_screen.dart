@@ -13,16 +13,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   goLogin();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    goLogin();
+  }
 
-  // Future<void> goLogin() async {
-  //   await Future.delayed(Duration(seconds: 3));
-  //   Navigator.pushReplacementNamed(context, AppRoutes.login);
-  // }
+  Future<void> goLogin() async {
+    await Future.delayed(Duration(seconds: 3));
+    Navigator.pushReplacementNamed(context, AppRoutes.login);
+  }
 
   @override
   Widget build(BuildContext context) {

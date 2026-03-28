@@ -16,14 +16,15 @@ class BottomNavBar extends StatelessWidget {
     required this.onTap,
   });
 
+  static final List<Widget> pages = [
+    HomeScreen(),
+    AttendanceScreen(),
+    CourseScreen(),
+    FeesScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [
-      HomeScreen(),
-      AttendanceScreen(),
-      CourseScreen(),
-      FeesScreen(),
-    ];
     return LiquidGlassNavBar(
       itemColor: AppColors.brightRed,
       backgroundColor: AppColors.white,
@@ -31,7 +32,7 @@ class BottomNavBar extends StatelessWidget {
       bubbleColor: AppColors.white,
       fontSize: 12,
       bubbleWidth: 88,
-      blurStrength: 100,
+      blurStrength: 50,
       bubbleHeight: 55,
       currentIndex: currentIndex,
       onPageChanged: onTap,

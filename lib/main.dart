@@ -2,13 +2,19 @@ import 'package:Thapasya/core/routes/app_routes.dart';
 import 'package:Thapasya/features/auth/controller/login_tab_bar_controller.dart';
 import 'package:Thapasya/features/student/home/controller/main_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => MainController()),
-    ChangeNotifierProvider(create: (_) => LoginTabBarController()),
-  ], child: ThapasyaApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MainController()),
+        ChangeNotifierProvider(create: (_) => LoginTabBarController()),
+      ],
+      child: ThapasyaApp(),
+    ),
+  );
 }
 
 class ThapasyaApp extends StatelessWidget {

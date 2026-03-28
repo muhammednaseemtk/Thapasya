@@ -8,16 +8,14 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: Consumer<MainController>(
-          builder: (context, value, child) {
-            return BottomNavBar(
-              currentIndex: value.currentIndex,
-              onTap: value.changeIndex,
-            );
-          },
-        ),
+    return Scaffold(
+      bottomNavigationBar: Consumer<MainController>(
+        builder: (context, value, child) {
+          return BottomNavBar(
+            currentIndex: value.currentIndex,
+            onTap: value.changeIndex,
+          );
+        },
       ),
     );
   }

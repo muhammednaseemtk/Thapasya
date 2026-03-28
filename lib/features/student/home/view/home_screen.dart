@@ -11,11 +11,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(),
 
       body: SingleChildScrollView(
         child: Column(
           children: [
+            CommonAppBar(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: StudentDashboardCard(
