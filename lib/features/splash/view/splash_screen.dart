@@ -12,7 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -20,28 +19,28 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> goLogin() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
+    if (!mounted) return;
     Navigator.pushReplacementNamed(context, AppRoutes.login);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body:  Container(
+      body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: AppColors.splashGradient)
+          gradient: LinearGradient(colors: AppColors.splashGradient),
         ),
         child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/images/thapasya_image1.png',width: 250,),
-        
-                Text(AppStrings.appSubtitle, style: AppFonts.poppinsRegular),
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/thapasya_image1.png', width: 250),
+
+              Text(AppStrings.appSubtitle, style: AppFonts.poppinsRegular),
+            ],
           ),
+        ),
       ),
     );
   }

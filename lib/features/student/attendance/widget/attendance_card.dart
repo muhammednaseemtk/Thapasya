@@ -1,3 +1,4 @@
+import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -18,7 +19,7 @@ class AttendanceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color:  Color(0xFFB30000),
+        color:  AppColors.brightRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -30,11 +31,11 @@ class AttendanceCard extends StatelessWidget {
             center: Text(
               "$percentage%",
               style:  TextStyle(
-                color: Colors.white,
+                color: AppColors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            progressColor: Colors.white,
+            progressColor: AppColors.white,
             backgroundColor: Colors.white24,
             circularStrokeCap: CircularStrokeCap.round,
           ),
@@ -48,7 +49,7 @@ class AttendanceCard extends StatelessWidget {
                  Text(
                   "Overall Attendance",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -76,12 +77,12 @@ class AttendanceCard extends StatelessWidget {
                   child:  Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.check, color: Colors.white, size: 14),
+                      Icon(Icons.check, color: AppColors.white, size: 14),
                       SizedBox(width: 4),
                       Text(
                         "Good Standing",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.white,
                           fontSize: 12,
                         ),
                       ),

@@ -25,24 +25,32 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LiquidGlassNavBar(
-      itemColor: AppColors.brightRed,
-      backgroundColor: AppColors.white,
-      bubbleBorderColor: AppColors.brightRed,
-      bubbleColor: AppColors.white,
-      fontSize: 12,
-      bubbleWidth: 88,
-      blurStrength: 50,
-      bubbleHeight: 55,
-      currentIndex: currentIndex,
-      onPageChanged: onTap,
-      pages: pages,
-      items: [
-        LiquidGlassNavItem(icon: Icons.home_outlined, label: 'Home'),
-        LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attendance'),
-        LiquidGlassNavItem(icon: Icons.import_contacts_outlined, label: 'Course'),
-        LiquidGlassNavItem(icon: Icons.payment, label: 'Fees'),
-      ],
+    return Theme(
+      data: Theme.of(context).copyWith(
+      textTheme: Theme.of(context).textTheme.apply(
+            fontFamily: 'Poppins', 
+          ),
+    ),
+      child: LiquidGlassNavBar(
+        itemColor: AppColors.brightRed,
+        backgroundColor: AppColors.white,
+        bubbleBorderColor: AppColors.brightRed,
+        bubbleColor: AppColors.white,
+        fontSize: 12,
+        bubbleWidth: 88,
+        blurStrength: 50,
+        bubbleHeight: 55,
+        currentIndex: currentIndex,
+        onPageChanged: onTap,
+        pages: pages,
+      
+        items: [
+          LiquidGlassNavItem(icon: Icons.home_outlined, label: 'Home'),
+          LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attendance'),
+          LiquidGlassNavItem(icon: Icons.import_contacts_outlined, label: 'Course'),
+          LiquidGlassNavItem(icon: Icons.payment, label: 'Fees'),
+        ],
+      ),
     );
   }
 }
