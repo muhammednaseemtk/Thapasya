@@ -1,6 +1,7 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class AttendanceCard extends StatelessWidget {
   final int percentage;
@@ -19,7 +20,7 @@ class AttendanceCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color:  AppColors.brightRed,
+        color: AppColors.brightRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -28,70 +29,50 @@ class AttendanceCard extends StatelessWidget {
             radius: 40,
             lineWidth: 8,
             percent: percentage / 100,
-            center: Text(
-              "$percentage%",
-              style:  TextStyle(
-                color: AppColors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            center: Text("$percentage%", style: AppFonts.poppinsBold),
             progressColor: AppColors.white,
-            backgroundColor: Colors.white24,
+            backgroundColor: AppColors.white24,
             circularStrokeCap: CircularStrokeCap.round,
           ),
 
-           SizedBox(width: 16),
+          SizedBox(width: 16),
 
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 Text(
-                  "Overall Attendance",
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
+                Text("Overall Attendance", style: AppFonts.poppinsRegular),
 
-                 SizedBox(height: 6),
+                SizedBox(height: 6),
 
                 Text(
                   "$present present out of $total classes",
-                  style:  TextStyle(
-                    color: Colors.white70,
-                    fontSize: 13,
-                  ),
+                  style: AppFonts.poppinsBold3,
                 ),
 
-                 SizedBox(height: 10),
+                SizedBox(height: 10),
 
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.white24,
+                    color: AppColors.white24,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child:  Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.check, color: AppColors.white, size: 14),
                       SizedBox(width: 4),
-                      Text(
-                        "Good Standing",
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 12,
-                        ),
-                      ),
+                      Text("Good Standing", style: AppFonts.poppinsBold4),
                     ],
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

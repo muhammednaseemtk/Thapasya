@@ -1,5 +1,5 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
 
 class AppFonts {
   static final TextStyle poppinsBold = TextStyle(
@@ -18,6 +18,19 @@ class AppFonts {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
     color: AppColors.lightTxt
+  );
+
+  static final TextStyle poppinsBold3 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    color: AppColors.white70
+  );
+
+  static final TextStyle poppinsBold4 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+    fontSize: 12
   );
 
   static const TextStyle poppinsSemiBold = TextStyle(
@@ -50,6 +63,13 @@ class AppFonts {
     color: AppColors.white,
     fontSize: 25,
     fontWeight: FontWeight.w600
+  );
+
+  static const TextStyle poppinsSemiBold5 = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.black,
+    fontSize: 22,
+    fontWeight: FontWeight.w700
   );
 
   static const TextStyle poppinsRegular = TextStyle(

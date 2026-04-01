@@ -1,6 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class StudentInfoCard extends StatelessWidget {
   final IconData icon;
@@ -23,7 +23,7 @@ class StudentInfoCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 8),
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: AppColors.white15,
+          color: AppColors.white24,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(

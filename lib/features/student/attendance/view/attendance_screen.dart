@@ -1,13 +1,14 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/features/student/attendance/model/attendance_status.dart';
-import 'package:Thapasya/features/student/attendance/widget/attendance_calender.dart';
-import 'package:Thapasya/features/student/attendance/widget/attendance_card.dart';
-import 'package:Thapasya/features/student/attendance/widget/monthly_break_down_card.dart';
-import 'package:Thapasya/features/student/home/widget/common_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/features/student/attendance/model/attendance_status.dart';
+import 'package:thapasya/features/student/attendance/widget/attendance_calender.dart';
+import 'package:thapasya/features/student/attendance/widget/attendance_card.dart';
+import 'package:thapasya/features/student/attendance/widget/monthly_break_down_card.dart';
+import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
 class AttendanceScreen extends StatelessWidget {
-   AttendanceScreen({super.key});
+  AttendanceScreen({super.key});
 
   final Map<DateTime, AttendanceStatus> data = {
     DateTime(2026, 3, 1): AttendanceStatus.present,
@@ -33,18 +34,17 @@ class AttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      
+      appBar: CommonAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CommonAppBar(),
-            SizedBox(height: 5,),
+            SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text('Attendance',style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold) ,),
+              child: Text('Attendance', style: AppFonts.poppinsSemiBold5),
             ),
-            
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: AttendanceCard(percentage: 80, present: 78, total: 89),
@@ -55,7 +55,7 @@ class AttendanceScreen extends StatelessWidget {
               child: AttendanceCalendar(attendanceData: data),
             ),
 
-            MonthlyBreakdownCard()
+            MonthlyBreakdownCard(),
           ],
         ),
       ),

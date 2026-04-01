@@ -1,5 +1,5 @@
-import 'package:Thapasya/features/student/course/widget/info_item.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/features/student/course/widget/info_item.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({super.key});
@@ -11,10 +11,7 @@ class CourseCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [
-            Color(0xFF9B1C1C),
-            Color(0xFFB91C1C),
-          ],
+          colors: [Color(0xFF9B1C1C), Color(0xFFB91C1C)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -28,13 +25,9 @@ class CourseCard extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(18)
+              borderRadius: BorderRadius.circular(18),
             ),
-            child: const Icon(
-              Icons.star_border,
-              color: Colors.white,
-              size: 28,
-            ),
+            child: const Icon(Icons.star_border, color: Colors.white, size: 28),
           ),
 
           const SizedBox(width: 16),
@@ -57,10 +50,7 @@ class CourseCard extends StatelessWidget {
 
                 const Text(
                   "Level 3 • Intermediate",
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
                 ),
 
                 const SizedBox(height: 16),
@@ -69,18 +59,9 @@ class CourseCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    InfoItem(
-                      title: "Morning",
-                      subtitle: "Batch",
-                    ),
-                    InfoItem(
-                      title: "Mon/Thu",
-                      subtitle: "Day",
-                    ),
-                    InfoItem(
-                      title: "5:00 PM",
-                      subtitle: "Time",
-                    ),
+                    InfoItem(title: "Morning", subtitle: "Batch"),
+                    InfoItem(title: "Mon/Thu", subtitle: "Day"),
+                    InfoItem(title: "5:00 PM", subtitle: "Time"),
                   ],
                 ),
               ],

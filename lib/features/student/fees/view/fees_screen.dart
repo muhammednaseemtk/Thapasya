@@ -1,11 +1,12 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/features/student/fees/model/payment_item_model.dart';
-import 'package:Thapasya/features/student/fees/widget/fees_alert_card.dart';
-import 'package:Thapasya/features/student/fees/widget/fees_summary_card.dart';
-import 'package:Thapasya/features/student/fees/widget/pay_fees_button.dart';
-import 'package:Thapasya/features/student/fees/widget/payment_history_card.dart';
-import 'package:Thapasya/features/student/home/widget/common_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
+import 'package:thapasya/features/student/fees/widget/fees_alert_card.dart';
+import 'package:thapasya/features/student/fees/widget/fees_summary_card.dart';
+import 'package:thapasya/features/student/fees/widget/pay_fees_button.dart';
+import 'package:thapasya/features/student/fees/widget/payment_history_card.dart';
+import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
 class FeesScreen extends StatelessWidget {
   const FeesScreen({super.key});
@@ -14,18 +15,15 @@ class FeesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
+      appBar: CommonAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CommonAppBar(),
             SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                'Fees & Payments',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              child: Text('Fees & Payments', style: AppFonts.poppinsSemiBold5),
             ),
 
             FeesAlertCard(
@@ -37,7 +35,6 @@ class FeesScreen extends StatelessWidget {
 
             Row(
               children: [
-                /// 🔴 Pending Amount Card
                 FeesSummaryCard(
                   title: "Pending Amount",
                   amount: "₹2,500",

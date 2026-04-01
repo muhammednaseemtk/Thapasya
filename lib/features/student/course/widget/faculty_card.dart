@@ -1,5 +1,5 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
 
 class FacultyCard extends StatelessWidget {
   final String initials;
@@ -34,12 +34,12 @@ class FacultyCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: AppColors.white
+                color: AppColors.white,
               ),
             ),
-      
+
             const SizedBox(height: 12),
-      
+
             Row(
               children: [
                 /// Avatar
@@ -55,9 +55,9 @@ class FacultyCard extends StatelessWidget {
                     ),
                   ),
                 ),
-      
+
                 const SizedBox(width: 12),
-      
+
                 /// Details
                 Expanded(
                   child: Column(
@@ -68,18 +68,16 @@ class FacultyCard extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
-                          color: AppColors.white
+                          color: AppColors.white,
                         ),
                       ),
                       Text(
                         role,
-                        style: const TextStyle(
-                          color: AppColors.textField,
-                        ),
+                        style: const TextStyle(color: AppColors.textField),
                       ),
-      
+
                       const SizedBox(height: 6),
-      
+
                       /// Rating
                       Row(
                         children: [
@@ -94,12 +92,10 @@ class FacultyCard extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             rating.toStringAsFixed(1),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

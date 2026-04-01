@@ -1,17 +1,14 @@
-import 'package:Thapasya/features/student/attendance/model/attendance_status.dart';
-import 'package:Thapasya/features/student/attendance/widget/attendance_legend.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:thapasya/features/student/attendance/model/attendance_status.dart';
+import 'package:thapasya/features/student/attendance/widget/attendance_legend.dart';
 
 class AttendanceCalendar extends StatelessWidget {
   final Map<DateTime, AttendanceStatus> attendanceData;
 
-  const AttendanceCalendar({
-    super.key,
-    required this.attendanceData,
-  });
+  const AttendanceCalendar({super.key, required this.attendanceData});
 
-  Color _getColor(AttendanceStatus status) {
+  Color getColor(AttendanceStatus status) {
     switch (status) {
       case AttendanceStatus.present:
         return Colors.green;
@@ -37,30 +34,29 @@ class AttendanceCalendar extends StatelessWidget {
             firstDay: DateTime.utc(2020, 1, 1),
             lastDay: DateTime.utc(2030, 12, 31),
             focusedDay: DateTime.now(),
-            calendarStyle:  CalendarStyle(
-              outsideDaysVisible: false,
-            ),
-          
+            calendarStyle: CalendarStyle(outsideDaysVisible: false),
+
             calendarBuilders: CalendarBuilders(
               defaultBuilder: (context, day, focusedDay) {
-                final status = attendanceData[DateTime(day.year, day.month, day.day)];
-          
+                final status =
+                    attendanceData[DateTime(day.year, day.month, day.day)];
+
                 if (status == null || status == AttendanceStatus.none) {
                   return Center(child: Text('${day.day}'));
                 }
-          
+
                 return Center(
                   child: Container(
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: _getColor(status).withOpacity(0.2),
+                      color: getColor(status).withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
                     child: Center(
                       child: Text(
                         '${day.day}',
-                        style: TextStyle(color: _getColor(status)),
+                        style: TextStyle(color: getColor(status)),
                       ),
                     ),
                   ),
@@ -71,7 +67,7 @@ class AttendanceCalendar extends StatelessWidget {
 
           AttendanceLegend(),
 
-          SizedBox(height: 15,)
+          SizedBox(height: 15),
         ],
       ),
     );

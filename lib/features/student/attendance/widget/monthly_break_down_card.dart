@@ -1,7 +1,6 @@
-import 'package:Thapasya/features/student/attendance/model/monthly_data.dart';
-import 'package:Thapasya/features/student/attendance/widget/montly_progress_item.dart';
 import 'package:flutter/material.dart';
-
+import 'package:thapasya/features/student/attendance/model/monthly_data.dart';
+import 'package:thapasya/features/student/attendance/widget/montly_progress_item.dart';
 
 class MonthlyBreakdownCard extends StatelessWidget {
   MonthlyBreakdownCard({super.key});
@@ -19,7 +18,7 @@ class MonthlyBreakdownCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: const Color(0xFFF4F4F4),
         borderRadius: BorderRadius.circular(20),
@@ -29,17 +28,16 @@ class MonthlyBreakdownCard extends StatelessWidget {
         children: [
           const Text(
             "Monthly Breakdown",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
 
-          ...data.map((e) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: MonthlyProgressItem(data: e),
-              )),
+          ...data.map(
+            (e) => Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: MonthlyProgressItem(data: e),
+            ),
+          ),
         ],
       ),
     );

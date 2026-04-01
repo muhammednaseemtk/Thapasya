@@ -1,5 +1,5 @@
-import 'package:Thapasya/features/student/fees/model/payment_item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
 
 class PaymentItems extends StatelessWidget {
   final PaymentItemModel item;

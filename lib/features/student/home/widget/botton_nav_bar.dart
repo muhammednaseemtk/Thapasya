@@ -1,10 +1,10 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/features/student/attendance/view/attendance_screen.dart';
-import 'package:Thapasya/features/student/course/view/course_screen.dart';
-import 'package:Thapasya/features/student/fees/view/fees_screen.dart';
-import 'package:Thapasya/features/student/home/view/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_navbar/liquid_glass_navbar.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/features/student/attendance/view/attendance_screen.dart';
+import 'package:thapasya/features/student/course/view/course_screen.dart';
+import 'package:thapasya/features/student/fees/view/fees_screen.dart';
+import 'package:thapasya/features/student/home/view/home_screen.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -27,10 +27,8 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
-      textTheme: Theme.of(context).textTheme.apply(
-            fontFamily: 'Poppins', 
-          ),
-    ),
+        textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
+      ),
       child: LiquidGlassNavBar(
         itemColor: AppColors.brightRed,
         backgroundColor: AppColors.white,
@@ -43,11 +41,14 @@ class BottomNavBar extends StatelessWidget {
         currentIndex: currentIndex,
         onPageChanged: onTap,
         pages: pages,
-      
+
         items: [
           LiquidGlassNavItem(icon: Icons.home_outlined, label: 'Home'),
           LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attendance'),
-          LiquidGlassNavItem(icon: Icons.import_contacts_outlined, label: 'Course'),
+          LiquidGlassNavItem(
+            icon: Icons.import_contacts_outlined,
+            label: 'Course',
+          ),
           LiquidGlassNavItem(icon: Icons.payment, label: 'Fees'),
         ],
       ),

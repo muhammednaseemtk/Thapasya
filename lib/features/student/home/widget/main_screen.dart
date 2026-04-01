@@ -1,7 +1,7 @@
-import 'package:Thapasya/features/student/home/controller/main_controller.dart';
-import 'package:Thapasya/features/student/home/widget/botton_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thapasya/features/student/home/controller/main_controller.dart';
+import 'package:thapasya/features/student/home/widget/botton_nav_bar.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

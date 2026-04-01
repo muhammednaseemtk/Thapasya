@@ -1,7 +1,7 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
 import '../controller/login_tab_bar_controller.dart';
 import '../model/login_tab_item.dart';
 
@@ -21,17 +21,17 @@ class LoginTabBar extends StatelessWidget {
             builder: (context) {
               final tabController = DefaultTabController.of(context);
 
-              return ButtonsTabBar(borderColor: AppColors.brightRed,
+              return ButtonsTabBar(
+                borderColor: AppColors.brightRed,
                 backgroundColor: AppColors.white,
-                unselectedBackgroundColor: AppColors.white,labelStyle: TextStyle(color: AppColors.brightRed),
+                unselectedBackgroundColor: AppColors.white,
+                labelStyle: TextStyle(color: AppColors.brightRed),
                 contentCenter: true,
                 splashColor: const Color.fromARGB(255, 180, 100, 100),
                 width: 160,
                 unselectedLabelStyle: TextStyle(color: AppColors.textField),
                 radius: 10,
-                contentPadding:  EdgeInsets.symmetric(
-                  horizontal: 15,
-                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 15),
 
                 onTap: (index) {
                   context.read<LoginTabBarController>().changeIndex(index);

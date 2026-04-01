@@ -1,7 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
-
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class LoginButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -17,12 +16,12 @@ class LoginButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.brightRed,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(10)
-          )
+            borderRadius: BorderRadiusGeometry.circular(10),
+          ),
         ),
         onPressed: onPressed,
-        child: Text(txt,style: AppFonts.poppinsSemiBold2,),
-        )
+        child: Text(txt, style: AppFonts.poppinsSemiBold2),
+      ),
     );
   }
 }

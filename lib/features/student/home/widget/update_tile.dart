@@ -1,6 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class UpdateTile extends StatelessWidget {
   final IconData icon;
@@ -26,28 +26,19 @@ class UpdateTile extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: iconBgColor,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: iconBgColor, shape: BoxShape.circle),
           child: Icon(icon, color: iconColor, size: 18),
         ),
 
-         SizedBox(width: 12),
+        SizedBox(width: 12),
 
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style:  AppFonts.poppinsSemiBold
-              ),
-               SizedBox(height: 4),
-              Text(
-                subtitle,
-                style: AppFonts.poppinsBold2
-              ),
+              Text(title, style: AppFonts.poppinsSemiBold),
+              SizedBox(height: 4),
+              Text(subtitle, style: AppFonts.poppinsBold2),
             ],
           ),
         ),
@@ -56,7 +47,7 @@ class UpdateTile extends StatelessWidget {
           Container(
             width: 8,
             height: 8,
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.brightRed,
               shape: BoxShape.circle,
             ),

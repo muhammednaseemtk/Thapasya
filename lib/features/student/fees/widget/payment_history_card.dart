@@ -1,15 +1,11 @@
-import 'package:Thapasya/features/student/fees/model/payment_item_model.dart';
-import 'package:Thapasya/features/student/fees/widget/payment_items.dart';
 import 'package:flutter/material.dart';
-
+import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
+import 'package:thapasya/features/student/fees/widget/payment_items.dart';
 
 class PaymentHistoryCard extends StatelessWidget {
   final List<PaymentItemModel> items;
 
-  const PaymentHistoryCard({
-    super.key,
-    required this.items,
-  });
+  const PaymentHistoryCard({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +22,11 @@ class PaymentHistoryCard extends StatelessWidget {
           children: [
             const Text(
               "Payment History",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-      
+
             const SizedBox(height: 16),
-      
+
             ...items.map((e) => PaymentItems(item: e)).toList(),
           ],
         ),

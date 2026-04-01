@@ -1,14 +1,14 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
-import 'package:Thapasya/core/constant/app_strings.dart';
-import 'package:Thapasya/core/routes/app_routes.dart';
-import 'package:Thapasya/features/auth/controller/login_tab_bar_controller.dart';
-import 'package:Thapasya/features/auth/widget/login_button.dart';
-import 'package:Thapasya/features/auth/widget/login_tab_bar.dart';
-import 'package:Thapasya/features/auth/widget/login_tab_bar_item.dart';
-import 'package:Thapasya/features/auth/widget/login_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/core/constant/app_strings.dart';
+import 'package:thapasya/core/routes/app_routes.dart';
+import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
+import 'package:thapasya/features/auth/widget/login_button.dart';
+import 'package:thapasya/features/auth/widget/login_tab_bar.dart';
+import 'package:thapasya/features/auth/widget/login_tab_bar_item.dart';
+import 'package:thapasya/features/auth/widget/login_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -44,10 +44,8 @@ class LoginScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: AppColors.splashGradient,
-                  ),
-                  borderRadius:  BorderRadius.only(
+                  gradient: LinearGradient(colors: AppColors.splashGradient),
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(45),
                     topRight: Radius.circular(45),
                   ),
@@ -61,25 +59,25 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                       SizedBox(height: 30),
+                      SizedBox(height: 30),
 
                       Text(
                         AppStrings.loginHeading,
                         style: AppFonts.poppinsSemiBold1,
                       ),
 
-                       SizedBox(height: 5),
+                      SizedBox(height: 5),
 
                       Text(
                         AppStrings.loginSubtitle,
                         style: AppFonts.poppinsRegular,
                       ),
 
-                       SizedBox(height: 20),
+                      SizedBox(height: 20),
 
-                       LoginTabBar(items: items),
+                      LoginTabBar(items: items),
 
-                       SizedBox(height: 20,),
+                      SizedBox(height: 20),
 
                       Consumer<LoginTabBarController>(
                         builder: (context, controller, _) {
@@ -90,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                         },
                       ),
 
-                       SizedBox(height: 20),
+                      SizedBox(height: 20),
 
                       LoginTextField(
                         txt: AppStrings.passwordHint,
@@ -99,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                         icon: Icons.lock_outline_rounded,
                       ),
 
-                       SizedBox(height: 10),
+                      SizedBox(height: 10),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -114,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
 
-                       SizedBox(height: 10),
+                      SizedBox(height: 10),
 
                       LoginButton(
                         onPressed: () {
@@ -123,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                         txt: AppStrings.login,
                       ),
 
-                       SizedBox(height: 30),
+                      SizedBox(height: 30),
                     ],
                   ),
                 ),

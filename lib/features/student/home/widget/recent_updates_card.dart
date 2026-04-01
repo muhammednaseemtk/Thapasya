@@ -1,6 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'update_tile.dart';
 
 class RecentUpdatesCard extends StatelessWidget {
@@ -11,28 +11,22 @@ class RecentUpdatesCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color:  AppColors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:  [
-              Text(
-                "Recent Updates",
-                style: AppFonts.poppinsSemiBold
-              ),
-              Text(
-                "See all",
-                style: AppFonts.poppinsSemiBold3
-              ),
+            children: [
+              Text("Recent Updates", style: AppFonts.poppinsSemiBold),
+              Text("See all", style: AppFonts.poppinsSemiBold3),
             ],
           ),
 
-           SizedBox(height: 16),
+          SizedBox(height: 16),
 
-           UpdateTile(
+          UpdateTile(
             icon: Icons.info_outline,
             iconBgColor: AppColors.lightRed,
             iconColor: AppColors.brightRed,
@@ -41,12 +35,12 @@ class RecentUpdatesCard extends StatelessWidget {
             showDot: true,
           ),
 
-           SizedBox(height: 12),
-           Divider(),
+          SizedBox(height: 12),
+          Divider(),
 
-           SizedBox(height: 12),
+          SizedBox(height: 12),
 
-           UpdateTile(
+          UpdateTile(
             icon: Icons.notifications_none,
             iconBgColor: AppColors.lightRed,
             iconColor: AppColors.brightRed,
@@ -55,21 +49,20 @@ class RecentUpdatesCard extends StatelessWidget {
             showDot: true,
           ),
 
-           SizedBox(height: 12),
-           Divider(),
-           SizedBox(height: 12),
+          SizedBox(height: 12),
+          Divider(),
+          SizedBox(height: 12),
 
-           UpdateTile(
+          UpdateTile(
             icon: Icons.check_circle_outline,
             iconBgColor: AppColors.lightGreen,
             iconColor: AppColors.green,
             title: "Attendance Marked",
-            subtitle:
-                "Your attendance for today's session has been recorded.",
+            subtitle: "Your attendance for today's session has been recorded.",
           ),
 
           SizedBox(height: 12),
-           Divider(),
+          Divider(),
 
           UpdateTile(
             icon: Icons.info_outline,

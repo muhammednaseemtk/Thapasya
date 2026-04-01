@@ -1,7 +1,7 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
-import 'package:Thapasya/features/student/home/widget/student_info_card.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/features/student/home/widget/student_info_card.dart';
 
 class StudentDashboardCard extends StatelessWidget {
   final String studentName;
@@ -40,7 +40,10 @@ class StudentDashboardCard extends StatelessWidget {
 
           SizedBox(height: 6),
 
-          Text("$course - Level 3 | Batch: $batch", style: AppFonts.poppinsSemiBold2),
+          Text(
+            "$course - Level 3 | Batch: $batch",
+            style: AppFonts.poppinsSemiBold2,
+          ),
 
           SizedBox(height: 8),
 

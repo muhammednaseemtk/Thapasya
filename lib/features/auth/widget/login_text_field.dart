@@ -1,7 +1,6 @@
-import 'package:Thapasya/core/constant/app_colors.dart';
-import 'package:Thapasya/core/constant/app_fonts.dart';
 import 'package:flutter/material.dart';
-
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class LoginTextField extends StatelessWidget {
   final String txt;
@@ -13,7 +12,7 @@ class LoginTextField extends StatelessWidget {
     required this.txt,
     required this.controller,
     required this.obsecureTxt,
-    required this.icon
+    required this.icon,
   });
 
   @override
@@ -27,7 +26,7 @@ class LoginTextField extends StatelessWidget {
         style: AppFonts.poppinsSemiBold,
         decoration: InputDecoration(
           hintText: txt,
-          hintStyle: TextStyle(color: AppColors.textField,),
+          hintStyle: TextStyle(color: AppColors.textField),
           prefixIcon: Icon(icon),
           prefixIconColor: AppColors.brightRed,
           filled: true,

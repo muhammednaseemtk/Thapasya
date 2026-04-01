@@ -1,6 +1,6 @@
-import 'package:Thapasya/features/student/attendance/model/monthly_data.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:thapasya/features/student/attendance/model/monthly_data.dart';
 
 class MonthlyProgressItem extends StatelessWidget {
   final MonthlyData data;
