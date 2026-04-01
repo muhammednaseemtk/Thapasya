@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                 nextClassTime: '1:00 PM',
               ),
             ),
-
+      
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RecentUpdatesCard(),

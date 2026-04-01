@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constant/app_colors.dart';
 import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/core/constant/app_strings.dart';
+import 'package:thapasya/core/routes/app_routes.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final VoidCallback? onMenuTap;
-  final VoidCallback? onProfileTap;
 
-  const CommonAppBar({super.key, this.onMenuTap, this.onProfileTap});
+  const CommonAppBar({super.key,});
 
   @override
   Size get preferredSize => const Size.fromHeight(80);
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,12 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       decoration: BoxDecoration(color: AppColors.brightRed),
 
       child: Padding(
-        padding: const EdgeInsets.only(top: 15),
+        padding: const EdgeInsets.only(top: 16),
         child: Row(
           children: [
             IconButton(
               constraints: const BoxConstraints(),
-              onPressed: onMenuTap ?? () {},
+              onPressed: () {},
               icon: const Icon(Icons.menu_book_outlined),
               color: AppColors.white,
               iconSize: 25,
@@ -38,7 +38,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
 
             IconButton(
-              onPressed: onProfileTap ?? () {},
+              onPressed:  () {
+                Navigator.pushNamed(context, AppRoutes.profile);
+              },
               icon: const Icon(Icons.person_outline_rounded),
               color: AppColors.white,
               iconSize: 25,

@@ -20,8 +20,8 @@ class StudentInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        padding: const EdgeInsets.symmetric(vertical: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 13,),
         decoration: BoxDecoration(
           color: AppColors.white24,
           borderRadius: BorderRadius.circular(16),

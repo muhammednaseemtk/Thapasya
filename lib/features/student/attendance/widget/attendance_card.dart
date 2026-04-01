@@ -43,7 +43,7 @@ class AttendanceCard extends StatelessWidget {
               children: [
                 Text("Overall Attendance", style: AppFonts.poppinsRegular),
 
-                SizedBox(height: 6),
+                SizedBox(height: 5),
 
                 Text(
                   "$present present out of $total classes",
