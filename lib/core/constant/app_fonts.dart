@@ -33,6 +33,12 @@ class AppFonts {
     fontSize: 12
   );
 
+  static final TextStyle poppinsBold5 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    color: AppColors.green
+  );
+
   static const TextStyle poppinsSemiBold = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600

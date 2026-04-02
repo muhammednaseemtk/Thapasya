@@ -12,7 +12,7 @@ class AttendanceLegend extends StatelessWidget {
       children: const [
         LegendItem(color: AppColors.green, label: "Present"),
         LegendItem(color: AppColors.brightRed, label: "Absent"),
-        LegendItem(color: Colors.orange, label: "Holiday"),
+        LegendItem(color: AppColors.orange, label: "Holiday"),
       ],
     );
   }

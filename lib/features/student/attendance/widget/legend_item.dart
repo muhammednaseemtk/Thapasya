@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class LegendItem extends StatelessWidget {
   final Color color;
@@ -19,12 +20,12 @@ class LegendItem extends StatelessWidget {
           height: 12,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color.withOpacity(0.2),
+            color: color,
             border: Border.all(color: color),
           ),
         ),
         const SizedBox(width: 6),
-        Text(label),
+        Text(label,style: AppFonts.poppinsBold2,),
       ],
     );
   }

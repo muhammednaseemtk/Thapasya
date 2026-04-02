@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/student/attendance/model/monthly_data.dart';
 import 'package:thapasya/features/student/attendance/widget/montly_progress_item.dart';
 
@@ -20,7 +22,7 @@ class MonthlyBreakdownCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F4F4),
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -28,7 +30,7 @@ class MonthlyBreakdownCard extends StatelessWidget {
         children: [
           const Text(
             "Monthly Breakdown",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: AppFonts.poppinsSemiBold,
           ),
           const SizedBox(height: 16),
 
