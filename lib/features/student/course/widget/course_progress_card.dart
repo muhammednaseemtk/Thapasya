@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/student/course/model/course_item.dart';
 import 'package:thapasya/features/student/course/widget/course_progress_items.dart';
 
@@ -20,7 +22,7 @@ class CourseProgressCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Color(0xFFF2F2F2),
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -28,7 +30,7 @@ class CourseProgressCard extends StatelessWidget {
           children: [
             Text(
               "Course Progress",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: AppFonts.poppinsSemiBold7,
             ),
 
             SizedBox(height: 10),
@@ -36,30 +38,30 @@ class CourseProgressCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Overall Progress"),
+                 Text("Overall Progress",style: AppFonts.poppinsBold2
+                 ),
+
                 Text(
                   "${(progress * 100).toInt()}%",
-                  style: const TextStyle(color: Colors.red),
+                  style: AppFonts.poppinsSemiBold3,
                 ),
               ],
             ),
 
             const SizedBox(height: 8),
 
-            /// Progress Bar
             LinearPercentIndicator(
               lineHeight: 8,
               percent: progress,
-              backgroundColor: Colors.grey.shade300,
+              backgroundColor: AppColors.screen,
               linearGradient: const LinearGradient(
-                colors: [Colors.red, Colors.orange, Colors.amber],
+                colors: [AppColors.brightRed, AppColors.orange, AppColors.amber],
               ),
               barRadius: const Radius.circular(10),
             ),
 
             const SizedBox(height: 20),
 
-            /// Course List
             ...items.map((e) => CourseProgressItems(item: e)).toList(),
           ],
         ),

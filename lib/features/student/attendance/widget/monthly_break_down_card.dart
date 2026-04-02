@@ -30,7 +30,7 @@ class MonthlyBreakdownCard extends StatelessWidget {
         children: [
           const Text(
             "Monthly Breakdown",
-            style: AppFonts.poppinsSemiBold,
+            style: AppFonts.poppinsSemiBold7,
           ),
           const SizedBox(height: 16),
 

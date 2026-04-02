@@ -30,7 +30,6 @@ class FeesSummaryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Title
             Text(
               title,
               style: TextStyle(

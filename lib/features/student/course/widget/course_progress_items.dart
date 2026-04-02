@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import '../model/course_item.dart';
 
 class CourseProgressItems extends StatelessWidget {
@@ -17,18 +19,18 @@ class CourseProgressItems extends StatelessWidget {
 
     switch (item.status) {
       case "Done":
-        statusColor = Colors.green;
-        bgColor = Colors.green.shade50;
+        statusColor = AppColors.green;
+        bgColor = AppColors.lightGreen;
         icon = Icons.check_circle;
         break;
       case "Active":
-        statusColor = Colors.red;
-        bgColor = Colors.red.shade50;
+        statusColor = AppColors.brightRed;
+        bgColor = AppColors.lightRed;
         icon = Icons.trending_up;
         break;
       default:
-        statusColor = Colors.grey;
-        bgColor = Colors.grey.shade200;
+        statusColor = AppColors.textField;
+        bgColor = AppColors.lightClr;
         icon = Icons.access_time;
     }
 
@@ -36,7 +38,6 @@ class CourseProgressItems extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 14),
       child: Row(
         children: [
-          /// Icon Circle
           CircleAvatar(
             radius: 18,
             backgroundColor: bgColor,
@@ -45,27 +46,22 @@ class CourseProgressItems extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          /// Text Section
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   item.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                  ),
+                  style: AppFonts.poppinsSemiBold,
                 ),
                 Text(
                   item.subtitle,
-                  style: const TextStyle(color: Colors.grey),
+                  style: AppFonts.poppinsBold2,
                 ),
               ],
             ),
           ),
 
-          /// Status Badge
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 12,

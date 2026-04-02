@@ -39,6 +39,13 @@ class AppFonts {
     color: AppColors.green
   );
 
+  static final TextStyle poppinsBold6 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w400,
+    color: AppColors.lightTxt,
+    fontSize: 13
+  );
+
   static const TextStyle poppinsSemiBold = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600
@@ -76,6 +83,26 @@ class AppFonts {
     color: AppColors.black,
     fontSize: 22,
     fontWeight: FontWeight.w700
+  );
+
+  static const TextStyle poppinsSemiBold6 = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.white,
+    fontSize: 22,
+    fontWeight: FontWeight.w600
+  );
+
+  static const TextStyle poppinsSemiBold7 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    fontSize: 17
+  );
+
+  static const TextStyle poppinsSemiBold8 = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    color: AppColors.white
   );
 
   static const TextStyle poppinsRegular = TextStyle(

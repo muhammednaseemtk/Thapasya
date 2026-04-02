@@ -39,8 +39,8 @@ class FeesScreen extends StatelessWidget {
                   title: "Pending Amount",
                   amount: "₹2,500",
                   subtitle: "Due Mar 25, 2026",
-                  bgColor: const Color(0xFFB71C1C), // deep red
-                  textColor: Colors.white,
+                  bgColor: AppColors.brightRed, 
+                  textColor: AppColors.white,
                 ),
 
                 /// ⚪ Total Paid Card

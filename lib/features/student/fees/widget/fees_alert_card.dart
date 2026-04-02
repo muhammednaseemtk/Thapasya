@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class FeesAlertCard extends StatelessWidget {
   final String title;
@@ -17,54 +19,46 @@ class FeesAlertCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: const Color(0xFFFDECEA), 
+          color: AppColors.lightRed, 
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: Colors.red.shade200,
+            color: AppColors.brightRed,
           ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Icon
+            
             Container(
               height: 28,
               width: 28,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.red),
+                border: Border.all(color: AppColors.brightRed),
               ),
               child: const Icon(
                 Icons.error_outline,
-                color: Colors.red,
+                color: AppColors.brightRed,
                 size: 18,
               ),
             ),
       
             const SizedBox(width: 12),
       
-            /// Text Section
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                    ),
+                    style: AppFonts.poppinsSemiBold3
                   ),
       
                   const SizedBox(height: 4),
       
                   Text(
                     message,
-                    style: const TextStyle(
-                      color: Colors.black87,
-                      fontSize: 13,
-                    ),
+                    style: AppFonts.poppinsBold6
                   ),
                 ],
               ),

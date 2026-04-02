@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/student/course/widget/info_item.dart';
 
 class CourseCard extends StatelessWidget {
@@ -10,52 +12,41 @@ class CourseCard extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF9B1C1C), Color(0xFFB91C1C)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: AppColors.brightRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // ⭐ Icon
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: AppColors.white24,
               borderRadius: BorderRadius.circular(18),
             ),
-            child: const Icon(Icons.star_border, color: Colors.white, size: 28),
+            child: const Icon(Icons.star_border, color: AppColors.white, size: 28),
           ),
 
           const SizedBox(width: 16),
 
-          // 📄 Content
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Bharatanatyam",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppFonts.poppinsSemiBold6
                 ),
 
                 const SizedBox(height: 4),
 
-                const Text(
+                 Text(
                   "Level 3 • Intermediate",
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                  style: AppFonts.poppinsBold3,
                 ),
 
                 const SizedBox(height: 16),
 
-                // 🔽 Bottom Row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [

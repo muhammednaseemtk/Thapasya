@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class InfoItem extends StatelessWidget {
   final String title;
@@ -15,19 +16,12 @@ class InfoItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppFonts.poppinsBold
         ),
         const SizedBox(height: 4),
         Text(
           subtitle,
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 12,
-          ),
+          style: AppFonts.poppinsBold3
         ),
       ],
     );
