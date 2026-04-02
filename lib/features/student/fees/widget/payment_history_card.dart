@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
 import 'package:thapasya/features/student/fees/widget/payment_items.dart';
 
@@ -14,20 +16,20 @@ class PaymentHistoryCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFFF2F2F2),
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+             Text(
               "Payment History",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: AppFonts.poppinsSemiBold7,
             ),
 
             const SizedBox(height: 16),
 
-            ...items.map((e) => PaymentItems(item: e)).toList(),
+            ...items.map((e) => PaymentItems(item: e)),
           ],
         ),
       ),

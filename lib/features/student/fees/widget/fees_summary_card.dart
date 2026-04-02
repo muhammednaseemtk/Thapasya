@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class FeesSummaryCard extends StatelessWidget {
   final String title;
@@ -32,18 +33,17 @@ class FeesSummaryCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
-                color: textColor.withOpacity(0.9),
+              style: AppFonts.poppinsSemiBold2.copyWith(
+                color: textColor,
                 fontSize: 13,
               ),
             ),
       
             const SizedBox(height: 10),
       
-            /// Amount
             Text(
               amount,
-              style: TextStyle(
+              style: AppFonts.poppinsSemiBold2.copyWith(
                 color: textColor,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -52,11 +52,10 @@ class FeesSummaryCard extends StatelessWidget {
       
             const SizedBox(height: 6),
       
-            /// Subtitle
             Text(
               subtitle,
-              style: TextStyle(
-                color: textColor.withOpacity(0.8),
+              style: AppFonts.poppinsSemiBold2.copyWith(
+                color: textColor,
                 fontSize: 12,
               ),
             ),

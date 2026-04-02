@@ -62,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, AppRoutes.login);
               },
-              txt: 'LogOut',
+              txt: 'Logout',
             ),
           ],
         ),

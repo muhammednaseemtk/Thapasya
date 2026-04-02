@@ -62,7 +62,7 @@ class CourseProgressCard extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            ...items.map((e) => CourseProgressItems(item: e)).toList(),
+            ...items.map((e) => CourseProgressItems(item: e)),
           ],
         ),
       ),

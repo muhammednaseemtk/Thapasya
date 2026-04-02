@@ -20,7 +20,7 @@ class LoginButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Text(txt, style: AppFonts.poppinsSemiBold2),
+        child: Text(txt, style: AppFonts.poppinsSemiBold8),
       ),
     );
   }

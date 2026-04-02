@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class PayFeesButton extends StatelessWidget {
   final String text;
@@ -20,17 +22,13 @@ class PayFeesButton extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: const Color(0xFFB71C1C), // deep red
+            color: AppColors.brightRed, 
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(
             child: Text(
               text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+              style: AppFonts.poppinsRegular
             ),
           ),
         ),

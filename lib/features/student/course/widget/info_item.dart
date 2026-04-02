@@ -6,6 +6,7 @@ class InfoItem extends StatelessWidget {
   final String subtitle;
 
   const InfoItem({
+    super.key, 
     required this.title,
     required this.subtitle,
   });

@@ -1,56 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
 
 class PaymentItems extends StatelessWidget {
   final PaymentItemModel item;
 
-  const PaymentItems({
-    super.key,
-    required this.item,
-  });
+  const PaymentItems({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
     final isPaid = item.status == "Paid";
 
-    final statusColor = isPaid ? Colors.green : Colors.red;
-    final bgColor =
-        isPaid ? Colors.green.shade50 : Colors.red.shade50;
+    final statusColor = isPaid ? AppColors.green : AppColors.brightRed;
+    final bgColor = isPaid ? AppColors.lightGreen : AppColors.lightRed;
 
     return Column(
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Left Content
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.month,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                    ),
-                  ),
+                  Text(item.month, style: AppFonts.poppinsSemiBold),
                   const SizedBox(height: 4),
-                  Text(item.date),
-                  Text(item.receipt),
+                  Text(item.date, style: AppFonts.poppinsBold2),
+                  Text(item.receipt, style: AppFonts.poppinsBold2),
                 ],
               ),
             ),
 
-            /// Right Content
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  item.amount,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                Text(item.amount, style: AppFonts.poppinsSemiBold),
                 const SizedBox(height: 6),
                 Container(
                   padding: const EdgeInsets.symmetric(
@@ -63,7 +48,9 @@ class PaymentItems extends StatelessWidget {
                   ),
                   child: Text(
                     item.status,
-                    style: TextStyle(color: statusColor),
+                    style: AppFonts.poppinsSemiBold2.copyWith(
+                      color: statusColor,
+                    ),
                   ),
                 ),
               ],
@@ -73,7 +60,6 @@ class PaymentItems extends StatelessWidget {
 
         const SizedBox(height: 14),
 
-        /// Divider
         const Divider(height: 1),
 
         const SizedBox(height: 14),

@@ -50,7 +50,7 @@ class AttendanceCalendar extends StatelessWidget {
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(
-                      color: getColor(status).withOpacity(0.2),
+                      color: getColor(status),
                       shape: BoxShape.circle,
                     ),
                     child: Center(

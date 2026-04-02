@@ -43,13 +43,12 @@ class FeesScreen extends StatelessWidget {
                   textColor: AppColors.white,
                 ),
 
-                /// ⚪ Total Paid Card
                 FeesSummaryCard(
                   title: "Total Paid (2026)",
                   amount: "₹5,000",
                   subtitle: "2 months settled",
-                  bgColor: const Color(0xFFF2F2F2),
-                  textColor: Colors.green,
+                  bgColor: AppColors.white,
+                  textColor: AppColors.green,
                 ),
               ],
             ),

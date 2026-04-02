@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class ProfileHeaderCard extends StatelessWidget {
   const ProfileHeaderCard({super.key});
@@ -9,40 +11,32 @@ class ProfileHeaderCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24),
       decoration: BoxDecoration(
-        color: const Color(0xffB71C1C),
+        color: AppColors.brightRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
           CircleAvatar(
             radius: 35,
-            backgroundColor: Colors.white.withOpacity(0.3),
-            child: const Text(
+            backgroundColor: AppColors.white24,
+            child:  Text(
               "M",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+              style: AppFonts.poppinsSemiBold6,
             ),
           ),
 
           const SizedBox(height: 12),
 
-          const Text(
+           Text(
             "Midlaj",
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            style: AppFonts.poppinsSemiBold6
           ),
 
           const SizedBox(height: 4),
 
-          const Text(
+           Text(
             "Student ID: TSA-2024-0145",
-            style: TextStyle(color: Colors.white70),
+            style: AppFonts.poppinsBold3,
           ),
 
           const SizedBox(height: 12),
@@ -50,17 +44,17 @@ class ProfileHeaderCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: AppColors.white24,
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.verified, color: Colors.white, size: 18),
+                Icon(Icons.verified, color: AppColors.white, size: 18),
                 SizedBox(width: 6),
                 Text(
                   "Active Student",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: AppColors.white),
                 ),
               ],
             ),

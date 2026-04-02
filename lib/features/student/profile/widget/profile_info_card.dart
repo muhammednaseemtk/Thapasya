@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class ProfileInfoCard extends StatelessWidget {
   final String txt;
@@ -24,7 +26,7 @@ class ProfileInfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -32,28 +34,28 @@ class ProfileInfoCard extends StatelessWidget {
         children:  [
           Text(
             txt,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: AppFonts.poppinsSemiBold7,
           ),
 
           SizedBox(height: 12),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text(txt1), Text(txt2)],
+            children: [Text(txt1,style: AppFonts.poppinsBold2,), Text(txt2,style: AppFonts.poppinsBold2,)],
           ),
 
           Divider(height: 20),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text(txt3), Text(txt4)],
+            children: [Text(txt3,style: AppFonts.poppinsBold2,), Text(txt4,style: AppFonts.poppinsBold2,)],
           ),
 
           Divider(height: 20),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Text(txt5), Text(txt6)],
+            children: [Text(txt5,style: AppFonts.poppinsBold2,), Text(txt6,style: AppFonts.poppinsBold2,)],
           ),
         ],
       ),
