@@ -6,15 +6,15 @@ import 'package:thapasya/features/auth/widget/login_button.dart';
 import 'package:thapasya/features/student/profile/widget/profile_header_card.dart';
 import 'package:thapasya/features/student/profile/widget/profile_info_card.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class StudentProfileScreen extends StatelessWidget {
+  const StudentProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: AppBar(
-        backgroundColor: AppColors.brightRed,
+        backgroundColor: AppColors.darkRed,
         foregroundColor: AppColors.white,
         title: Text('Profile',style: AppFonts.poppinsSemiBold4,),
         centerTitle: true,

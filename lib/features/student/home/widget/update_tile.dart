@@ -48,7 +48,7 @@ class UpdateTile extends StatelessWidget {
             width: 8,
             height: 8,
             decoration: BoxDecoration(
-              color: AppColors.brightRed,
+              color: AppColors.darkRed,
               shape: BoxShape.circle,
             ),
           ),

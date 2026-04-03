@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
 
-class AssessmentScreen extends StatelessWidget {
-  const AssessmentScreen({super.key});
+class StaffAssessmentScreen extends StatelessWidget {
+  const StaffAssessmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: StaffCommonAppBar(),
+    );
   }
 }

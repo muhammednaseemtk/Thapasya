@@ -24,7 +24,7 @@ class CourseProgressItems extends StatelessWidget {
         icon = Icons.check_circle;
         break;
       case "Active":
-        statusColor = AppColors.brightRed;
+        statusColor = AppColors.darkRed;
         bgColor = AppColors.lightRed;
         icon = Icons.trending_up;
         break;

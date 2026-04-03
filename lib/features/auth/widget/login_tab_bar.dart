@@ -22,10 +22,10 @@ class LoginTabBar extends StatelessWidget {
               final tabController = DefaultTabController.of(context);
 
               return ButtonsTabBar(
-                borderColor: AppColors.brightRed,
+                borderColor: AppColors.darkRed,
                 backgroundColor: AppColors.white,
                 unselectedBackgroundColor: AppColors.white,
-                labelStyle: TextStyle(color: AppColors.brightRed),
+                labelStyle: TextStyle(color: AppColors.darkRed),
                 contentCenter: true,
                 splashColor: const Color.fromARGB(255, 180, 100, 100),
                 width: 160,

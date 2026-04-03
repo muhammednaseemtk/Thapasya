@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
 
-class AttendanceScreen extends StatelessWidget {
-  const AttendanceScreen({super.key});
+class StaffAttendanceScreen extends StatelessWidget {
+  const StaffAttendanceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: StaffCommonAppBar(),
+    );
   }
 }

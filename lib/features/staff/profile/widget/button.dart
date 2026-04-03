@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constant/app_colors.dart';
 import 'package:thapasya/core/constant/app_fonts.dart';
 
-class LoginButton extends StatelessWidget {
+class Button extends StatelessWidget {
   final VoidCallback onPressed;
   final String txt;
-  const LoginButton({super.key, required this.onPressed, required this.txt});
+  const Button({super.key, required this.onPressed, required this.txt});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class LoginButton extends StatelessWidget {
       width: 270,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.darkRed,
+          backgroundColor: AppColors.deepBlue,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(10),
           ),

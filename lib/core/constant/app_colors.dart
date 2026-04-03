@@ -10,7 +10,7 @@ class AppColors {
   static const Color white24 = Colors.white24;
   static const Color white70 = Colors.white70;
   static const Color lightRed = Color(0xFFFFE5E5);
-  static const Color brightRed = Color(0xFFB30000);
+  static const Color darkRed = Color(0xFFB71C1C);
   static const Color textField = Colors.grey;
   static const Color black = Colors.black;
   static const Color screen = Color(0xFFE5E2DC);
@@ -20,4 +20,5 @@ class AppColors {
   static const Color green = Colors.green;
   static const Color orange = Colors.orange;
   static const Color amber = Colors.amber;
+  static const Color deepBlue = Color(0xFF265785);
 }

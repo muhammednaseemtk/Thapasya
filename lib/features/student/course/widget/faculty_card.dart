@@ -23,7 +23,7 @@ class FacultyCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.brightRed,
+          color: AppColors.darkRed,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(

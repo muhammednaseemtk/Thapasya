@@ -8,14 +8,14 @@ import 'package:thapasya/features/student/fees/widget/pay_fees_button.dart';
 import 'package:thapasya/features/student/fees/widget/payment_history_card.dart';
 import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
-class FeesScreen extends StatelessWidget {
-  const FeesScreen({super.key});
+class StudentFeesScreen extends StatelessWidget {
+  const StudentFeesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(),
+      appBar: StudentCommonAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class FeesScreen extends StatelessWidget {
                   title: "Pending Amount",
                   amount: "₹2,500",
                   subtitle: "Due Mar 25, 2026",
-                  bgColor: AppColors.brightRed, 
+                  bgColor: AppColors.darkRed, 
                   textColor: AppColors.white,
                 ),
 

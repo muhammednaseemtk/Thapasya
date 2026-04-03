@@ -7,14 +7,14 @@ import 'package:thapasya/features/student/course/widget/course_progress_card.dar
 import 'package:thapasya/features/student/course/widget/faculty_card.dart';
 import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
-class CourseScreen extends StatelessWidget {
-  const CourseScreen({super.key});
+class StudentCourseScreen extends StatelessWidget {
+  const StudentCourseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(),
+      appBar: StudentCommonAppBar(),
 
       body: SingleChildScrollView(
         child: Column(

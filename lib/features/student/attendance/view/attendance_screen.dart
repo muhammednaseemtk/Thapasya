@@ -7,8 +7,8 @@ import 'package:thapasya/features/student/attendance/widget/attendance_card.dart
 import 'package:thapasya/features/student/attendance/widget/monthly_break_down_card.dart';
 import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
-class AttendanceScreen extends StatelessWidget {
-  AttendanceScreen({super.key});
+class StudentAttendanceScreen extends StatelessWidget {
+  StudentAttendanceScreen({super.key});
 
   final Map<DateTime, AttendanceStatus> data = {
     DateTime(2026, 3, 1): AttendanceStatus.present,
@@ -34,7 +34,7 @@ class AttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(),
+      appBar: StudentCommonAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

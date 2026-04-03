@@ -11,7 +11,7 @@ class AttendanceLegend extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: const [
         LegendItem(color: AppColors.green, label: "Present"),
-        LegendItem(color: AppColors.brightRed, label: "Absent"),
+        LegendItem(color: AppColors.darkRed, label: "Absent"),
         LegendItem(color: AppColors.orange, label: "Holiday"),
       ],
     );

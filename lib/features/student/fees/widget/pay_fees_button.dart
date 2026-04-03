@@ -22,7 +22,7 @@ class PayFeesButton extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-            color: AppColors.brightRed, 
+            color: AppColors.darkRed, 
             borderRadius: BorderRadius.circular(20),
           ),
           child: Center(

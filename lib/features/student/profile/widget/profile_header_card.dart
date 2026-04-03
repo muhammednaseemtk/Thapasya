@@ -11,7 +11,7 @@ class ProfileHeaderCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 24),
       decoration: BoxDecoration(
-        color: AppColors.brightRed,
+        color: AppColors.darkRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(

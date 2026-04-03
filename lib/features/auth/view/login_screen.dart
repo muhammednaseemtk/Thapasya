@@ -116,7 +116,32 @@ class LoginScreen extends StatelessWidget {
 
                       LoginButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.studentMain);
+                          final email = emailController.text.trim();
+                          final password = passwordController.text.trim();
+                          if (email == "student@gmail.com" &&
+                              password == "123") {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              AppRoutes.studentMain,
+                              (route) => false,
+                            );
+                          } else if (email == "staff@gmail.com" &&
+                              password == "123") {
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              AppRoutes.staffMain,
+                              (route) => false,
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  "Invalid Credentials. Try student@test.com or staff@test.com",
+                                ),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
                         },
                         txt: AppStrings.login,
                       ),

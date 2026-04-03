@@ -29,7 +29,7 @@ class RecentUpdatesCard extends StatelessWidget {
           UpdateTile(
             icon: Icons.info_outline,
             iconBgColor: AppColors.lightRed,
-            iconColor: AppColors.brightRed,
+            iconColor: AppColors.darkRed,
             title: "Fee Due Reminder",
             subtitle: "Your monthly fee of ₹2,500 is due on March 25.",
             showDot: true,
@@ -43,7 +43,7 @@ class RecentUpdatesCard extends StatelessWidget {
           UpdateTile(
             icon: Icons.notifications_none,
             iconBgColor: AppColors.lightRed,
-            iconColor: AppColors.brightRed,
+            iconColor: AppColors.darkRed,
             title: "Class Rescheduled",
             subtitle: "Thursday Bharatanatyam class moved to Friday 5 PM.",
             showDot: true,
@@ -67,7 +67,7 @@ class RecentUpdatesCard extends StatelessWidget {
           UpdateTile(
             icon: Icons.info_outline,
             iconBgColor: AppColors.lightRed,
-            iconColor: AppColors.brightRed,
+            iconColor: AppColors.darkRed,
             title: "Fee Due Reminder",
             subtitle: "Your monthly fee of ₹2,500 is due on March 25.",
             showDot: true,

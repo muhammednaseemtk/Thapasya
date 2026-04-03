@@ -6,21 +6,21 @@ import 'package:thapasya/features/student/course/view/course_screen.dart';
 import 'package:thapasya/features/student/fees/view/fees_screen.dart';
 import 'package:thapasya/features/student/home/view/home_screen.dart';
 
-class BottomNavBar extends StatelessWidget {
+class StudentBottomNavBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
 
-  const BottomNavBar({
+  const StudentBottomNavBar({
     super.key,
     required this.currentIndex,
     required this.onTap,
   });
 
   static final List<Widget> pages = [
-    HomeScreen(),
-    AttendanceScreen(),
-    CourseScreen(),
-    FeesScreen(),
+    StudentHomeScreen(),
+    StudentAttendanceScreen(),
+    StudentCourseScreen(),
+    StudentFeesScreen(),
   ];
 
   @override
@@ -30,9 +30,9 @@ class BottomNavBar extends StatelessWidget {
         textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Poppins'),
       ),
       child: LiquidGlassNavBar(
-        itemColor: AppColors.brightRed,
+        itemColor: AppColors.darkRed,
         backgroundColor: AppColors.white,
-        bubbleBorderColor: AppColors.brightRed,
+        bubbleBorderColor: AppColors.darkRed,
         bubbleColor: AppColors.white,
         fontSize: 12,
         bubbleWidth: 88,
@@ -44,7 +44,7 @@ class BottomNavBar extends StatelessWidget {
 
         items: [
           LiquidGlassNavItem(icon: Icons.home_outlined, label: 'Home'),
-          LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attendance'),
+          LiquidGlassNavItem(icon: Icons.calendar_month, label: 'Attend'),
           LiquidGlassNavItem(
             icon: Icons.import_contacts_outlined,
             label: 'Course',

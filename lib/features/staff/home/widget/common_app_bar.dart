@@ -4,9 +4,9 @@ import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/core/constant/app_strings.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 
-class StudentCommonAppBar extends StatelessWidget implements PreferredSizeWidget {
+class StaffCommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
-  const StudentCommonAppBar({super.key,});
+  const StaffCommonAppBar({super.key,});
 
   @override
   Size get preferredSize => const Size.fromHeight(80);
@@ -17,7 +17,7 @@ class StudentCommonAppBar extends StatelessWidget implements PreferredSizeWidget
     return Container(
       height: 80,
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(color: AppColors.darkRed),
+      decoration: BoxDecoration(color: AppColors.deepBlue),
 
       child: Padding(
         padding: const EdgeInsets.only(top: 16),
@@ -39,7 +39,7 @@ class StudentCommonAppBar extends StatelessWidget implements PreferredSizeWidget
 
             IconButton(
               onPressed:  () {
-                Navigator.pushNamed(context, AppRoutes.studentProfile);
+                Navigator.pushNamed(context, AppRoutes.staffProfile);
               },
               icon: const Icon(Icons.person_outline_rounded),
               color: AppColors.white,

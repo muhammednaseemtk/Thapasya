@@ -55,7 +55,7 @@ class CourseProgressCard extends StatelessWidget {
               percent: progress,
               backgroundColor: AppColors.screen,
               linearGradient: const LinearGradient(
-                colors: [AppColors.brightRed, AppColors.orange, AppColors.amber],
+                colors: [AppColors.darkRed, AppColors.orange, AppColors.amber],
               ),
               barRadius: const Radius.circular(10),
             ),

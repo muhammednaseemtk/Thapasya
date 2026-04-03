@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StudentMainController with ChangeNotifier {
+class StaffMainController with ChangeNotifier {
 
   int currentIndex = 0;
 

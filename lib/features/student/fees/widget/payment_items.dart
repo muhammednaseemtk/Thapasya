@@ -12,7 +12,7 @@ class PaymentItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final isPaid = item.status == "Paid";
 
-    final statusColor = isPaid ? AppColors.green : AppColors.brightRed;
+    final statusColor = isPaid ? AppColors.green : AppColors.darkRed;
     final bgColor = isPaid ? AppColors.lightGreen : AppColors.lightRed;
 
     return Column(

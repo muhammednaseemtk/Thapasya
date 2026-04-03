@@ -4,14 +4,14 @@ import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/home/widget/recent_updates_card.dart';
 import 'package:thapasya/features/student/home/widget/student_dashboard_card.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class StudentHomeScreen extends StatelessWidget {
+  const StudentHomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(),
+      appBar: StudentCommonAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [

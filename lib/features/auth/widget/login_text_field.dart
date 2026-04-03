@@ -20,7 +20,7 @@ class LoginTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       child: TextField(
-        cursorColor: AppColors.brightRed,
+        cursorColor: AppColors.darkRed,
         controller: controller,
         obscureText: obsecureTxt,
         style: AppFonts.poppinsSemiBold,
@@ -28,16 +28,16 @@ class LoginTextField extends StatelessWidget {
           hintText: txt,
           hintStyle: TextStyle(color: AppColors.textField),
           prefixIcon: Icon(icon),
-          prefixIconColor: AppColors.brightRed,
+          prefixIconColor: AppColors.darkRed,
           filled: true,
           fillColor: AppColors.white,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColors.brightRed),
+            borderSide: BorderSide(color: AppColors.darkRed),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColors.brightRed),
+            borderSide: BorderSide(color: AppColors.darkRed),
           ),
         ),
       ),

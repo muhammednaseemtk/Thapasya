@@ -26,7 +26,7 @@ class StudentDashboardCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.brightRed,
+        color: AppColors.darkRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(

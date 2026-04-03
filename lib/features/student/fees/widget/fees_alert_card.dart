@@ -22,7 +22,7 @@ class FeesAlertCard extends StatelessWidget {
           color: AppColors.lightRed, 
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: AppColors.brightRed,
+            color: AppColors.darkRed,
           ),
         ),
         child: Row(
@@ -34,11 +34,11 @@ class FeesAlertCard extends StatelessWidget {
               width: 28,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: AppColors.brightRed),
+                border: Border.all(color: AppColors.darkRed),
               ),
               child: const Icon(
                 Icons.error_outline,
-                color: AppColors.brightRed,
+                color: AppColors.darkRed,
                 size: 18,
               ),
             ),

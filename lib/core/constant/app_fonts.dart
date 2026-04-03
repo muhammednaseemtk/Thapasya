@@ -68,7 +68,7 @@ class AppFonts {
   static const TextStyle poppinsSemiBold3 = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
-    color: AppColors.brightRed
+    color: AppColors.darkRed
   );
 
   static const TextStyle poppinsSemiBold4 = TextStyle(

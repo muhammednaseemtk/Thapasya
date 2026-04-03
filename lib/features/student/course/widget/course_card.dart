@@ -12,7 +12,7 @@ class CourseCard extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.brightRed,
+        color: AppColors.darkRed,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
