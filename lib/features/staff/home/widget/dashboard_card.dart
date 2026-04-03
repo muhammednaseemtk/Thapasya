@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/features/staff/home/widget/stat';
+import 'package:thapasya/features/staff/home/widget/stat_item.dart';
 
 class DashboardCard extends StatelessWidget {
   final String name;
