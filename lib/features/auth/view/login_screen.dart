@@ -116,7 +116,7 @@ class LoginScreen extends StatelessWidget {
 
                       LoginButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, AppRoutes.main);
+                          Navigator.pushNamed(context, AppRoutes.studentMain);
                         },
                         txt: AppStrings.login,
                       ),

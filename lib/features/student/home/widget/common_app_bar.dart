@@ -39,7 +39,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
             IconButton(
               onPressed:  () {
-                Navigator.pushNamed(context, AppRoutes.profile);
+                Navigator.pushNamed(context, AppRoutes.studentProfile);
               },
               icon: const Icon(Icons.person_outline_rounded),
               color: AppColors.white,
