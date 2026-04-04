@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
+import 'package:thapasya/features/staff/home/controller/category_controller.dart';
 import 'package:thapasya/features/staff/home/controller/main_controller.dart';
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
 
@@ -12,6 +13,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => StudentMainController()),
         ChangeNotifierProvider(create: (_) => LoginTabBarController()),
         ChangeNotifierProvider(create: (_) => StaffMainController()),
+        ChangeNotifierProvider(create: (_) => CategoryController()),
       ],
       child: ThapasyaApp(),
     ),

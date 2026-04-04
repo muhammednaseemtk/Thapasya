@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/features/staff/home/widget/stat_item.dart';
+import 'package:thapasya/features/staff/home/widget/dashboard_item.dart';
 
 class DashboardCard extends StatelessWidget {
   final String name;
@@ -59,16 +59,16 @@ class DashboardCard extends StatelessWidget {
 
           Row(
             children: [
-              StatItem(icon: Icons.people, value: "24", label: "Students"),
-              StatItem(
+              DashBoardItem(icon: Icons.people, value: "24", label: "Students"),
+              DashBoardItem(
                 icon: Icons.calendar_today,
                 value: "3",
-                label: "Today's\nClasses",
+                label: "Today's Class",
               ),
-              StatItem(
+              DashBoardItem(
                 icon: Icons.access_time,
                 value: "82%",
-                label: "Attendance %",
+                label: "Attendance",
               ),
             ],
           ),

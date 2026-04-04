@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:thapasya/features/staff/home/controller/category_controller.dart';
+import 'package:thapasya/features/staff/home/widget/category_item.dart';
+
+class TeachingCategoriesCard extends StatelessWidget {
+  const TeachingCategoriesCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<CategoryController>(
+      builder: (context, controller, child) {
+        final categories = [
+          {"title": "Bharatanatyam", "students": 8},
+          {"title": "Carnatic Music", "students": 6},
+          {"title": "Fine Arts", "students": 5},
+          {"title": "Yoga", "students": 5},
+        ];
+
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color(0xFFF4F4F4),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Teaching Categories",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 12),
+
+              ...List.generate(categories.length, (index) {
+                final item = categories[index];
+
+                return GestureDetector(
+                  onTap: () {
+                    controller.selectIndex(index);
+                  },
+                  child: CategoryItem(
+                    title: item["title"] as String,
+                    students: item["students"] as int,
+                    isSelected: controller.selectedIndex == index,
+                  ),
+                );
+              }),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
