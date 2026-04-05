@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
 import 'package:thapasya/features/staff/students/widget/student_progress_card.dart';
 
@@ -21,7 +22,7 @@ class StaffStudentsScreen extends StatelessWidget {
                 children: [
                   const Text(
                     "My Students",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: AppFonts.poppinsSemiBold5,
                   ),
               
                   Container(

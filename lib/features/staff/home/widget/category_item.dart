@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
@@ -19,11 +21,11 @@ class CategoryItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       decoration: BoxDecoration(
         color: isSelected
-            ? const Color(0xFFE2E8F0)
-            : const Color(0xFFEDE9E4),
+            ? AppColors.lightBlue
+            : AppColors.screen,
         borderRadius: BorderRadius.circular(16),
         border: isSelected
-            ? Border.all(color: Colors.blue.shade200)
+            ? Border.all(color: AppColors.deepBlue)
             : null,
       ),
       child: Row(
@@ -31,22 +33,19 @@ class CategoryItem extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
+              style: AppFonts.poppinsBold8
             ),
           ),
 
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.6),
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
               "$students students",
-              style: const TextStyle(fontSize: 12),
+              style: AppFonts.poppinsBold2,
             ),
           ),
 
@@ -55,7 +54,7 @@ class CategoryItem extends StatelessWidget {
           if (isSelected)
             const Icon(
               Icons.check_circle,
-              color: Colors.blue,
+              color: AppColors.deepBlue,
               size: 18,
             ),
         ],

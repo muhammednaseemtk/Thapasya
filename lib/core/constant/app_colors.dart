@@ -13,12 +13,15 @@ class AppColors {
   static const Color darkRed = Color(0xFFB71C1C);
   static const Color textField = Colors.grey;
   static const Color black = Colors.black;
+  static const Color black10 = Color(0x1A000000);
   static const Color screen = Color(0xFFE5E2DC);
   static const Color lightClr = Color(0xFFF7F1F1);
   static const Color lightTxt = Color(0xFF554444);
   static const Color lightGreen = Color(0xFFE6F4EA);
   static const Color green = Colors.green;
+  static const Color grey = Colors.grey;
   static const Color orange = Colors.orange;
   static const Color amber = Colors.amber;
   static const Color deepBlue = Color(0xFF265785);
+  static const Color lightBlue = Color(0xFFE3EAFD);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class ScheduleItem extends StatelessWidget {
   final String time;
@@ -22,44 +23,31 @@ class ScheduleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Time
         SizedBox(
           width: 80,
           child: Text(
             time,
-            style: const TextStyle(
-              fontSize: 13,
-              color: Colors.blue,
-              fontWeight: FontWeight.w500,
-            ),
+            style: AppFonts.poppinsRegular1
           ),
         ),
 
-        // Title + Subtitle
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppFonts.poppinsSemiBold9
               ),
               const SizedBox(height: 2),
               Text(
                 subtitle,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.black54,
-                ),
+                style: AppFonts.poppinsBold2,
               ),
             ],
           ),
         ),
 
-        // Status Badge
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
@@ -68,11 +56,7 @@ class ScheduleItem extends StatelessWidget {
           ),
           child: Text(
             status,
-            style: TextStyle(
-              fontSize: 12,
-              color: textColor,
-              fontWeight: FontWeight.w500,
-            ),
+            style: AppFonts.poppinsBold6,
           ),
         ),
       ],

@@ -61,26 +61,6 @@ class FacultyCard extends StatelessWidget {
                         role,
                         style: AppFonts.poppinsBold3,
                       ),
-
-                      const SizedBox(height: 6),
-
-                      Row(
-                        children: [
-                          ...List.generate(
-                            5,
-                            (index) => const Icon(
-                              Icons.star,
-                              color: AppColors.amber,
-                              size: 16,
-                            ),
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            rating.toStringAsFixed(1),
-                            style:  AppFonts.poppinsBold,
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),

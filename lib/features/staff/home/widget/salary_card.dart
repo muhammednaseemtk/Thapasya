@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class SalaryCard extends StatelessWidget {
   const SalaryCard({super.key});
@@ -9,11 +11,7 @@ class SalaryCard extends StatelessWidget {
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(
-          colors: [Color(0xFFD4AF37), Color(0xFFC9A227)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+       color: AppColors.amber,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,13 +19,9 @@ class SalaryCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+               Text(
                 "March 2026 Salary",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black87,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: AppFonts.poppinsBold8
               ),
 
               Container(
@@ -36,12 +30,12 @@ class SalaryCard extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.1),
+                  color: AppColors.black10,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Text(
+                child:  Text(
                   "Processing",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                  style: AppFonts.poppinsBold8,
                 ),
               ),
             ],
@@ -51,18 +45,14 @@ class SalaryCard extends StatelessWidget {
 
           const Text(
             "₹38,000",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+            style: AppFonts.poppinsSemiBold10,
           ),
 
           const SizedBox(height: 6),
 
-          const Text(
+           Text(
             "Credit date: April 1, 2026",
-            style: TextStyle(fontSize: 13, color: Colors.black54),
+            style: AppFonts.poppinsBold6,
           ),
         ],
       ),

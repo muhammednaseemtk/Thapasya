@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 import 'package:thapasya/features/staff/home/widget/dashboard_item.dart';
 
 class DashboardCard extends StatelessWidget {
@@ -23,36 +25,28 @@ class DashboardCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF2E5B84), Color(0xFF3C6E9E)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+       color: AppColors.deepBlue
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             "Good Morning",
-            style: TextStyle(color: Colors.white70, fontSize: 14),
+            style: AppFonts.poppinsBold7,
           ),
 
           const SizedBox(height: 6),
 
           Text(
             name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppFonts.poppinsSemiBold6
           ),
 
           const SizedBox(height: 4),
 
           Text(
             role,
-            style: const TextStyle(color: Colors.white70, fontSize: 13),
+            style: AppFonts.poppinsBold7,
           ),
 
           const SizedBox(height: 20),

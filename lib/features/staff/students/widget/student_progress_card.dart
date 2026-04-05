@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class StudentProgressCard extends StatelessWidget {
   final Color progressColor; 
@@ -16,7 +18,7 @@ class StudentProgressCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFFF4F5F7),
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -25,16 +27,13 @@ class StudentProgressCard extends StatelessWidget {
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                color: const Color(0xFF2F5D82),
+                color: AppColors.deepBlue,
                 borderRadius: BorderRadius.circular(14),
               ),
               child: const Center(
                 child: Text(
                   "PK",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppFonts.poppinsSemiBold2
                 ),
               ),
             ),
@@ -47,32 +46,23 @@ class StudentProgressCard extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children:  [
                       Text(
                         "Priya Krishnamurthy",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15,
-                        ),
+                        style: AppFonts.poppinsSemiBold9
                       ),
                       Text(
                         "Today",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
+                        style: AppFonts.poppinsBold9
                       ),
                     ],
                   ),
       
                   const SizedBox(height: 4),
       
-                  const Text(
+                   Text(
                     "TSA-001 • Level 3",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
+                    style: AppFonts.poppinsBold2
                   ),
       
                   const SizedBox(height: 10),
@@ -85,7 +75,7 @@ class StudentProgressCard extends StatelessWidget {
                           lineHeight: 6,
                           percent: 0.87,
                           barRadius: const Radius.circular(10),
-                          backgroundColor: const Color(0xFFE0E0E0),
+                          backgroundColor: AppColors.screen,
                           progressColor: progressColor, 
                         ),
                       ),
@@ -108,7 +98,7 @@ class StudentProgressCard extends StatelessWidget {
       
             const Icon(
               Icons.chevron_right,
-              color: Colors.grey,
+              color: AppColors.grey,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constant/app_fonts.dart';
 
 class AttendanceHeader extends StatelessWidget {
   const AttendanceHeader({super.key});
@@ -10,11 +11,7 @@ class AttendanceHeader extends StatelessWidget {
       children:  [
         Text(
           "Mark Attendance",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF2C2C2C),
-          ),
+          style: AppFonts.poppinsSemiBold5
         ),
 
         Text(
