@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
-import 'package:thapasya/core/constant/app_fonts.dart';
-import 'package:thapasya/core/constant/app_strings.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/constants/app_strings.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
 import 'package:thapasya/features/auth/widget/login_button.dart';

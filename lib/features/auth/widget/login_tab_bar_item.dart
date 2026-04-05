@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_strings.dart';
+import 'package:thapasya/core/constants/app_strings.dart';
 import 'package:thapasya/features/auth/model/login_tab_item.dart';
 import 'package:thapasya/features/auth/widget/login_text_field.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
-import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/features/staff/assessment/widget/assessment_button.dart';
 import 'package:thapasya/features/staff/assessment/widget/student_assessment_card.dart';
 import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';

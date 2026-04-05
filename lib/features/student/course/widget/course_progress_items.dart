@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
-import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
 import '../model/course_item.dart';
 
 class CourseProgressItems extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/features/student/attendance/widget/legend_item.dart';
 
 class AttendanceLegend extends StatelessWidget {

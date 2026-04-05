@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
 
 class LegendItem extends StatelessWidget {
   final Color color;

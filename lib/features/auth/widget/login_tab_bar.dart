@@ -1,7 +1,7 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 import '../controller/login_tab_bar_controller.dart';
 import '../model/login_tab_item.dart';
 

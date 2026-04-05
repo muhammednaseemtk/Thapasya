@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
-import 'package:thapasya/core/constant/app_fonts.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
 import 'package:thapasya/features/student/fees/widget/fees_alert_card.dart';
 import 'package:thapasya/features/student/fees/widget/fees_summary_card.dart';

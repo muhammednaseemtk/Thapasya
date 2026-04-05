@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thapasya/core/constant/app_colors.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/home/widget/recent_updates_card.dart';
 import 'package:thapasya/features/student/home/widget/student_dashboard_card.dart';
