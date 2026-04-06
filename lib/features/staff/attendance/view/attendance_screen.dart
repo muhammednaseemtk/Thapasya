@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_action_card.dart';
-import 'package:thapasya/features/staff/attendance/widget/attendance_button.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_header.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_summary.dart';
 import 'package:thapasya/features/staff/attendance/widget/batch_info_card.dart';
@@ -28,7 +28,7 @@ class StaffAttendanceScreen extends StatelessWidget {
               child: BatchInfoCard(),
             ),
 
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -60,9 +60,13 @@ class StaffAttendanceScreen extends StatelessWidget {
               child: AttendanceSummary(),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceButton(),
+            SizedBox(height: 10,),
+
+            CommonButton(
+              onPressed: () {},
+              backgroundColor: AppColors.deepBlue,
+              width: 350,
+              txt: 'Submit Attendance',
             ),
           ],
         ),

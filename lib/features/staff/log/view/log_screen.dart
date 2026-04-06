@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
 import 'package:thapasya/features/staff/log/widget/class_summary_card.dart';
 import 'package:thapasya/features/staff/log/widget/custom_input_card.dart';
-import 'package:thapasya/features/staff/log/widget/log_button.dart';
 import 'package:thapasya/features/staff/log/widget/past_log_card.dart';
 import 'package:thapasya/features/staff/log/widget/today_date_chip.dart';
 
@@ -22,10 +22,7 @@ class StaffLogScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Daily Log",
-                style: AppFonts.poppinsSemiBold5
-              ),
+              child: Text("Daily Log", style: AppFonts.poppinsSemiBold5),
             ),
 
             Padding(padding: const EdgeInsets.all(8.0), child: TodayDateChip()),
@@ -63,7 +60,18 @@ class StaffLogScreen extends StatelessWidget {
               ),
             ),
 
-            Padding(padding: const EdgeInsets.all(8.0), child: LogButton()),
+            SizedBox(height: 10,),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: CommonButton(
+                onPressed: () {},
+                icon: Icons.send_outlined,
+                backgroundColor: AppColors.deepBlue,
+                width: 350,
+                txt: 'Submit Daily Log',
+              ),
+            ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -77,20 +85,11 @@ class StaffLogScreen extends StatelessWidget {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PastLogCard(),
-            ),
+            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PastLogCard(),
-            ),
+            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PastLogCard(),
-            ),
+            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
           ],
         ),
       ),

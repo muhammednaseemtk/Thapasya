@@ -4,6 +4,7 @@ import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
 import 'package:thapasya/features/staff/home/controller/category_controller.dart';
 import 'package:thapasya/features/staff/home/controller/main_controller.dart';
+import 'package:thapasya/features/student/attendance/controller/attendance_calender_controller.dart';
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
 
 void main() async {
@@ -14,6 +15,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => LoginTabBarController()),
         ChangeNotifierProvider(create: (_) => StaffMainController()),
         ChangeNotifierProvider(create: (_) => CategoryController()),
+        ChangeNotifierProvider(create: (_) => AttendanceCalendarController()),
       ],
       child: ThapasyaApp(),
     ),
@@ -26,7 +28,7 @@ class ThapasyaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.staffMain,
+      initialRoute: AppRoutes.studentMain,
       routes: AppRoutes.routes,
     );
   }

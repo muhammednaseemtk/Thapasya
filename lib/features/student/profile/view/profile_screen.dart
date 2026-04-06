@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
-import 'package:thapasya/features/auth/widget/login_button.dart';
+import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/features/student/profile/widget/profile_header_card.dart';
 import 'package:thapasya/features/student/profile/widget/profile_info_card.dart';
 
@@ -58,12 +58,10 @@ class StudentProfileScreen extends StatelessWidget {
 
             SizedBox(height: 20),
 
-            LoginButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, AppRoutes.login);
-              },
-              txt: 'Logout',
-            ),
+            CommonButton(onPressed: () {
+              Navigator.pushReplacementNamed(context, AppRoutes.login);
+            },
+            backgroundColor: AppColors.darkRed,width: 320,txt: 'Logout',)
           ],
         ),
       ),
