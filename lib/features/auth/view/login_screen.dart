@@ -155,11 +155,11 @@ class LoginScreen extends StatelessWidget {
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
-                                          const SnackBar(
+                                           SnackBar(
                                             content: Text(
                                               "Invalid Credentials. Try student@test.com or staff@test.com",
-                                            ),
-                                            backgroundColor: Colors.red,
+                                            style: AppFonts.poppinsBold,),
+                                            backgroundColor:AppColors.darkRed,
                                           ),
                                         );
                                       }
