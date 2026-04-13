@@ -28,7 +28,7 @@ class ThapasyaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.staffMain,
+      initialRoute: AppRoutes.splash,
       routes: AppRoutes.routes,
     );
   }
