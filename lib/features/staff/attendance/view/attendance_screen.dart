@@ -5,7 +5,7 @@ import 'package:thapasya/features/staff/attendance/widget/attendance_action_card
 import 'package:thapasya/features/staff/attendance/widget/attendance_header.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_summary.dart';
 import 'package:thapasya/features/staff/attendance/widget/batch_info_card.dart';
-import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 
 class StaffAttendanceScreen extends StatelessWidget {
   const StaffAttendanceScreen({super.key});
@@ -14,7 +14,7 @@ class StaffAttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StaffCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.deepBlue,),
       body: SingleChildScrollView(
         child: Column(
           children: [

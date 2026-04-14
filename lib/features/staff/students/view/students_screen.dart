@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/staff/students/widget/student_progress_card.dart';
 
 class StaffStudentsScreen extends StatelessWidget {
@@ -11,7 +11,7 @@ class StaffStudentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StaffCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.deepBlue,),
       body: SingleChildScrollView(
         child: Column(
           children: [

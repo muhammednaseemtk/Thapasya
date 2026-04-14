@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:thapasya/features/admin/dashboard/view/dashboard_screen.dart';
 import 'package:thapasya/features/auth/view/login_screen.dart';
 import 'package:thapasya/features/splash/view/splash_screen.dart';
 import 'package:thapasya/features/staff/home/view/home_screen.dart';
@@ -17,6 +18,8 @@ class AppRoutes {
   static const String staffMain = '/staff_main';
   static const String staffHome = '/staff_home';
   static const String staffProfile = '/staff_profile';
+  static const String adminDashBoard = '/admin_dashboard';
+  
 
   static Map<String, WidgetBuilder> routes = {
     splash: (context) => SplashScreen(),
@@ -27,5 +30,6 @@ class AppRoutes {
     staffMain: (context) => StaffMainScreen(),
     staffHome: (context) => StaffHomeScreen(),
     staffProfile: (context) => StaffProfileScreen(),
+    adminDashBoard: (context) => DashboardScreen(),
   };
 }

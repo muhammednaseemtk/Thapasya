@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/fees/model/payment_item_model.dart';
 import 'package:thapasya/features/student/fees/widget/fees_alert_card.dart';
 import 'package:thapasya/features/student/fees/widget/fees_summary_card.dart';
 import 'package:thapasya/features/student/fees/widget/pay_fees_button.dart';
 import 'package:thapasya/features/student/fees/widget/payment_history_card.dart';
-import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
 class StudentFeesScreen extends StatelessWidget {
   const StudentFeesScreen({super.key});
@@ -15,7 +15,7 @@ class StudentFeesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StudentCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.darkRed),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/course/model/course_item.dart';
 import 'package:thapasya/features/student/course/widget/course_card.dart';
 import 'package:thapasya/features/student/course/widget/course_progress_card.dart';
 import 'package:thapasya/features/student/course/widget/faculty_card.dart';
-import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
 class StudentCourseScreen extends StatelessWidget {
   const StudentCourseScreen({super.key});
@@ -14,7 +14,7 @@ class StudentCourseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StudentCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.darkRed),
 
       body: SingleChildScrollView(
         child: Column(

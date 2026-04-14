@@ -3,7 +3,7 @@ import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/features/staff/assessment/widget/student_assessment_card.dart';
-import 'package:thapasya/features/staff/home/widget/common_app_bar.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 
 class StaffAssessmentScreen extends StatelessWidget {
   const StaffAssessmentScreen({super.key});
@@ -12,7 +12,7 @@ class StaffAssessmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StaffCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.deepBlue,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

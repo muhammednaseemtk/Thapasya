@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/attendance/model/attendance_status.dart';
 import 'package:thapasya/features/student/attendance/widget/attendance_calender.dart';
 import 'package:thapasya/features/student/attendance/widget/attendance_card.dart';
 import 'package:thapasya/features/student/attendance/widget/monthly_break_down_card.dart';
-import 'package:thapasya/features/student/home/widget/common_app_bar.dart';
 
 class StudentAttendanceScreen extends StatelessWidget {
   StudentAttendanceScreen({super.key});
@@ -34,7 +34,7 @@ class StudentAttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: StudentCommonAppBar(),
+      appBar: CommonAppBar(color: AppColors.darkRed),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
