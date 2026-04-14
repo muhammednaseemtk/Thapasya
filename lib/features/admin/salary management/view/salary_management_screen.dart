@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/widget/common_admin_bar.dart';
 import 'package:thapasya/core/widget/common_drawer.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class SalaryManagementScreen extends StatelessWidget {
+  const SalaryManagementScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
