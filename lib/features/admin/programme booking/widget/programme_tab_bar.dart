@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'booking_requests_tab.dart';
+import 'completed_programmes_tab.dart';
 
 class ProgrammeTabBar extends StatelessWidget {
   const ProgrammeTabBar({super.key});
@@ -9,27 +11,22 @@ class ProgrammeTabBar extends StatelessWidget {
       length: 2,
       child: Column(
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            child: const TabBar(
-              isScrollable: true,
-              labelColor: Colors.blue,
-              unselectedLabelColor: Colors.black,
-              indicatorColor: Colors.blue,
-              indicatorWeight: 2,
-              tabs: [
-                Tab(text: "Booking Requests"),
-                Tab(text: "Completed Programmes"),
-              ],
-            ),
+          const TabBar(
+            labelColor: Colors.blue,
+            unselectedLabelColor: Colors.black,
+            indicatorColor: Colors.blue,
+            indicatorWeight: 2,
+            tabs: [
+              Tab(text: "Booking Requests"),
+              Tab(text: "Completed Programmes"),
+            ],
           ),
 
-          SizedBox(
-            height: 400, 
+          const Expanded(
             child: TabBarView(
               children: [
-                Center(child: Text("Booking Requests List")),
-                Center(child: Text("Completed Programmes List")),
+                BookingRequestsTab(),
+                CompletedProgrammesTab(),
               ],
             ),
           ),

@@ -14,15 +14,13 @@ class ProgrammeBookingScreen extends StatelessWidget {
       backgroundColor: AppColors.screen,
       drawer: CommonDrawer(),
       appBar: CommonAdminBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ProgrammeHeader(),
-              ProgrammeTabBar(),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            ProgrammeHeader(),
+            Expanded(child: ProgrammeTabBar()),
+          ],
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/admin/dashboard/controller/drawer_controller.dart';
+import 'package:thapasya/features/admin/programme%20booking/controller/number_stepper_controller.dart';
 import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
 import 'package:thapasya/features/staff/home/controller/category_controller.dart';
 import 'package:thapasya/features/staff/home/controller/main_controller.dart';
@@ -18,6 +19,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => CategoryController()),
         ChangeNotifierProvider(create: (_) => AttendanceCalendarController()),
         ChangeNotifierProvider(create: (_) => DrawersController()),
+        ChangeNotifierProvider(create: (_) => NumberStepperController()),
       ],
       child: ThapasyaApp(),
     ),
@@ -30,7 +32,7 @@ class ThapasyaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.adminProgramme,
+      initialRoute: AppRoutes.adminFees,
       routes: AppRoutes.routes,
     );
   }
