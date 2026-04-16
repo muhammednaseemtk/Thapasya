@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/constants/app_strings.dart';
 
@@ -11,11 +13,13 @@ class CommonAdminBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.white,
+      surfaceTintColor: Colors.transparent,
       titleSpacing: 5,
 
       leading: Builder(
         builder: (context) => IconButton(
-          icon: const Icon(Icons.menu_book_outlined),
+          icon: const Icon(Iconsax.menu5),
           onPressed: () {
             Scaffold.of(context).openDrawer();
           },

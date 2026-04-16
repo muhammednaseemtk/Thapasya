@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/widget/common_admin_bar.dart';
 import 'package:thapasya/core/widget/common_drawer.dart';
 
@@ -8,6 +9,7 @@ class AdminNotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.screen,
       drawer:  CommonDrawer(), 
       appBar:  CommonAdminBar(), 
       body: Center(child: Text('Not Data'),),
