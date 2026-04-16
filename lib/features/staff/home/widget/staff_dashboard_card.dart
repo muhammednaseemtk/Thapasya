@@ -3,14 +3,14 @@ import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/features/staff/home/widget/dashboard_item.dart';
 
-class DashboardCard extends StatelessWidget {
+class StaffDashboardCard extends StatelessWidget {
   final String name;
   final String role;
   final int students;
   final int classes;
   final int attendance;
 
-  const DashboardCard({
+  const StaffDashboardCard({
     super.key,
     required this.name,
     required this.role,

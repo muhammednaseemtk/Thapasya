@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
-import 'package:thapasya/features/staff/home/widget/dashboard_card.dart';
+import 'package:thapasya/features/staff/home/widget/staff_dashboard_card.dart';
 import 'package:thapasya/features/staff/home/widget/salary_card.dart';
 import 'package:thapasya/features/staff/home/widget/teaching_categories_card.dart';
 import 'package:thapasya/features/staff/home/widget/today_scheduled_card.dart';
@@ -19,7 +19,7 @@ class StaffHomeScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: DashboardCard(
+              child: StaffDashboardCard(
                 name: "Smt. Kavitha Rajan",
                 role: "Bharatanatyam Faculty | Senior Instructor",
                 students: 24,
