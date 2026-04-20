@@ -5,6 +5,7 @@ import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/constants/app_strings.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
+import 'package:thapasya/features/auth/service/auth_service.dart';
 import 'package:thapasya/features/auth/widget/login_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -28,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 300,
+                        height: 350,
                         width: double.infinity,
                         child: Center(
                           child: Image.asset(
@@ -92,7 +93,7 @@ class LoginScreen extends StatelessWidget {
                                   txt: AppStrings.passwordHint,
                                   controller: passwordController,
                                   obsecureTxt: true,
-                                  icon: Icons.lock_outline_rounded,
+                                  icon: Iconsax.lock_circle,
                                 ),
 
                                 const SizedBox(height: 10),
@@ -114,33 +115,45 @@ class LoginScreen extends StatelessWidget {
 
                                 Center(
                                   child: CommonButton(
-                                    onPressed: () {
-                                      final email = usernameController.text
+                                    onPressed: () async {
+                                      final username = usernameController.text
                                           .trim();
                                       final password = passwordController.text
                                           .trim();
 
-                                      if (email == "student@gmail.com" &&
-                                          password == "123") {
-                                        Navigator.pushNamedAndRemoveUntil(
-                                          context,
-                                          AppRoutes.studentMain,
-                                          (route) => false,
-                                        );
-                                      } else if (email == "staff@gmail.com" &&
-                                          password == "123") {
-                                        Navigator.pushNamedAndRemoveUntil(
-                                          context,
-                                          AppRoutes.staffMain,
-                                          (route) => false,
-                                        );
+                                      final result = await AuthService()
+                                          .loginUser(
+                                            username: username,
+                                            password: password,
+                                          );
+                                      if (!context.mounted) return;
+
+                                      if (result != null &&
+                                          result['message'] ==
+                                              "Login succesfull!") {
+                                        final role = result['role'];
+
+                                        if (role == "student") {
+                                          Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            AppRoutes.studentMain,
+                                            (route) => false,
+                                          );
+                                        } else if (role == "staff") {
+                                          Navigator.pushNamedAndRemoveUntil(
+                                            context,
+                                            AppRoutes.staffMain,
+                                            (route) => false,
+                                          );
+                                        }
                                       } else {
                                         ScaffoldMessenger.of(
                                           context,
                                         ).showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              "Invalid Credentials. Try student@test.com or staff@test.com",
+                                              result?['message'] ??
+                                                  "Login Failed",
                                               style: AppFonts.poppinsBold,
                                             ),
                                             backgroundColor: AppColors.darkRed,
