@@ -1,41 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/constants/app_strings.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
-import 'package:thapasya/features/auth/controller/login_tab_bar_controller.dart';
-import 'package:thapasya/features/auth/widget/login_tab_bar.dart';
-import 'package:thapasya/features/auth/widget/login_tab_bar_item.dart';
 import 'package:thapasya/features/auth/widget/login_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final items = LoginTabBarItem.items(
-      emailController: emailController,
-      phoneController: phoneController,
-    );
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
-              keyboardDismissBehavior:
-                  ScrollViewKeyboardDismissBehavior.onDrag,
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
                 child: IntrinsicHeight(
                   child: Column(
                     children: [
@@ -54,8 +42,9 @@ class LoginScreen extends StatelessWidget {
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            gradient:
-                                LinearGradient(colors: AppColors.splashGradient),
+                            gradient: LinearGradient(
+                              colors: AppColors.splashGradient,
+                            ),
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(45),
                               topRight: Radius.circular(45),
@@ -90,18 +79,11 @@ class LoginScreen extends StatelessWidget {
 
                                 const SizedBox(height: 20),
 
-                                LoginTabBar(items: items),
-
-                                const SizedBox(height: 20),
-
-                                Consumer<LoginTabBarController>(
-                                  builder: (context, controller, _) {
-                                    return IndexedStack(
-                                      index: controller.currentIndex,
-                                      children:
-                                          items.map((e) => e.widget).toList(),
-                                    );
-                                  },
+                                LoginTextField(
+                                  txt: 'enter username',
+                                  controller: usernameController,
+                                  obsecureTxt: false,
+                                  icon: Iconsax.user_tag,
                                 ),
 
                                 const SizedBox(height: 20),
@@ -133,10 +115,10 @@ class LoginScreen extends StatelessWidget {
                                 Center(
                                   child: CommonButton(
                                     onPressed: () {
-                                      final email =
-                                          emailController.text.trim();
-                                      final password =
-                                          passwordController.text.trim();
+                                      final email = usernameController.text
+                                          .trim();
+                                      final password = passwordController.text
+                                          .trim();
 
                                       if (email == "student@gmail.com" &&
                                           password == "123") {
@@ -153,13 +135,15 @@ class LoginScreen extends StatelessWidget {
                                           (route) => false,
                                         );
                                       } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                           SnackBar(
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
                                             content: Text(
                                               "Invalid Credentials. Try student@test.com or staff@test.com",
-                                            style: AppFonts.poppinsBold,),
-                                            backgroundColor:AppColors.darkRed,
+                                              style: AppFonts.poppinsBold,
+                                            ),
+                                            backgroundColor: AppColors.darkRed,
                                           ),
                                         );
                                       }
@@ -184,4 +168,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-} 
+}

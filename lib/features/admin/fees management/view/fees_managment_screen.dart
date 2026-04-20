@@ -5,6 +5,7 @@ import 'package:thapasya/core/widget/common_drawer.dart';
 import 'package:thapasya/core/widget/common_summary_card.dart';
 import 'package:thapasya/features/admin/fees%20management/widget/fees_header.dart';
 import 'package:thapasya/features/admin/fees%20management/widget/fees_table.dart';
+import 'package:thapasya/features/admin/fees%20management/widget/pending_fees_summary.dart';
 import 'package:thapasya/features/admin/fees%20management/widget/search_status_filter.dart';
 
 class FeesManagmentScreen extends StatelessWidget {
@@ -60,11 +61,11 @@ class FeesManagmentScreen extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // 🔥 IMPORTANT: FIXED HEIGHT TABLE
               SizedBox(
-                height: 500, // 👈 adjust based on UI
+                height: 500,
                 child: const FeesTable(),
               ),
+              PendingFeesSummary(),
             ],
           ),
         ),

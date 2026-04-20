@@ -30,6 +30,39 @@ class GrowthChart extends StatelessWidget {
                 maxY: 600,
                 alignment: BarChartAlignment.spaceAround,
 
+                barTouchData: BarTouchData(
+                  enabled: true,
+                  touchTooltipData: BarTouchTooltipData(
+                    getTooltipColor: (group) => Colors.white,
+                    tooltipBorderRadius: BorderRadius.circular(10),
+                    tooltipPadding: const EdgeInsets.all(12),
+                    getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+
+                      final students = rod.toY.toInt();
+                      final staff = (rod.toY / 10).toInt();
+
+                      return BarTooltipItem(
+                        "${months[group.x]}\n\n",
+                        const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "students : $students\n",
+                            style: const TextStyle(color: Colors.blue),
+                          ),
+                          TextSpan(
+                            text: "staff : $staff",
+                            style: const TextStyle(color: Colors.green),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+
                 gridData: FlGridData(
                   show: true,
                   drawVerticalLine: true,
@@ -76,7 +109,7 @@ class GrowthChart extends StatelessWidget {
                   bottomTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 28,
+                      reservedSize: 25,
                       getTitlesWidget: (value, meta) {
                         const months = [
                           'Jan',
@@ -106,32 +139,78 @@ class GrowthChart extends StatelessWidget {
                 ),
 
                 barGroups: [
-                  bar(0, 450),
-                  bar(1, 480),
-                  bar(2, 500),
-                  bar(3, 520),
-                  bar(4, 550),
-                  bar(5, 580),
+                  BarChartGroupData(
+                    x: 0,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 450,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
+                  BarChartGroupData(
+                    x: 1,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 480,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
+                  BarChartGroupData(
+                    x: 2,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 500,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
+                  BarChartGroupData(
+                    x: 3,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 520,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
+                  BarChartGroupData(
+                    x: 4,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 550,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
+                  BarChartGroupData(
+                    x: 5,
+                    barRods: [
+                      BarChartRodData(
+                        toY: 580,
+                        width: 12,
+                        borderRadius: BorderRadius.circular(6),
+                        color: const Color(0xFF10B981),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  BarChartGroupData bar(int x, double y) {
-    return BarChartGroupData(
-      x: x,
-      barRods: [
-        BarChartRodData(
-          toY: y,
-          width: 10,
-          borderRadius: BorderRadius.circular(6),
-          color: const Color(0xFF10B981),
-        ),
-      ],
     );
   }
 }

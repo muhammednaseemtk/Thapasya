@@ -14,37 +14,50 @@ class SalaryManagementScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      drawer: CommonDrawer(),
-      appBar: CommonAdminBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(9.0),
-        child: Column(
-          children: [
-            Align(alignment: AlignmentGeometry.topLeft, child: SalaryHeader()),
-            SizedBox(height: 10),
-            CommonSummaryCard(
-              title: "Total Monthly Payroll",
-              value: "₹228,000",
-              icon: Icons.attach_money,
-              iconColor: Colors.blue,
-            ),
-            CommonSummaryCard(
-              title: "Paid This Month",
-              value: "4",
-              icon: Icons.check_circle,
-              iconColor: Colors.green,
-            ),
-            CommonSummaryCard(
-              title: "Pending Payments",
-              value: "2",
-              icon: Icons.access_time,
-              iconColor: Colors.orange,
-            ),
+      drawer: const CommonDrawer(),
+      appBar: const CommonAdminBar(),
 
-            SalarySearchBox(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(9.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              SalaryHeader(),
 
-            Expanded(child: StaffSalaryTable()),
-          ],
+              SizedBox(height: 10),
+
+              CommonSummaryCard(
+                title: "Total Monthly Payroll",
+                value: "₹228,000",
+                icon: Icons.attach_money,
+                iconColor: Colors.blue,
+              ),
+              CommonSummaryCard(
+                title: "Paid This Month",
+                value: "4",
+                icon: Icons.check_circle,
+                iconColor: Colors.green,
+              ),
+              CommonSummaryCard(
+                title: "Pending Payments",
+                value: "2",
+                icon: Icons.access_time,
+                iconColor: Colors.orange,
+              ),
+
+              SizedBox(height: 10),
+
+              SalarySearchBox(),
+
+              SizedBox(height: 10),
+
+              SizedBox(
+                height: 500,
+                child: StaffSalaryTable(),
+              ),
+            ],
+          ),
         ),
       ),
     );
