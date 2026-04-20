@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/student/attendance/model/attendance_status.dart';
 import 'package:thapasya/features/student/attendance/widget/attendance_calender.dart';
@@ -34,7 +35,9 @@ class StudentAttendanceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(color: AppColors.darkRed),
+      appBar: CommonAppBar(color: AppColors.darkRed,onProfileTap: () {
+        Navigator.pushNamed(context, AppRoutes.studentProfile);
+      },),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

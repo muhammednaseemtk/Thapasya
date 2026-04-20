@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/staff/log/widget/class_summary_card.dart';
@@ -15,7 +16,9 @@ class StaffLogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(color: AppColors.deepBlue,),
+      appBar: CommonAppBar(color: AppColors.deepBlue,onProfileTap: () {
+        Navigator.pushNamed(context, AppRoutes.staffProfile);
+      },),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
