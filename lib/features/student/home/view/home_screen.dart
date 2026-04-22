@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
-import 'package:thapasya/features/student/home/widget/recent_updates_card.dart';
+import 'package:thapasya/features/student/home/widget/class_schedule_card.dart';
+import 'package:thapasya/features/student/home/widget/recent_class_logs_card.dart';
 import 'package:thapasya/features/student/home/widget/student_dashboard_card.dart';
 
 class StudentHomeScreen extends StatelessWidget {
@@ -16,11 +17,11 @@ class StudentHomeScreen extends StatelessWidget {
         Navigator.pushNamed(context, AppRoutes.studentProfile);
       },),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: StudentDashboardCard(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+          child: Column(
+            children: [
+              StudentDashboardCard(
                 studentName: 'Midlaj',
                 course: 'Bharatanatyam',
                 batch: 'Afternoon',
@@ -28,13 +29,16 @@ class StudentHomeScreen extends StatelessWidget {
                 pendingFee: '2000',
                 nextClassTime: '1:00 PM',
               ),
-            ),
-      
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: RecentUpdatesCard(),
-            ),
-          ],
+
+              SizedBox(height: 20,),
+
+              ClassScheduleCard(),
+
+              SizedBox(height: 20,),
+                
+              RecentClassLogsCard(),
+            ],
+          ),
         ),
       ),
     );

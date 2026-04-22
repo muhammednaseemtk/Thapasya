@@ -32,7 +32,7 @@ class ThapasyaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.studentMain,
+      initialRoute: AppRoutes.staffMain,
       routes: AppRoutes.routes,
     );
   }
