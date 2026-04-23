@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/staff/home/widget/dashboard_item.dart';
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
@@ -22,6 +21,7 @@ class StaffDashboardCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.maxFinite,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -51,21 +51,6 @@ class StaffDashboardCard extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          Row(
-            children: [
-              DashBoardItem(icon: Icons.people, value: "24", label: "Students"),
-              DashBoardItem(
-                icon: Icons.calendar_today,
-                value: "3",
-                label: "Today's Class",
-              ),
-              DashBoardItem(
-                icon: Icons.access_time,
-                value: "82%",
-                label: "Attendance",
-              ),
-            ],
-          ),
         ],
       ),
     );

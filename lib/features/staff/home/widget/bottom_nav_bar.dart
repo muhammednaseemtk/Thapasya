@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_navbar/liquid_glass_navbar.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
-import 'package:thapasya/features/staff/assessment/view/assessment_screen.dart';
 import 'package:thapasya/features/staff/attendance/view/attendance_screen.dart';
 import 'package:thapasya/features/staff/home/view/home_screen.dart';
 import 'package:thapasya/features/staff/log/view/log_screen.dart';
@@ -22,7 +21,6 @@ class StaffBottomNavBar extends StatelessWidget {
     StaffHomeScreen(),
     StaffStudentsScreen(),
     StaffAttendanceScreen(),
-    StaffAssessmentScreen(),
     StaffLogScreen()
   ];
 
@@ -52,7 +50,6 @@ class StaffBottomNavBar extends StatelessWidget {
             icon: Icons.calendar_today_outlined,
             label: 'Attend',
           ),
-          LiquidGlassNavItem(icon: Icons.assignment_outlined, label: 'Assess'),
           LiquidGlassNavItem(icon: Icons.note_outlined, label: 'Log'),
         ],
       ),

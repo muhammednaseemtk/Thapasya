@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/student/home/widget/course_toggle.dart';
+import 'package:thapasya/core/widget/common_toggle.dart';
 import 'package:thapasya/features/student/home/widget/student_info_card.dart';
 
 class StudentDashboardCard extends StatelessWidget {
@@ -41,7 +41,7 @@ class StudentDashboardCard extends StatelessWidget {
 
           SizedBox(height: 8,),
 
-          CourseToggle(),
+          CommonToggle(items: ["Bharatanatyam", "Kuchipudi"]),
 
           SizedBox(height: 6),
 
