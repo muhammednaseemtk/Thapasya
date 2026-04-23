@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/core/widget/common_toggle.dart';
+import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
+import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
@@ -20,39 +24,60 @@ class StaffDashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-       color: AppColors.deepBlue
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-           Text(
-            "Good Morning",
-            style: AppFonts.poppinsBold7,
+    return Consumer2<StaffCourseController, ScheduleController>(
+      builder: (context, courseController, scheduleController, _) {
+
+        if (courseController.courses.isEmpty &&
+            !courseController.isLoading) {
+          Future.microtask(() => courseController.fetchStaffCourses());
+        }
+
+        return Container(
+          width: double.maxFinite,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black10,
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
+            ],
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.deepBlue,
           ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Good Morning", style: AppFonts.poppinsBold7),
+              const SizedBox(height: 6),
+              Text(name, style: AppFonts.poppinsSemiBold6),
+              const SizedBox(height: 4),
+              Text(role, style: AppFonts.poppinsBold7),
+              const SizedBox(height: 20),
 
-          const SizedBox(height: 6),
+              if (courseController.isLoading)
+                const Center(
+                  child: CircularProgressIndicator(color: AppColors.white),
+                )
+              else if (courseController.courses.isEmpty)
+                const Text("No Courses")
+              else
+                CommonToggle(
+                  items: courseController.courses
+                      .map((e) => e.name)
+                      .toList(),
+                  selectedIndex: courseController.selectedIndex,
+                  onTap: (index) {
+                    courseController.selectCourse(index);
 
-          Text(
-            name,
-            style: AppFonts.poppinsSemiBold6
+                    scheduleController.fetchSchedule(index);
+                  },
+                ),
+            ],
           ),
-
-          const SizedBox(height: 4),
-
-          Text(
-            role,
-            style: AppFonts.poppinsBold7,
-          ),
-
-          const SizedBox(height: 20),
-
-        ],
-      ),
+        );
+      },
     );
   }
 }

@@ -1,60 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/staff/home/widget/shedule_item.dart';
+import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
+import 'shedule_item.dart';
 
 class TodayScheduleCard extends StatelessWidget {
   const TodayScheduleCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
-            "Today's Schedule",
-            style: AppFonts.poppinsSemiBold7
+    return Consumer<ScheduleController>(
+      builder: (context, c, _) {
+        if (c.schedules.isEmpty && !c.isLoading) {
+          Future.microtask(() => c.fetchSchedule(0));
+        }
+
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black10,
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
+            ],
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(20),
           ),
-          SizedBox(height: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text("Today's Schedule", style: AppFonts.poppinsSemiBold7),
+              const SizedBox(height: 16),
 
-          ScheduleItem(
-            time: "10:00 AM",
-            title: "Bharatanatyam",
-            subtitle: "Batch A • 8 students",
-            status: "Done",
-            statusColor: AppColors.lightGreen,
-            textColor: AppColors.green,
+              if (c.isLoading)
+                const Center(
+                  child: CircularProgressIndicator(color: AppColors.deepBlue),
+                )
+              else if (c.schedules.isEmpty)
+                const Text("No Schedule")
+              else
+                Column(
+                  children: List.generate(c.schedules.length, (index) {
+                    final item = c.schedules[index];
+
+                    return Column(
+                      children: [
+                        ScheduleItem(
+                          title: item.course,
+                          date: item.classDate,
+                          time: item.classTime,
+                        ),
+                        if (index != c.schedules.length - 1)
+                          const Divider(height: 24),
+                      ],
+                    );
+                  }),
+                ),
+            ],
           ),
-
-          Divider(height: 24),
-
-          ScheduleItem(
-            time: "2:00 PM",
-            title: "Bharatanatyam",
-            subtitle: "Batch B • 7 students",
-            status: "Now",
-            statusColor: AppColors.lightBlue,
-            textColor: AppColors.deepBlue,
-          ),
-
-          Divider(height: 24),
-
-          ScheduleItem(
-            time: "5:00 PM",
-            title: "Carnatic Music",
-            subtitle: "Batch C • 6 students",
-            status: "Soon",
-            statusColor: AppColors.lightClr,
-            textColor: AppColors.lightTxt,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

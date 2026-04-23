@@ -1,21 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
+import 'package:thapasya/core/network/auth_token.dart';
 
 class AuthService {
-  late final Dio dio;
-
-  AuthService() {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: AppUrls.baseUrl,
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      ),
-    );
-  }
+  final Dio dio = Dio(
+    BaseOptions(
+      baseUrl: AppUrls.baseUrl,
+      headers: {'Content-Type': 'application/json'},
+    ),
+  );
 
   Future<Map<String, dynamic>?> loginUser({
     required String username,
@@ -31,21 +24,30 @@ class AuthService {
       );
 
       if (response.statusCode == 200) {
+
+        final cookies = response.headers.map['set-cookie'];
+
+        if (cookies != null) {
+          for (var cookie in cookies) {
+            if (cookie.contains('access_token=')) {
+              final token = cookie
+                  .split(';')
+                  .first
+                  .replaceAll('access_token=', '');
+
+              AuthToken.setToken(token);
+              print("TOKEN SAVED: $token"); 
+              break;
+            }
+          }
+        }
+
         return response.data;
       } else {
-        return {
-          "message": "Something went wrong",
-        };
+        return {"message": "Login failed"};
       }
-
-    } on DioException catch (e) {
-      return {
-        "message": e.response?.data?['message'] ?? "Login failed",
-      };
     } catch (e) {
-      return {
-        "message": "Unexpected error",
-      };
+      return {"message": "Error"};
     }
   }
 }

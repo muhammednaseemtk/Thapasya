@@ -39,10 +39,6 @@ class StudentDashboardCard extends StatelessWidget {
 
           Text(studentName, style: AppFonts.poppinsSemiBold4),
 
-          SizedBox(height: 8,),
-
-          CommonToggle(items: ["Bharatanatyam", "Kuchipudi"]),
-
           SizedBox(height: 6),
 
           Text(
