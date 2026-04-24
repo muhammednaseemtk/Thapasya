@@ -47,8 +47,8 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthController>(
-      builder: (context, c, _) {
-        return c.isLoading
+      builder: (context, controller, _) {
+        return controller.isLoading
             ? const SizedBox(
                 height: 30,
                 width: 30,
@@ -58,7 +58,7 @@ class LoginButton extends StatelessWidget {
                 ),
               )
             : CommonButton(
-                onPressed: () => login(context, c),
+                onPressed: () => login(context, controller),
                 backgroundColor: AppColors.darkRed,
                 txt: AppStrings.login,
                 width: 300,

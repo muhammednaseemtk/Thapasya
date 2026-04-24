@@ -27,11 +27,6 @@ class StaffDashboardCard extends StatelessWidget {
     return Consumer2<StaffCourseController, ScheduleController>(
       builder: (context, courseController, scheduleController, _) {
 
-        if (courseController.courses.isEmpty &&
-            !courseController.isLoading) {
-          Future.microtask(() => courseController.fetchStaffCourses());
-        }
-
         return Container(
           width: double.maxFinite,
           padding: const EdgeInsets.all(20),
@@ -56,11 +51,7 @@ class StaffDashboardCard extends StatelessWidget {
               Text(role, style: AppFonts.poppinsBold7),
               const SizedBox(height: 20),
 
-              if (courseController.isLoading)
-                const Center(
-                  child: CircularProgressIndicator(color: AppColors.white),
-                )
-              else if (courseController.courses.isEmpty)
+              if (courseController.courses.isEmpty)
                 const Text("No Courses")
               else
                 CommonToggle(

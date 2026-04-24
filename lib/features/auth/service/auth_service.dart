@@ -1,21 +1,15 @@
-import 'package:dio/dio.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
 import 'package:thapasya/core/network/auth_token.dart';
+import 'package:thapasya/core/network/dio_client.dart'; 
 
 class AuthService {
-  final Dio dio = Dio(
-    BaseOptions(
-      baseUrl: AppUrls.baseUrl,
-      headers: {'Content-Type': 'application/json'},
-    ),
-  );
 
   Future<Map<String, dynamic>?> loginUser({
     required String username,
     required String password,
   }) async {
     try {
-      final response = await dio.post(
+      final response = await DioClient.dio.post( 
         AppUrls.login,
         data: {
           "username": username,
@@ -36,7 +30,7 @@ class AuthService {
                   .replaceAll('access_token=', '');
 
               AuthToken.setToken(token);
-              print("TOKEN SAVED: $token"); 
+              print("TOKEN SAVED: $token");
               break;
             }
           }

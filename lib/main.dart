@@ -7,6 +7,7 @@ import 'package:thapasya/features/auth/controller/auth_controller.dart';
 import 'package:thapasya/features/staff/home/controller/main_controller.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
 import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
+import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 import 'package:thapasya/features/student/attendance/controller/attendance_calender_controller.dart';
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
 
@@ -22,6 +23,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => AuthController()),
         ChangeNotifierProvider(create: (_) => StaffCourseController()),
         ChangeNotifierProvider(create: (_) => ScheduleController()),
+        ChangeNotifierProvider(create: (_) => StaffStudentController()),
       ],
       child: ThapasyaApp(),
     ),

@@ -1,45 +1,23 @@
-import 'package:dio/dio.dart';
+import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
-import 'package:thapasya/core/network/auth_token.dart';
 import '../model/staff_course_model.dart';
 
 class StaffCourseService {
-  final Dio dio = Dio(
-    BaseOptions(
-      baseUrl: AppUrls.baseUrl,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    ),
-  );
 
   Future<List<StaffCourseModel>?> getCourses() async {
     try {
-      final token = AuthToken.token;
-
-      if (token == null) {
-        print("TOKEN NULL ❌");
-        return null;
-      }
-
-      final response = await dio.get(
+      final response = await DioClient.dio.get(
         AppUrls.staffCourses,
-        options: Options(
-          headers: {
-            'Cookie': 'access_token=$token',
-          },
-        ),
+        options: DioClient.authOptions(), 
       );
 
       if (response.statusCode == 200) {
         final List data = response.data;
         return data.map((e) => StaffCourseModel.fromJson(e)).toList();
-      } else {
-        return null;
       }
-    } on DioException catch (e) {
-      print("API ERROR: ${e.response?.data}");
-      return null;
+    } catch (e) {
+      print("API ERROR: $e");
     }
+    return null;
   }
 }

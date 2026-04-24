@@ -14,102 +14,113 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final keyboard = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
+      backgroundColor: AppColors.screen,
       resizeToAvoidBottomInset: true,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+
+        child: SafeArea(
+          bottom: false,
           child: Column(
             children: [
-              SizedBox(
-                height: 370,
-                width: double.infinity,
+              Expanded(
+                flex: 4,
                 child: Center(
                   child: Image.asset(
                     'assets/images/thapasya_image2.png',
-                    height: 260,
-                    filterQuality: FilterQuality.low,
+                    height: 250,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
 
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: AppColors.splashGradient),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(45),
-                    topRight: Radius.circular(45),
+              Expanded(
+                flex: 6,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: AppColors.splashGradient,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 28,
-                    right: 28,
-                    top: 30,
-                    bottom: MediaQuery.of(context).viewInsets.bottom + 80,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Text(
-                          AppStrings.loginHeading,
-                          style: AppFonts.poppinsSemiBold1,
+
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.only(
+                      left: 25,
+                      right: 25,
+                      top: 25,
+                      bottom: keyboard + 20,
+                    ),
+
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        Center(
+                          child: Text(
+                            AppStrings.loginHeading,
+                            style: AppFonts.poppinsSemiBold1,
+                          ),
                         ),
-                      ),
 
-                      const SizedBox(height: 5),
+                        const SizedBox(height: 5),
 
-                      Center(
-                        child: Text(
-                          AppStrings.loginSubtitle,
-                          style: AppFonts.poppinsRegular,
+                        Center(
+                          child: Text(
+                            AppStrings.loginSubtitle,
+                            style: AppFonts.poppinsRegular,
+                          ),
                         ),
-                      ),
 
-                      const SizedBox(height: 20),
+                        const SizedBox(height: 35),
 
-                      LoginTextField(
-                        txt: 'enter username..',
-                        controller: usernameController,
-                        obsecureTxt: false,
-                        icon: Iconsax.user_tag,
-                      ),
+                        LoginTextField(
+                          txt: 'enter username..',
+                          controller: usernameController,
+                          obsecureTxt: false,
+                          icon: Iconsax.user_tag,
+                        ),
 
-                      const SizedBox(height: 20),
+                        const SizedBox(height: 25),
 
-                      LoginTextField(
-                        txt: AppStrings.passwordHint,
-                        controller: passwordController,
-                        obsecureTxt: true,
-                        icon: Iconsax.lock_circle,
-                      ),
+                        LoginTextField(
+                          txt: AppStrings.passwordHint,
+                          controller: passwordController,
+                          obsecureTxt: true,
+                          icon: Iconsax.lock_circle,
+                        ),
 
-                      const SizedBox(height: 10),
+                        const SizedBox(height: 15),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
                             onPressed: () {},
                             child: Text(
                               AppStrings.forgotPass,
                               style: AppFonts.poppinsBold,
                             ),
                           ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 10),
-
-                      Center(
-                        child: LoginButton(
-                          usernameController: usernameController,
-                          passwordController: passwordController,
                         ),
-                      ),
-                    ],
+
+                        const SizedBox(height: 25),
+
+                        Center(
+                          child: LoginButton(
+                            usernameController: usernameController,
+                            passwordController: passwordController,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
