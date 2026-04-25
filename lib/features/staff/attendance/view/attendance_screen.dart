@@ -19,35 +19,50 @@ class StaffAttendanceScreen extends StatelessWidget {
         Navigator.pushNamed(context, AppRoutes.staffProfile);
       },),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AttendanceHeader(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+          child: Column(
+            children: [
+              AttendanceHeader(),
 
-            BatchInfoCard(),
+              SizedBox(height: 10),
+          
+              BatchInfoCard(),
+          
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
 
-            SizedBox(height: 10),
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
 
-            AttendanceActionCard(),
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
 
-            AttendanceActionCard(),
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
 
-            AttendanceActionCard(),
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
 
-            AttendanceActionCard(),
-
-            AttendanceActionCard(),
-
-            AttendanceSummary(),
-
-            SizedBox(height: 10,),
-
-            CommonButton(
-              onPressed: () {},
-              backgroundColor: AppColors.deepBlue,
-              width: 350,
-              txt: 'Submit Attendance',
-            ),
-          ],
+              SizedBox(height: 10),
+          
+              AttendanceSummary(),
+          
+              SizedBox(height: 10,),
+          
+              CommonButton(
+                onPressed: () {},
+                backgroundColor: AppColors.deepBlue,
+                width: 350,
+                txt: 'Submit Attendance',
+              ),
+            ],
+          ),
         ),
       ),
     );
