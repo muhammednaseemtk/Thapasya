@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 
 class AttendanceActionCard extends StatelessWidget {
   const AttendanceActionCard({super.key});
@@ -8,6 +9,13 @@ class AttendanceActionCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
+         boxShadow: [
+              BoxShadow(
+                color: AppColors.black10,
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
+            ],
         color: const Color(0xFFF4F5F7),
         borderRadius: BorderRadius.circular(20),
       ),
@@ -42,14 +50,6 @@ class AttendanceActionCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: 2),
-                Text(
-                  "Level 3",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
                   ),
                 ),
               ],

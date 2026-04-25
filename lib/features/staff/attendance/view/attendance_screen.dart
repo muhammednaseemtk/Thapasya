@@ -20,7 +20,7 @@ class StaffAttendanceScreen extends StatelessWidget {
       },),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 12),
           child: Column(
             children: [
               AttendanceHeader(),
@@ -29,31 +29,31 @@ class StaffAttendanceScreen extends StatelessWidget {
           
               BatchInfoCard(),
           
-              SizedBox(height: 10),
-          
-              AttendanceActionCard(),
+              SizedBox(height: 20),
 
-              SizedBox(height: 10),
-          
-              AttendanceActionCard(),
-
-              SizedBox(height: 10),
-          
-              AttendanceActionCard(),
-
-              SizedBox(height: 10),
-          
-              AttendanceActionCard(),
-
-              SizedBox(height: 10),
-          
-              AttendanceActionCard(),
-
-              SizedBox(height: 10),
-          
               AttendanceSummary(),
           
               SizedBox(height: 10,),
+          
+              AttendanceActionCard(),
+
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
+
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
+
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
+
+              SizedBox(height: 10),
+          
+              AttendanceActionCard(),
+
+              SizedBox(height: 10),
           
               CommonButton(
                 onPressed: () {},
