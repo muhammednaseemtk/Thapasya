@@ -14,7 +14,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final keyboard = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
       backgroundColor: AppColors.screen,
@@ -57,7 +56,6 @@ class LoginScreen extends StatelessWidget {
                       left: 25,
                       right: 25,
                       top: 25,
-                      bottom: keyboard + 20,
                     ),
 
                     child: Column(

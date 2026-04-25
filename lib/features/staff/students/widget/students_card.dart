@@ -24,6 +24,13 @@ class StudentsCard extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.black10,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -50,10 +57,7 @@ class StudentsCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            student.name,
-                            style: AppFonts.poppinsSemiBold9,
-                          ),
+                          Text(student.name, style: AppFonts.poppinsSemiBold9),
                         ],
                       ),
                     ),
