@@ -26,7 +26,7 @@ class BatchInfoCard extends StatelessWidget {
 
           Expanded(
             child: Text(
-              "Bharatanatyam – Batch B – 2:00 PM",
+              "Bharatanatyam",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
