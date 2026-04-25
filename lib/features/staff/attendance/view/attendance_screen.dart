@@ -21,47 +21,23 @@ class StaffAttendanceScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceHeader(),
-            ),
+            AttendanceHeader(),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: BatchInfoCard(),
-            ),
+            BatchInfoCard(),
 
             SizedBox(height: 10),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceActionCard(),
-            ),
+            AttendanceActionCard(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceActionCard(),
-            ),
+            AttendanceActionCard(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceActionCard(),
-            ),
+            AttendanceActionCard(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceActionCard(),
-            ),
+            AttendanceActionCard(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceActionCard(),
-            ),
+            AttendanceActionCard(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AttendanceSummary(),
-            ),
+            AttendanceSummary(),
 
             SizedBox(height: 10,),
 
