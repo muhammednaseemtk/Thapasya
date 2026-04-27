@@ -11,9 +11,7 @@ class TodayScheduleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ScheduleController>(
-      builder: (context, c, _) {
-        
-
+      builder: (context, controller, _) {
         return Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -33,16 +31,16 @@ class TodayScheduleCard extends StatelessWidget {
               const Text("Today's Schedule", style: AppFonts.poppinsSemiBold7),
               const SizedBox(height: 16),
 
-              if (c.isLoading)
+              if (controller.isLoading)
                 const Center(
                   child: CircularProgressIndicator(color: AppColors.deepBlue),
                 )
-              else if (c.schedules.isEmpty)
+              else if (controller.schedules.isEmpty)
                 const Text("No Schedule")
               else
                 Column(
-                  children: List.generate(c.schedules.length, (index) {
-                    final item = c.schedules[index];
+                  children: List.generate(controller.schedules.length, (index) {
+                    final item = controller.schedules[index];
 
                     return Column(
                       children: [
@@ -51,7 +49,7 @@ class TodayScheduleCard extends StatelessWidget {
                           date: item.classDate,
                           time: item.classTime,
                         ),
-                        if (index != c.schedules.length - 1)
+                        if (index != controller.schedules.length - 1)
                           const Divider(height: 24),
                       ],
                     );

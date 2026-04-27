@@ -16,17 +16,16 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize => const Size.fromHeight(90);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(color: color),
-
-      child: Padding(
-        padding: const EdgeInsets.only(top: 16),
+    return AppBar(
+      backgroundColor: color,
+      toolbarHeight: 90,
+      titleSpacing: 0,
+      title: Padding(
+        padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
         child: Row(
           children: [
             IconButton(
