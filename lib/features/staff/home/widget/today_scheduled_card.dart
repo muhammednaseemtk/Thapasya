@@ -12,9 +12,7 @@ class TodayScheduleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ScheduleController>(
       builder: (context, c, _) {
-        if (c.schedules.isEmpty && !c.isLoading) {
-          Future.microtask(() => c.fetchSchedule(0));
-        }
+        
 
         return Container(
           padding: const EdgeInsets.all(16),

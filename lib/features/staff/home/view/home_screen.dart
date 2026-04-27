@@ -17,12 +17,13 @@ class StaffHomeScreen extends StatelessWidget {
       builder: (context, courseController, scheduleController, _) {
 
         if (courseController.courses.isEmpty &&
-            !courseController.isLoading) {
-          Future.microtask(() {
-            courseController.fetchStaffCourses();
-            scheduleController.fetchSchedule(0);
-          });
-        }
+    !courseController.isLoading) {
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    courseController.fetchStaffCourses();
+    scheduleController.fetchSchedule(0);
+  });
+}
 
         if (courseController.isLoading ||
             scheduleController.isLoading &&
