@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_navbar/liquid_glass_navbar.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
-import 'package:thapasya/features/student/attendance/view/attendance_screen.dart';
+import 'package:thapasya/features/student/attendance/view/student_attendance_screen.dart';
 import 'package:thapasya/features/student/course/view/course_screen.dart';
 import 'package:thapasya/features/student/fees/view/fees_screen.dart';
 import 'package:thapasya/features/student/home/view/student_home_screen.dart';
