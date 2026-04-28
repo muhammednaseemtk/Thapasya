@@ -21,10 +21,8 @@ class ScheduleController extends ChangeNotifier {
     final courseId = getCourseId(index);
     final result = await service.getSchedule(courseId);
 
-    if (result != null) {
-      schedules = result;
-    }
-
+    schedules = result;
+  
     isLoading = false;
     notifyListeners();
   }
