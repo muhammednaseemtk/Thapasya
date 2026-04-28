@@ -1,5 +1,5 @@
- import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
+import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/features/staff/home/model/schedule_model.dart';
 
 class ScheduleService {

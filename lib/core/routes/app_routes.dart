@@ -9,10 +9,10 @@ import 'package:thapasya/features/admin/staff/view/staff_screen.dart';
 import 'package:thapasya/features/admin/student/view/student_screen.dart';
 import 'package:thapasya/features/auth/view/login_screen.dart';
 import 'package:thapasya/features/splash/view/splash_screen.dart';
-import 'package:thapasya/features/staff/home/view/home_screen.dart';
+import 'package:thapasya/features/staff/home/view/staff_home_screen.dart';
 import 'package:thapasya/features/staff/home/widget/main_screen.dart';
 import 'package:thapasya/features/staff/profile/view/profile_screen.dart';
-import 'package:thapasya/features/student/home/view/home_screen.dart';
+import 'package:thapasya/features/student/home/view/student_home_screen.dart';
 import 'package:thapasya/features/student/home/widget/main_screen.dart';
 import 'package:thapasya/features/student/profile/view/profile_screen.dart';
 

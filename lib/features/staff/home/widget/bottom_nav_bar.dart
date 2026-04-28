@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:liquid_glass_navbar/liquid_glass_navbar.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/features/staff/attendance/view/attendance_screen.dart';
-import 'package:thapasya/features/staff/home/view/home_screen.dart';
+import 'package:thapasya/features/staff/home/view/staff_home_screen.dart';
 import 'package:thapasya/features/staff/log/view/log_screen.dart';
 import 'package:thapasya/features/staff/students/view/students_screen.dart';
 
