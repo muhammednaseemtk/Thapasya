@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
-import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
+import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 import 'package:thapasya/features/staff/home/widget/staff_dashboard_card.dart';
 import 'package:thapasya/features/staff/home/widget/today_scheduled_card.dart';
 
@@ -18,15 +18,15 @@ class StaffHomeScreen extends StatelessWidget {
 
         if (courseController.courses.isEmpty &&
             !courseController.isLoading) {
-          Future.microtask(() {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             courseController.fetchStaffCourses();
             scheduleController.fetchSchedule(0);
           });
         }
 
         if (courseController.isLoading ||
-            scheduleController.isLoading &&
-            scheduleController.schedules.isEmpty) {
+            (scheduleController.isLoading &&
+             scheduleController.schedules.isEmpty)) {
           return Scaffold(
             backgroundColor: AppColors.screen,
             appBar: CommonAppBar(
@@ -36,7 +36,9 @@ class StaffHomeScreen extends StatelessWidget {
               },
             ),
             body: const Center(
-              child: CircularProgressIndicator(color: AppColors.deepBlue,),
+              child: CircularProgressIndicator(
+                color: AppColors.deepBlue,
+              ),
             ),
           );
         }
@@ -62,9 +64,8 @@ class StaffHomeScreen extends StatelessWidget {
                     attendance: 82,
                   ),
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: TodayScheduleCard(),
                 ),
               ],

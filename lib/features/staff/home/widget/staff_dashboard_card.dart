@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/widget/common_toggle.dart';
-import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
+import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
@@ -24,8 +24,8 @@ class StaffDashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<StaffCourseController, ScheduleController>(
-      builder: (context, courseController, scheduleController, _) {
+    return Consumer<StaffCourseController>(
+      builder: (context, courseController, _) {
 
         return Container(
           width: double.maxFinite,
@@ -61,8 +61,9 @@ class StaffDashboardCard extends StatelessWidget {
                   selectedIndex: courseController.selectedIndex,
                   onTap: (index) {
                     courseController.selectCourse(index);
-
-                    scheduleController.fetchSchedule(index);
+                    context
+                        .read<ScheduleController>()
+                        .fetchSchedule(index);
                   },
                 ),
             ],
