@@ -11,22 +11,16 @@ class ScheduleService {
         options: DioClient.authOptions(),
       );
 
-      final res = response.data;
+      final data = response.data;
 
-      if (res is Map && res.containsKey('message')) {
-        return [];
+      if (data is List) {
+        return data.map((e) => ScheduleModel.fromJson(e)).toList();
       }
 
-      if (res is List) {
-        return res.map((e) => ScheduleModel.fromJson(e)).toList();
-      }
-
-      if (res is Map<String, dynamic>) {
-        final list = res['data'] ?? res['schedule'];
-
-        if (list is List) {
-          return list.map((e) => ScheduleModel.fromJson(e)).toList();
-        }
+      if (data is Map && data['data'] is List) {
+        return (data['data'] as List)
+            .map((e) => ScheduleModel.fromJson(e))
+            .toList();
       }
 
       return [];
