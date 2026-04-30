@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:thapasya/features/staff/home/model/schedule_model.dart';
-import 'package:thapasya/features/staff/home/service/schedule_service.dart';
+import 'package:flutter/material.dart';
+import '../model/schedule_model.dart';
+import '../service/schedule_service.dart';
 
 class ScheduleController extends ChangeNotifier {
   bool isLoading = false;
@@ -9,13 +9,20 @@ class ScheduleController extends ChangeNotifier {
 
   final service = ScheduleService();
 
+  int getCourseId(int index) {
+    return index + 1;
+  }
+
   Future<void> fetchSchedule(int index) async {
     selectedIndex = index;
     isLoading = true;
     notifyListeners();
 
-    schedules = await service.getSchedule(index + 1);
+    final courseId = getCourseId(index);
+    final result = await service.getSchedule(courseId);
 
+    schedules = result;
+  
     isLoading = false;
     notifyListeners();
   }
