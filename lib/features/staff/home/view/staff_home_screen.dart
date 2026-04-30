@@ -15,9 +15,18 @@ class StaffHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer2<StaffCourseController, ScheduleController>(
       builder: (context, courseController, scheduleController, _) {
+
+        if (courseController.courses.isEmpty &&
+            !courseController.isLoading) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            courseController.fetchStaffCourses();
+            scheduleController.fetchSchedule(0);
+          });
+        }
+
         if (courseController.isLoading ||
             (scheduleController.isLoading &&
-                scheduleController.schedules.isEmpty)) {
+             scheduleController.schedules.isEmpty)) {
           return Scaffold(
             backgroundColor: AppColors.screen,
             appBar: CommonAppBar(
@@ -27,7 +36,9 @@ class StaffHomeScreen extends StatelessWidget {
               },
             ),
             body: const Center(
-              child: CircularProgressIndicator(color: AppColors.deepBlue),
+              child: CircularProgressIndicator(
+                color: AppColors.deepBlue,
+              ),
             ),
           );
         }

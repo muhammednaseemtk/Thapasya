@@ -26,7 +26,6 @@ class StaffDashboardCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<StaffCourseController>(
       builder: (context, courseController, _) {
-
         return Container(
           width: double.maxFinite,
           padding: const EdgeInsets.all(20),
@@ -55,15 +54,11 @@ class StaffDashboardCard extends StatelessWidget {
                 const Text("No Courses")
               else
                 CommonToggle(
-                  items: courseController.courses
-                      .map((e) => e.name)
-                      .toList(),
+                  items: courseController.courses.map((e) => e.name).toList(),
                   selectedIndex: courseController.selectedIndex,
                   onTap: (index) {
                     courseController.selectCourse(index);
-                    context
-                        .read<ScheduleController>()
-                        .fetchSchedule(index);
+                    context.read<ScheduleController>().fetchSchedule(index);
                   },
                 ),
             ],
