@@ -14,15 +14,19 @@ class ScheduleController extends ChangeNotifier {
   }
 
   Future<void> fetchSchedule(int index) async {
+    if (selectedIndex == index && schedules.isNotEmpty) return;
+
     selectedIndex = index;
+
     isLoading = true;
+    schedules = []; 
     notifyListeners();
 
     final courseId = getCourseId(index);
     final result = await service.getSchedule(courseId);
 
     schedules = result;
-  
+
     isLoading = false;
     notifyListeners();
   }

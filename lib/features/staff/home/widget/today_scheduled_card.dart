@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
+import 'package:thapasya/features/staff/home/widget/schedule_shimmer.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
 import 'shedule_item.dart';
 
@@ -32,9 +33,7 @@ class TodayScheduleCard extends StatelessWidget {
               const SizedBox(height: 16),
 
               if (controller.isLoading)
-                const Center(
-                  child: CircularProgressIndicator(color: AppColors.deepBlue),
-                )
+                const ScheduleShimmer()
               else if (controller.schedules.isEmpty)
                 const Text("No Schedule")
               else

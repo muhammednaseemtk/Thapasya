@@ -13,66 +13,44 @@ class StaffHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<StaffCourseController, ScheduleController>(
-      builder: (context, courseController, scheduleController, _) {
+    final courseController = context.read<StaffCourseController>();
+    final scheduleController = context.read<ScheduleController>();
 
-        if (courseController.courses.isEmpty &&
-            !courseController.isLoading) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            courseController.fetchStaffCourses();
-            scheduleController.fetchSchedule(0);
-          });
-        }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (courseController.courses.isEmpty &&
+          !courseController.isLoading) {
+        courseController.fetchStaffCourses();
+        scheduleController.fetchSchedule(0);
+      }
+    });
 
-        if (courseController.isLoading ||
-            (scheduleController.isLoading &&
-             scheduleController.schedules.isEmpty)) {
-          return Scaffold(
-            backgroundColor: AppColors.screen,
-            appBar: CommonAppBar(
-              color: AppColors.deepBlue,
-              onProfileTap: () {
-                Navigator.pushNamed(context, AppRoutes.staffProfile);
-              },
-            ),
-            body: const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.deepBlue,
+    return Scaffold(
+      backgroundColor: AppColors.screen,
+      appBar: CommonAppBar(
+        color: AppColors.deepBlue,
+        onProfileTap: () {
+          Navigator.pushNamed(context, AppRoutes.staffProfile);
+        },
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+          child: Column(
+            children: const [
+              StaffDashboardCard(
+                name: "Smt. Kavitha Rajan",
+                role:
+                    "Bharatanatyam Faculty | Senior Instructor",
+                students: 24,
+                classes: 3,
+                attendance: 82,
               ),
-            ),
-          );
-        }
-
-        return Scaffold(
-          backgroundColor: AppColors.screen,
-          appBar: CommonAppBar(
-            color: AppColors.deepBlue,
-            onProfileTap: () {
-              Navigator.pushNamed(context, AppRoutes.staffProfile);
-            },
+              SizedBox(height: 10,),
+              TodayScheduleCard(),
+            ],
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: StaffDashboardCard(
-                    name: "Smt. Kavitha Rajan",
-                    role: "Bharatanatyam Faculty | Senior Instructor",
-                    students: 24,
-                    classes: 3,
-                    attendance: 82,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TodayScheduleCard(),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

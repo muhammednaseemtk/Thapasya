@@ -12,71 +12,62 @@ class StaffStudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<StaffStudentController>(
-      builder: (context, controller, _) {
+    return Scaffold(
+      backgroundColor: AppColors.screen,
+      appBar: CommonAppBar(
+        color: AppColors.deepBlue,
+        onProfileTap: () {
+          Navigator.pushNamed(context, AppRoutes.staffProfile);
+        },
+      ),
 
-        if (controller.students.isEmpty && !controller.isLoading) {
-          Future.microtask(() => controller.fetchStudents(1));
-        }
-
-        return Scaffold(
-          backgroundColor: AppColors.screen,
-          appBar: CommonAppBar(
-            color: AppColors.deepBlue,
-            onProfileTap: () {
-              Navigator.pushNamed(context, AppRoutes.staffProfile);
-            },
-          ),
-
-          body: controller.isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.deepBlue,
-                  ),
-                )
-              : SingleChildScrollView(
-                  child: Column(
+      body: Consumer<StaffStudentController>(
+        builder: (context, controller, _) {
+          
+          if (controller.students.isEmpty && !controller.isLoading) {
+            Future.microtask(() => controller.fetchStudents(1));
+          }
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              "My Students",
-                              style: AppFonts.poppinsSemiBold5,
-                            ),
-
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.white70,
-                                borderRadius:
-                                    BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                "${controller.students.length} total",
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.deepBlue,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      const Text(
+                        "My Students",
+                        style: AppFonts.poppinsSemiBold5,
                       ),
 
-                      const StudentsCard(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.white70,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          "${controller.students.length} total",
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.deepBlue,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
-        );
-      },
+
+                 StudentsCard(),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

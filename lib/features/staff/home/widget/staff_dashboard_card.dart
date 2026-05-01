@@ -24,47 +24,47 @@ class StaffDashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<StaffCourseController>(
-      builder: (context, courseController, _) {
-        return Container(
-          width: double.maxFinite,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.black10,
-                blurRadius: 10,
-                offset: const Offset(0, 3),
-              ),
-            ],
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.deepBlue,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Good Morning", style: AppFonts.poppinsBold7),
-              const SizedBox(height: 6),
-              Text(name, style: AppFonts.poppinsSemiBold6),
-              const SizedBox(height: 4),
-              Text(role, style: AppFonts.poppinsBold7),
-              const SizedBox(height: 20),
+    final courseController = context.read<StaffCourseController>();
 
-              if (courseController.courses.isEmpty)
-                const Text("No Courses")
-              else
-                CommonToggle(
-                  items: courseController.courses.map((e) => e.name).toList(),
-                  selectedIndex: courseController.selectedIndex,
-                  onTap: (index) {
-                    courseController.selectCourse(index);
-                    context.read<ScheduleController>().fetchSchedule(index);
-                  },
-                ),
-            ],
+    return Container(
+      width: double.maxFinite,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.black10,
+            blurRadius: 10,
+            offset: const Offset(0, 3),
           ),
-        );
-      },
+        ],
+        borderRadius: BorderRadius.circular(20),
+        color: AppColors.deepBlue,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Good Morning", style: AppFonts.poppinsBold7),
+          const SizedBox(height: 6),
+          Text(name, style: AppFonts.poppinsSemiBold6),
+          const SizedBox(height: 4),
+          Text(role, style: AppFonts.poppinsBold7),
+          const SizedBox(height: 20),
+
+          Consumer<StaffCourseController>(
+            builder: (context, controller, _) {
+              return CommonToggle(
+                items: controller.courses.map((e) => e.name).toList(),
+                selectedIndex: controller.selectedIndex,
+                onTap: (index) {
+                  controller.selectCourse(index);
+
+                  context.read<ScheduleController>().fetchSchedule(index);
+                },
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
+import 'package:thapasya/features/staff/students/widget/student_shimmer_card.dart';
 
 class StudentsCard extends StatelessWidget {
   const StudentsCard({super.key});
@@ -11,6 +12,11 @@ class StudentsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<StaffStudentController>(
       builder: (context, controller, _) {
+        if (controller.isLoading) {
+          return Column(
+            children: List.generate(2, (index) => const StudentCardShimmer()),
+          );
+        }
         if (controller.students.isEmpty) {
           return const Text("No Students");
         }
