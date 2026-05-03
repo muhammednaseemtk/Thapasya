@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:thapasya/core/network/auth_token.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/admin/dashboard/controller/drawer_controller.dart';
 import 'package:thapasya/features/admin/programme%20booking/controller/number_stepper_controller.dart';
@@ -12,6 +13,8 @@ import 'package:thapasya/features/student/attendance/controller/attendance_calen
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AuthToken.loadToken();
   runApp(
     MultiProvider(
       providers: [

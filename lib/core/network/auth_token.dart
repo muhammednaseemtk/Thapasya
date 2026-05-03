@@ -21,4 +21,6 @@ class AuthToken {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('auth_token');
   }
+
+  static bool get isLoggedIn => token != null;
 }
