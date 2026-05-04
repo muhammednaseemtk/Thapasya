@@ -89,17 +89,13 @@ class StaffAttendanceScreen extends StatelessWidget {
                             actions: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context); // close dialog
+                                  Navigator.pop(context);
                                 },
                                 child: const Text("Cancel"),
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pop(
-                                    context,
-                                  ); // close confirm dialog
-
-                                  // 🔥 SUCCESS DIALOG
+                                  Navigator.pop(context);
                                   showDialog(
                                     context: context,
                                     builder: (context) {
@@ -131,9 +127,7 @@ class StaffAttendanceScreen extends StatelessWidget {
                                           Center(
                                             child: TextButton(
                                               onPressed: () {
-                                                Navigator.pop(
-                                                  context,
-                                                ); // close success dialog
+                                                Navigator.pop(context);
                                               },
                                               child: const Text("OK"),
                                             ),
