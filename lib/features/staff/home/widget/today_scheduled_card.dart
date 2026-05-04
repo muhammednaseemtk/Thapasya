@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/staff/home/widget/schedule_shimmer.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
-import 'shedule_item.dart';
+import 'package:thapasya/features/staff/home/widget/schedule_shimmer.dart';
+import 'package:thapasya/features/staff/home/widget/shedule_item.dart';
 
 class TodayScheduleCard extends StatelessWidget {
   const TodayScheduleCard({super.key});
@@ -14,6 +14,7 @@ class TodayScheduleCard extends StatelessWidget {
     return Consumer<ScheduleController>(
       builder: (context, controller, _) {
         return Container(
+          width: double.infinity, 
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             boxShadow: [
@@ -29,13 +30,21 @@ class TodayScheduleCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Today's Schedule", style: AppFonts.poppinsSemiBold7),
+              const Text(
+                "Today's Schedule",
+                style: AppFonts.poppinsSemiBold7,
+              ),
               const SizedBox(height: 16),
 
               if (controller.isLoading)
                 const ScheduleShimmer()
               else if (controller.schedules.isEmpty)
-                const Text("No Schedule")
+                const Center( 
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text("No Schedule"),
+                  ),
+                )
               else
                 Column(
                   children: List.generate(controller.schedules.length, (index) {

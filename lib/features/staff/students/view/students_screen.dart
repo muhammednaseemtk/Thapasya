@@ -12,6 +12,14 @@ class StaffStudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<StaffStudentController>();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (controller.students.isEmpty && !controller.isLoading) {
+        controller.fetchStudents(1);
+      }
+    });
+
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: CommonAppBar(
@@ -20,13 +28,8 @@ class StaffStudentsScreen extends StatelessWidget {
           Navigator.pushNamed(context, AppRoutes.staffProfile);
         },
       ),
-
       body: Consumer<StaffStudentController>(
         builder: (context, controller, _) {
-          
-          if (controller.students.isEmpty && !controller.isLoading) {
-            Future.microtask(() => controller.fetchStudents(1));
-          }
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -39,7 +42,6 @@ class StaffStudentsScreen extends StatelessWidget {
                         "My Students",
                         style: AppFonts.poppinsSemiBold5,
                       ),
-
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
@@ -62,7 +64,7 @@ class StaffStudentsScreen extends StatelessWidget {
                   ),
                 ),
 
-                 StudentsCard(),
+                const StudentsCard(),
               ],
             ),
           );

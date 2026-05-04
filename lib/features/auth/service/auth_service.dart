@@ -3,7 +3,6 @@ import 'package:thapasya/core/network/auth_token.dart';
 import 'package:thapasya/core/network/dio_client.dart';
 
 class AuthService {
-
   Future<Map<String, dynamic>?> loginUser({
     required String username,
     required String password,
@@ -11,20 +10,15 @@ class AuthService {
     try {
       final response = await DioClient.dio.post(
         AppUrls.login,
-        data: {
-          "username": username,
-          "password": password,
-        },
+        data: {"username": username, "password": password},
       );
 
       if (response.statusCode == 200) {
-
         final cookies = response.headers.map['set-cookie'];
 
         if (cookies != null) {
           for (var cookie in cookies) {
             if (cookie.contains('access_token=')) {
-
               final token = cookie
                   .split(';')
                   .first
@@ -39,18 +33,12 @@ class AuthService {
         }
 
         return response.data;
-      } else {
-        return {
-          "message": "Login failed",
-        };
       }
 
+      return {"message": "Login failed"};
     } catch (e) {
       print("LOGIN ERROR: $e");
-
-      return {
-        "message": "Something went wrong",
-      };
+      return {"message": "Something went wrong"};
     }
   }
 }

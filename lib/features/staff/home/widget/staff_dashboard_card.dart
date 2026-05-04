@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/widget/common_toggle.dart';
+import 'package:thapasya/core/widget/common_toggle_shimmer.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
 import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 
@@ -24,8 +25,6 @@ class StaffDashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final courseController = context.read<StaffCourseController>();
-
     return Container(
       width: double.maxFinite,
       padding: const EdgeInsets.all(20),
@@ -51,7 +50,10 @@ class StaffDashboardCard extends StatelessWidget {
           const SizedBox(height: 20),
 
           Consumer<StaffCourseController>(
-            builder: (context, controller, _) {
+            builder: (context, controller, child) {
+              if(controller.isLoading) {
+                return CommonToggleShimmer();
+              }
               return CommonToggle(
                 items: controller.courses.map((e) => e.name).toList(),
                 selectedIndex: controller.selectedIndex,

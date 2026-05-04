@@ -17,13 +17,21 @@ class StudentsCard extends StatelessWidget {
             children: List.generate(2, (index) => const StudentCardShimmer()),
           );
         }
+
         if (controller.students.isEmpty) {
-          return const Text("No Students");
+          return const Padding(
+            padding: EdgeInsets.all(20),
+            child: Text("No Students"),
+          );
         }
 
         return Column(
           children: List.generate(controller.students.length, (index) {
             final student = controller.students[index];
+
+            final initials = student.name.length >= 2
+                ? student.name.substring(0, 2).toUpperCase()
+                : student.name.toUpperCase();
 
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -51,20 +59,16 @@ class StudentsCard extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          student.name.substring(0, 2).toUpperCase(),
+                          initials,
                           style: AppFonts.poppinsSemiBold2,
                         ),
                       ),
                     ),
-
                     const SizedBox(width: 12),
-
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(student.name, style: AppFonts.poppinsSemiBold9),
-                        ],
+                      child: Text(
+                        student.name,
+                        style: AppFonts.poppinsSemiBold9,
                       ),
                     ),
                   ],

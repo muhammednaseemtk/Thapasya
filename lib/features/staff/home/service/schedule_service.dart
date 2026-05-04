@@ -8,14 +8,9 @@ class ScheduleService {
       final response = await DioClient.dio.get(
         AppUrls.schedule,
         queryParameters: {"course_id": courseId},
-        options: DioClient.authOptions(),
       );
 
       final res = response.data;
-
-      if (res is Map && res.containsKey('message')) {
-        return [];
-      }
 
       if (res is List) {
         return res.map((e) => ScheduleModel.fromJson(e)).toList();

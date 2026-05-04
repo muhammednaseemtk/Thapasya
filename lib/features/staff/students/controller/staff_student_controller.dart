@@ -9,20 +9,28 @@ class StaffStudentController extends ChangeNotifier {
 
   final service = StaffStudentService();
 
+  bool isFetched = false;
   Future<void> fetchStudents(int courseId) async {
+    if (isFetched) return;
+
+    isFetched = true;
+
     isLoading = true;
     notifyListeners();
 
     final result = await service.getStudents(
       courseId: courseId,
-      branchId: 1, 
+      branchId: 1,
     );
 
-    if (result != null) {
-      students = result;
-    }
+    students = result;
 
     isLoading = false;
     notifyListeners();
+  }
+
+  void reset() {
+    isFetched = false;
+    students = [];
   }
 }

@@ -1,10 +1,9 @@
-import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
+import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/features/staff/students/model/staff_student_model.dart';
 
 class StaffStudentService {
-
-  Future<List<StaffStudentModel>?> getStudents({
+  Future<List<StaffStudentModel>> getStudents({
     required int courseId,
     required int branchId,
   }) async {
@@ -15,16 +14,26 @@ class StaffStudentService {
           "course_id": courseId,
           "branch_id": branchId,
         },
-        options: DioClient.authOptions(),
       );
 
-      if (response.statusCode == 200) {
-        final List data = response.data;
-        return data.map((e) => StaffStudentModel.fromJson(e)).toList();
+      final res = response.data;
+
+      if (res is List) {
+        return res.map((e) => StaffStudentModel.fromJson(e)).toList();
       }
+
+      if (res is Map<String, dynamic>) {
+        final list = res['data'] ?? res['students'];
+
+        if (list is List) {
+          return list.map((e) => StaffStudentModel.fromJson(e)).toList();
+        }
+      }
+
+      return [];
     } catch (e) {
       print("Student API Error: $e");
+      return [];
     }
-    return null;
   }
 }

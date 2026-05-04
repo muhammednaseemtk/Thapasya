@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'auth_token.dart';
-import '../constants/app_urls.dart';
+import 'package:thapasya/core/constants/app_urls.dart';
+import 'package:thapasya/core/network/auth_token.dart';
 
 class DioClient {
   static final Dio dio = Dio(
@@ -10,19 +10,24 @@ class DioClient {
         'Content-Type': 'application/json',
       },
     ),
-  );
+  )..interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final token = AuthToken.token;
 
-  static Options authOptions() {
-    final token = AuthToken.token;
+          if (token != null) {
+            options.headers['Cookie'] = 'access_token=$token';
+          }
 
-    if (token == null) {
-      throw Exception("Token is null. Please login again.");
-    }
+          print("REQUEST => ${options.path}");
+          print("HEADERS => ${options.headers}");
 
-    return Options(
-      headers: {
-        'Cookie': 'access_token=$token',
-      },
+          return handler.next(options);
+        },
+        onError: (e, handler) {
+          print("ERROR => ${e.response?.statusCode}");
+          return handler.next(e);
+        },
+      ),
     );
-  }
 }
