@@ -33,7 +33,6 @@ class StaffAttendanceScreen extends StatelessWidget {
       ),
       body: Consumer<AttendanceController>(
         builder: (context, controller, _) {
-
           if (controller.statusList.length != students.length) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               controller.init(students.length);
@@ -76,6 +75,80 @@ class StaffAttendanceScreen extends StatelessWidget {
 
                   CommonButton(
                     onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            title: const Text("Confirm Attendance"),
+                            content: const Text(
+                              "Are you sure you want to submit attendance?",
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context); // close dialog
+                                },
+                                child: const Text("Cancel"),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(
+                                    context,
+                                  ); // close confirm dialog
+
+                                  // 🔥 SUCCESS DIALOG
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                        ),
+                                        content: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: const [
+                                            Icon(
+                                              Icons.check_circle,
+                                              color: Colors.green,
+                                              size: 60,
+                                            ),
+                                            SizedBox(height: 10),
+                                            Text(
+                                              "Attendance Submitted Successfully",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        actions: [
+                                          Center(
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(
+                                                  context,
+                                                ); // close success dialog
+                                              },
+                                              child: const Text("OK"),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: const Text("Confirm"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     backgroundColor: AppColors.deepBlue,
                     width: 350,

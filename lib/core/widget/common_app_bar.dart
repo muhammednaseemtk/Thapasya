@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/constants/app_strings.dart';
@@ -28,26 +29,17 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
         child: Row(
           children: [
-            IconButton(
-              constraints: const BoxConstraints(),
-              onPressed: onMenuTap ?? () {},
-              icon: const Icon(Icons.menu_book_outlined),
-              color: AppColors.white,
-              iconSize: 25,
-            ),
+            Image.asset('assets/images/header_icon.png', width: 45, height: 45),
 
             const SizedBox(width: 8),
 
             Expanded(
-              child: Text(
-                AppStrings.appName,
-                style: AppFonts.poppinsSemiBold4,
-              ),
+              child: Text(AppStrings.appName, style: AppFonts.poppinsSemiBold4),
             ),
 
             IconButton(
               onPressed: onProfileTap ?? () {},
-              icon: const Icon(Icons.person_outline_rounded),
+              icon: const Icon(Iconsax.user),
               color: AppColors.white,
               iconSize: 25,
             ),

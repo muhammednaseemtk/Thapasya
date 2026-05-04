@@ -12,4 +12,10 @@ class AttendanceController extends ChangeNotifier {
     statusList[index] = value;
     notifyListeners();
   }
+
+  int get presentCount => statusList.where((e) => e == 1).length;
+
+  int get absentCount => statusList.where((e) => e == 2).length;
+
+  int get lateCount => statusList.where((e) => e == 3).length;
 }
