@@ -17,11 +17,23 @@ class AttendanceDot extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 10,
-        width: 10,
+        height: 18,
+        width: 18,
         decoration: BoxDecoration(
-          color: isActive ? color : color.withOpacity(0.3),
           shape: BoxShape.circle,
+          border: Border.all(color: color, width: 2),
+        ),
+        child: Center(
+          child: isActive
+              ? Container(
+                  height: 8,
+                  width: 8,
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                  ),
+                )
+              : null,
         ),
       ),
     );

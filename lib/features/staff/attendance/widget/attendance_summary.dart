@@ -13,7 +13,7 @@ class AttendanceSummary extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Text(
-        "2 present, 3 absent, 0 unmarked",
+        "2 present, 3 absent, 0 late",
         style: TextStyle(
           fontSize: 13,
           color: Color(0xFF4B5563),

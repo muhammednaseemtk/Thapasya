@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/core/constants/app_fonts.dart';
 import '../controller/attendance_controller.dart';
 import 'attendance_dot.dart';
 
@@ -22,7 +23,6 @@ class AttendanceActionCard extends StatelessWidget {
 
     return Consumer<AttendanceController>(
       builder: (context, controller, _) {
-
         if (controller.statusList.length <= index) {
           return const SizedBox();
         }
@@ -76,31 +76,56 @@ class AttendanceActionCard extends StatelessWidget {
 
               Row(
                 children: [
-                  AttendanceDot(
-                    isActive: status == 1,
-                    color: Colors.green,
-                    onTap: () {
-                      controller.setStatus(index, 1);
-                    },
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AttendanceDot(
+                        isActive: status == 1,
+                        color: AppColors.green,
+                        onTap: () {
+                          controller.setStatus(index, 1);
+                        },
+                      ),
+                      const SizedBox(height: 4),
+                       Text("P", style: AppFonts.poppinsSemiBold),
+                    ],
                   ),
-                  const SizedBox(width: 8),
 
-                  AttendanceDot(
-                    isActive: status == 2,
-                    color: Colors.red,
-                    onTap: () {
-                      controller.setStatus(index, 2);
-                    },
-                  ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 15),
 
-                  AttendanceDot(
-                    isActive: status == 3,
-                    color: Colors.orange,
-                    onTap: () {
-                      controller.setStatus(index, 3);
-                    },
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AttendanceDot(
+                        isActive: status == 2,
+                        color: AppColors.darkRed,
+                        onTap: () {
+                          controller.setStatus(index, 2);
+                        },
+                      ),
+                      const SizedBox(height: 4),
+                       Text("A", style: AppFonts.poppinsSemiBold),
+                    ],
                   ),
+
+                  const SizedBox(width: 15),
+
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AttendanceDot(
+                        isActive: status == 3,
+                        color: AppColors.orange,
+                        onTap: () {
+                          controller.setStatus(index, 3);
+                        },
+                      ),
+                      const SizedBox(height: 4),
+                       Text("L", style: AppFonts.poppinsSemiBold),
+                    ],
+                  ),
+
+                  SizedBox(width: 10,)
                 ],
               ),
             ],
