@@ -11,7 +11,7 @@ class AttendanceService {
 
       return true;
     } catch (e) {
-      print("ATTENDANCE API ERROR: $e");
+      print("ATTENDANCE API ERROR nee podaa mone dhinasha: $e");
       return false;
     }
   }

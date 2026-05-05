@@ -67,9 +67,7 @@ class StaffAttendanceScreen extends StatelessWidget {
                           ),
                         );
                       }),
-                    )
-                  else
-                    const SizedBox(),
+                    ),
 
                   const SizedBox(height: 10),
 
@@ -77,7 +75,7 @@ class StaffAttendanceScreen extends StatelessWidget {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        builder: (context) {
+                        builder: (dialogContext) {
                           return AlertDialog(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
@@ -89,13 +87,13 @@ class StaffAttendanceScreen extends StatelessWidget {
                             actions: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.pop(dialogContext);
                                 },
                                 child: const Text("Cancel"),
                               ),
                               ElevatedButton(
                                 onPressed: () async {
-                                  Navigator.pop(context);
+                                  Navigator.pop(dialogContext);
 
                                   final controller =
                                       Provider.of<AttendanceController>(
@@ -110,6 +108,8 @@ class StaffAttendanceScreen extends StatelessWidget {
                                     studentIds,
                                     courseId,
                                   );
+
+                                  if (!context.mounted) return;
 
                                   showDialog(
                                     context: context,
