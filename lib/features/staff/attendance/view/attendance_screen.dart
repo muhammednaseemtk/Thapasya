@@ -94,8 +94,23 @@ class StaffAttendanceScreen extends StatelessWidget {
                                 child: const Text("Cancel"),
                               ),
                               ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   Navigator.pop(context);
+
+                                  final controller =
+                                      Provider.of<AttendanceController>(
+                                        context,
+                                        listen: false,
+                                      );
+
+                                  final studentIds = [1, 2, 3, 4, 5];
+                                  final courseId = 1;
+
+                                  final success = await controller.submit(
+                                    studentIds,
+                                    courseId,
+                                  );
+
                                   showDialog(
                                     context: context,
                                     builder: (context) {
@@ -107,17 +122,23 @@ class StaffAttendanceScreen extends StatelessWidget {
                                         ),
                                         content: Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          children: const [
+                                          children: [
                                             Icon(
-                                              Icons.check_circle,
-                                              color: Colors.green,
+                                              success
+                                                  ? Icons.check_circle
+                                                  : Icons.error,
+                                              color: success
+                                                  ? Colors.green
+                                                  : Colors.red,
                                               size: 60,
                                             ),
-                                            SizedBox(height: 10),
+                                            const SizedBox(height: 10),
                                             Text(
-                                              "Attendance Submitted Successfully",
+                                              success
+                                                  ? "Attendance Submitted Successfully"
+                                                  : "Failed to Submit Attendance",
                                               textAlign: TextAlign.center,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                               ),
                                             ),
