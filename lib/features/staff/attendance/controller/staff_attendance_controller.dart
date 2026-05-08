@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import '../model/attendance_model.dart';
 import '../service/attendance_service.dart';
 
-class AttendanceController extends ChangeNotifier {
-  final AttendanceService _service = AttendanceService();
+class StafffAttendanceController extends ChangeNotifier {
+  final StaffAttendanceService service = StaffAttendanceService();
 
   List<int> statusList = [];
 
+  bool isSubmitting = false;
+
   void init(int count) {
+    if (statusList.length == count) return;
+
     statusList = List.filled(count, 0);
     notifyListeners();
   }
@@ -18,36 +22,51 @@ class AttendanceController extends ChangeNotifier {
   }
 
   int get presentCount => statusList.where((e) => e == 1).length;
+
   int get absentCount => statusList.where((e) => e == 2).length;
+
   int get lateCount => statusList.where((e) => e == 3).length;
 
-  Future<bool> submit(List<int> studentIds, int courseId) async {
+  Future<bool> submit({
+    required List<int> studentIds,
+    required int courseId,
+  }) async {
     try {
-      final List<AttendanceRequestModel> list = [];
+      isSubmitting = true;
+      notifyListeners();
+
+      final List<AttendanceRequestModel> data = [];
 
       for (int i = 0; i < studentIds.length; i++) {
         final status = statusList[i];
 
         if (status == 0) continue;
 
-        list.add(
+        data.add(
           AttendanceRequestModel(
             studentId: studentIds[i],
             courseId: courseId,
             status: status == 1
                 ? "present"
                 : status == 2
-                    ? "absent"
-                    : "late",
+                ? "absent"
+                : "late",
           ),
         );
       }
 
-      final result = await _service.submitAttendance(list);
+      final result = await service.submitAttendance(data);
+
+      isSubmitting = false;
+      notifyListeners();
 
       return result;
     } catch (e) {
-      print("CONTROLLER ERROR: $e");
+      isSubmitting = false;
+      notifyListeners();
+
+      print("ATTENDANCE CONTROLLER ERROR: $e");
+
       return false;
     }
   }

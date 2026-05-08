@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controller/attendance_controller.dart';
+import '../controller/staff_attendance_controller.dart';
 
 class AttendanceSummary extends StatelessWidget {
   const AttendanceSummary({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AttendanceController>(
+    return Consumer<StafffAttendanceController>(
       builder: (context, controller, _) {
         return Container(
           width: double.infinity,

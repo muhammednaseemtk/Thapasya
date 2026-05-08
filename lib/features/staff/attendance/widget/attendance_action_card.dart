@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import '../controller/attendance_controller.dart';
+import '../controller/staff_attendance_controller.dart';
 import 'attendance_dot.dart';
 
 class AttendanceActionCard extends StatelessWidget {
@@ -21,7 +21,7 @@ class AttendanceActionCard extends StatelessWidget {
         ? name.substring(0, 2).toUpperCase()
         : name.toUpperCase();
 
-    return Consumer<AttendanceController>(
+    return Consumer<StafffAttendanceController>(
       builder: (context, controller, _) {
         if (controller.statusList.length <= index) {
           return const SizedBox();
@@ -87,7 +87,7 @@ class AttendanceActionCard extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 4),
-                       Text("P", style: AppFonts.poppinsSemiBold),
+                      Text("P", style: AppFonts.poppinsSemiBold),
                     ],
                   ),
 
@@ -104,7 +104,7 @@ class AttendanceActionCard extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 4),
-                       Text("A", style: AppFonts.poppinsSemiBold),
+                      Text("A", style: AppFonts.poppinsSemiBold),
                     ],
                   ),
 
@@ -121,11 +121,11 @@ class AttendanceActionCard extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 4),
-                       Text("L", style: AppFonts.poppinsSemiBold),
+                      Text("L", style: AppFonts.poppinsSemiBold),
                     ],
                   ),
 
-                  SizedBox(width: 10,)
+                  SizedBox(width: 10),
                 ],
               ),
             ],
