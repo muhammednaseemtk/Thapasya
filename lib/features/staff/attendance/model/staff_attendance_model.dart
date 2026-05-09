@@ -1,9 +1,9 @@
-class AttendanceRequestModel {
+class StaffAttendanceRequestModel {
   final int studentId;
   final int courseId;
   final String status;
 
-  AttendanceRequestModel({
+  StaffAttendanceRequestModel({
     required this.studentId,
     required this.courseId,
     required this.status,

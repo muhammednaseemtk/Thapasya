@@ -10,11 +10,11 @@ class StaffStudentService {
     try {
       final response = await DioClient.dio.get(
         AppUrls.staffStudents,
-        queryParameters: {
-          "course_id": courseId,
-          "branch_id": branchId,
-        },
+
+        queryParameters: {"course_id": courseId, "branch_id": branchId},
       );
+
+      print("STUDENT RESPONSE => ${response.data}");
 
       final res = response.data;
 
@@ -32,7 +32,8 @@ class StaffStudentService {
 
       return [];
     } catch (e) {
-      print("Student API Error: $e");
+      print("STUDENT API ERROR => $e");
+
       return [];
     }
   }

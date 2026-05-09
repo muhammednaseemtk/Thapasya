@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../model/attendance_model.dart';
-import '../service/attendance_service.dart';
+import '../model/staff_attendance_model.dart';
+import '../service/staff_attendance_service.dart';
 
 class StafffAttendanceController extends ChangeNotifier {
   final StaffAttendanceService service = StaffAttendanceService();
@@ -35,7 +35,7 @@ class StafffAttendanceController extends ChangeNotifier {
       isSubmitting = true;
       notifyListeners();
 
-      final List<AttendanceRequestModel> data = [];
+      final List<StaffAttendanceRequestModel> data = [];
 
       for (int i = 0; i < studentIds.length; i++) {
         final status = statusList[i];
@@ -43,7 +43,7 @@ class StafffAttendanceController extends ChangeNotifier {
         if (status == 0) continue;
 
         data.add(
-          AttendanceRequestModel(
+          StaffAttendanceRequestModel(
             studentId: studentIds[i],
             courseId: courseId,
             status: status == 1
