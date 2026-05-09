@@ -3,7 +3,9 @@ import 'package:thapasya/core/network/dio_client.dart';
 import '../model/staff_attendance_model.dart';
 
 class StaffAttendanceService {
-  Future<bool> submitAttendance(List<StaffAttendanceRequestModel> data) async {
+  Future<String> submitAttendance(
+    List<StaffAttendanceRequestModel> data,
+  ) async {
     try {
       for (final item in data) {
         final response = await DioClient.dio.post(
@@ -12,20 +14,21 @@ class StaffAttendanceService {
           data: item.toJson(),
         );
 
-        print(response.data);
-
         if (response.statusCode == 200 || response.statusCode == 201) {
           continue;
         }
 
-        return false;
+        if (response.statusCode == 400 &&
+            response.data.toString().contains("duplicate key value")) {
+          return "Attendance already submitted today";
+        }
+
+        return "Failed to submit attendance";
       }
 
-      return true;
+      return "success";
     } catch (e) {
-      print("ATTENDANCE API ERROR => $e");
-
-      return false;
+      return "Something went wrong";
     }
   }
 }

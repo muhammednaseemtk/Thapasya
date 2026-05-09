@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 
 class RevenueChart extends StatelessWidget {
   const RevenueChart({super.key});
@@ -129,7 +130,7 @@ class RevenueChart extends StatelessWidget {
                       show: true,
                       gradient: LinearGradient(
                         colors: [
-                          Colors.blue.withOpacity(0.2),
+                          AppColors.deepBlue,
                           Colors.transparent,
                         ],
                         begin: Alignment.topCenter,

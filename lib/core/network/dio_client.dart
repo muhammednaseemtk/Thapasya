@@ -10,6 +10,7 @@ class DioClient {
 
             headers: {
               "Content-Type": "application/json",
+
               "accept": "application/json",
             },
 
@@ -27,23 +28,14 @@ class DioClient {
                 options.headers['Cookie'] = 'access_token=$token';
               }
 
-              print("REQUEST => ${options.path}");
-              print("HEADERS => ${options.headers}");
-              print("DATA => ${options.data}");
-
               return handler.next(options);
             },
 
             onResponse: (response, handler) {
-              print("RESPONSE => ${response.data}");
-
               return handler.next(response);
             },
 
             onError: (e, handler) {
-              print("ERROR => ${e.response?.statusCode}");
-              print("ERROR DATA => ${e.response?.data}");
-
               return handler.next(e);
             },
           ),

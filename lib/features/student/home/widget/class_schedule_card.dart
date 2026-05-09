@@ -15,7 +15,7 @@ class ClassScheduleCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: AppColors.black10,
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),

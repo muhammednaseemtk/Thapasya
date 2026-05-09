@@ -5,11 +5,13 @@ import 'package:thapasya/core/network/dio_client.dart';
 class AuthService {
   Future<Map<String, dynamic>?> loginUser({
     required String username,
+
     required String password,
   }) async {
     try {
       final response = await DioClient.dio.post(
         AppUrls.login,
+
         data: {"username": username, "password": password},
       );
 
@@ -26,7 +28,6 @@ class AuthService {
 
               await AuthToken.setToken(token);
 
-              print("TOKEN SAVED: $token");
               break;
             }
           }
@@ -37,7 +38,6 @@ class AuthService {
 
       return {"message": "Login failed"};
     } catch (e) {
-      print("LOGIN ERROR: $e");
       return {"message": "Something went wrong"};
     }
   }

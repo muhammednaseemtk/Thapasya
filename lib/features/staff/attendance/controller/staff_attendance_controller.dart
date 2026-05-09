@@ -10,15 +10,21 @@ class StafffAttendanceController extends ChangeNotifier {
   bool isSubmitting = false;
 
   void init(int count) {
-    if (statusList.length == count) return;
+    if (statusList.length == count) {
+      return;
+    }
 
     statusList = List.filled(count, 0);
+
     notifyListeners();
   }
 
   void setStatus(int index, int value) {
-    statusList[index] = value;
-    notifyListeners();
+    if (index >= 0 && index < statusList.length) {
+      statusList[index] = value;
+
+      notifyListeners();
+    }
   }
 
   int get presentCount => statusList.where((e) => e == 1).length;
@@ -27,12 +33,14 @@ class StafffAttendanceController extends ChangeNotifier {
 
   int get lateCount => statusList.where((e) => e == 3).length;
 
-  Future<bool> submit({
+  Future<String> submit({
     required List<int> studentIds,
+
     required int courseId,
   }) async {
     try {
       isSubmitting = true;
+
       notifyListeners();
 
       final List<StaffAttendanceRequestModel> data = [];
@@ -40,12 +48,16 @@ class StafffAttendanceController extends ChangeNotifier {
       for (int i = 0; i < studentIds.length; i++) {
         final status = statusList[i];
 
-        if (status == 0) continue;
+        if (status == 0) {
+          continue;
+        }
 
         data.add(
           StaffAttendanceRequestModel(
             studentId: studentIds[i],
+
             courseId: courseId,
+
             status: status == 1
                 ? "present"
                 : status == 2
@@ -55,19 +67,27 @@ class StafffAttendanceController extends ChangeNotifier {
         );
       }
 
+      if (data.isEmpty) {
+        isSubmitting = false;
+
+        notifyListeners();
+
+        return "Please mark attendance";
+      }
+
       final result = await service.submitAttendance(data);
 
       isSubmitting = false;
+
       notifyListeners();
 
       return result;
     } catch (e) {
       isSubmitting = false;
+
       notifyListeners();
 
-      print("ATTENDANCE CONTROLLER ERROR: $e");
-
-      return false;
+      return "Something went wrong";
     }
   }
 }

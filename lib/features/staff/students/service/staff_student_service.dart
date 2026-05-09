@@ -5,6 +5,7 @@ import 'package:thapasya/features/staff/students/model/staff_student_model.dart'
 class StaffStudentService {
   Future<List<StaffStudentModel>> getStudents({
     required int courseId,
+
     required int branchId,
   }) async {
     try {
@@ -13,8 +14,6 @@ class StaffStudentService {
 
         queryParameters: {"course_id": courseId, "branch_id": branchId},
       );
-
-      print("STUDENT RESPONSE => ${response.data}");
 
       final res = response.data;
 
@@ -32,8 +31,6 @@ class StaffStudentService {
 
       return [];
     } catch (e) {
-      print("STUDENT API ERROR => $e");
-
       return [];
     }
   }

@@ -7,6 +7,7 @@ class ScheduleService {
     try {
       final response = await DioClient.dio.get(
         AppUrls.schedule,
+
         queryParameters: {"course_id": courseId},
       );
 
@@ -26,7 +27,6 @@ class ScheduleService {
 
       return [];
     } catch (e) {
-      print("Schedule Error: $e");
       return [];
     }
   }

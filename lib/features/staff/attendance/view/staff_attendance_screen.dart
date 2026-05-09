@@ -27,8 +27,8 @@ class StaffAttendanceScreen extends StatelessWidget {
         },
       ),
 
-      body: Consumer<StaffStudentController>(
-        builder: (context, studentController, _) {
+      body: Consumer2<StaffStudentController, StafffAttendanceController>(
+        builder: (context, studentController, attendanceController, _) {
           if (studentController.students.isEmpty &&
               !studentController.isLoading) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -36,141 +36,142 @@ class StaffAttendanceScreen extends StatelessWidget {
             });
           }
 
-          return Consumer<StafffAttendanceController>(
-            builder: (context, attendanceController, _) {
-              if (attendanceController.statusList.length !=
-                  studentController.students.length) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  attendanceController.init(studentController.students.length);
-                });
-              }
+          if (attendanceController.statusList.length !=
+              studentController.students.length) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              attendanceController.init(studentController.students.length);
+            });
+          }
 
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 12,
-                  ),
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
 
-                  child: Column(
-                    children: [
-                      const AttendanceHeader(),
+              child: Column(
+                children: [
+                  const AttendanceHeader(),
 
-                      const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                      const BatchInfoCard(),
+                  const BatchInfoCard(),
 
-                      const SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
-                      const AttendanceSummary(),
+                  const AttendanceSummary(),
 
-                      const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                      if (studentController.isLoading)
-                        const Center(child: CircularProgressIndicator())
-                      else
-                        Column(
-                          children: List.generate(
-                            studentController.students.length,
+                  if (studentController.isLoading)
+                    const Center(child: CircularProgressIndicator())
+                  else if (studentController.students.isEmpty)
+                    const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text("No Students"),
+                      ),
+                    )
+                  else
+                    Column(
+                      children: List.generate(
+                        studentController.students.length,
 
-                            (index) {
-                              final student = studentController.students[index];
+                        (index) {
+                          final student = studentController.students[index];
 
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
 
-                                child: AttendanceActionCard(
-                                  name: student.name,
-                                  index: index,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                            child: AttendanceActionCard(
+                              name: student.name,
+                              index: index,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
 
-                      const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                      CommonButton(
-                        onPressed: attendanceController.isSubmitting
-                            ? () {}
-                            : () async {
-                                final success = await attendanceController
-                                    .submit(
-                                      studentIds: studentController.students
-                                          .map((e) => e.id)
-                                          .toList(),
+                  CommonButton(
+                    onPressed: attendanceController.isSubmitting
+                        ? () {}
+                        : () async {
+                            final result = await attendanceController.submit(
+                              studentIds: studentController.students
+                                  .map((e) => e.id)
+                                  .toList(),
 
-                                      courseId: 1,
-                                    );
+                              courseId: 1,
+                            );
 
-                                if (!context.mounted) return;
+                            if (!context.mounted) {
+                              return;
+                            }
 
-                                showDialog(
-                                  context: context,
+                            showDialog(
+                              context: context,
 
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20),
+                              builder: (context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+
+                                    children: [
+                                      Icon(
+                                        result == "success"
+                                            ? Icons.check_circle
+                                            : Icons.error,
+
+                                        color: result == "success"
+                                            ? Colors.green
+                                            : Colors.red,
+
+                                        size: 60,
                                       ),
 
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
+                                      const SizedBox(height: 12),
 
-                                        children: [
-                                          Icon(
-                                            success
-                                                ? Icons.check_circle
-                                                : Icons.error,
+                                      Text(
+                                        result == "success"
+                                            ? "Attendance Submitted Successfully"
+                                            : result,
 
-                                            color: success
-                                                ? Colors.green
-                                                : Colors.red,
-
-                                            size: 60,
-                                          ),
-
-                                          const SizedBox(height: 12),
-
-                                          Text(
-                                            success
-                                                ? "Attendance Submitted Successfully"
-                                                : "Failed to Submit Attendance",
-
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ],
+                                        textAlign: TextAlign.center,
                                       ),
+                                    ],
+                                  ),
 
-                                      actions: [
-                                        Center(
-                                          child: TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
+                                  actions: [
+                                    Center(
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
 
-                                            child: const Text("OK"),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                        child: const Text("OK"),
+                                      ),
+                                    ),
+                                  ],
                                 );
                               },
+                            );
+                          },
 
-                        backgroundColor: AppColors.deepBlue,
+                    backgroundColor: AppColors.deepBlue,
 
-                        width: 350,
+                    width: 350,
 
-                        txt: attendanceController.isSubmitting
-                            ? "Submitting..."
-                            : "Submit Attendance",
-                      ),
-                    ],
+                    txt: attendanceController.isSubmitting
+                        ? "Submitting..."
+                        : "Submit Attendance",
                   ),
-                ),
-              );
-            },
+                ],
+              ),
+            ),
           );
         },
       ),

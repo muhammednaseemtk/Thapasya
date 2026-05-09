@@ -12,47 +12,61 @@ class StaffStudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.read<StaffStudentController>();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (controller.students.isEmpty && !controller.isLoading) {
-        controller.fetchStudents(1);
-      }
-    });
-
     return Scaffold(
       backgroundColor: AppColors.screen,
+
       appBar: CommonAppBar(
         color: AppColors.deepBlue,
+
         onProfileTap: () {
           Navigator.pushNamed(context, AppRoutes.staffProfile);
         },
       ),
+
       body: Consumer<StaffStudentController>(
         builder: (context, controller, _) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (controller.students.isEmpty && !controller.isLoading) {
+              controller.fetchStudents(1);
+            }
+          });
+
+          if (!controller.isLoading && controller.students.isEmpty) {
+            return Center(
+              child: Text("No Students", style: AppFonts.poppinsSemiBold7),
+            );
+          }
+
           return SingleChildScrollView(
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
+
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                     children: [
                       const Text(
                         "My Students",
                         style: AppFonts.poppinsSemiBold5,
                       ),
+
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 6,
                         ),
+
                         decoration: BoxDecoration(
                           color: AppColors.white70,
+
                           borderRadius: BorderRadius.circular(20),
                         ),
+
                         child: Text(
                           "${controller.students.length} total",
+
                           style: const TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
