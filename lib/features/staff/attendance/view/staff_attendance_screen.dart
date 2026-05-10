@@ -5,10 +5,11 @@ import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/features/staff/attendance/controller/staff_attendance_controller.dart';
-import 'package:thapasya/features/staff/attendance/widget/attendance_action_card.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_header.dart';
+import 'package:thapasya/features/staff/attendance/widget/attendance_result_dialog.dart';
+import 'package:thapasya/features/staff/attendance/widget/attendance_state_widget.dart';
+import 'package:thapasya/features/staff/attendance/widget/attendance_student_list.dart';
 import 'package:thapasya/features/staff/attendance/widget/attendance_summary.dart';
-import 'package:thapasya/features/staff/attendance/widget/batch_info_card.dart';
 import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 
 class StaffAttendanceScreen extends StatelessWidget {
@@ -51,44 +52,21 @@ class StaffAttendanceScreen extends StatelessWidget {
                 children: [
                   const AttendanceHeader(),
 
-                  const SizedBox(height: 10),
-
-                  const BatchInfoCard(),
-
                   const SizedBox(height: 20),
 
                   const AttendanceSummary(),
 
                   const SizedBox(height: 10),
 
-                  if (studentController.isLoading)
-                    const Center(child: CircularProgressIndicator())
-                  else if (studentController.students.isEmpty)
-                    const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text("No Students"),
-                      ),
+                  if (studentController.isLoading ||
+                      studentController.students.isEmpty)
+                    AttendanceStateWidget(
+                      isLoading: studentController.isLoading,
+
+                      isEmpty: studentController.students.isEmpty,
                     )
                   else
-                    Column(
-                      children: List.generate(
-                        studentController.students.length,
-
-                        (index) {
-                          final student = studentController.students[index];
-
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-
-                            child: AttendanceActionCard(
-                              name: student.name,
-                              index: index,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                    AttendanceStudentList(students: studentController.students),
 
                   const SizedBox(height: 10),
 
@@ -112,51 +90,7 @@ class StaffAttendanceScreen extends StatelessWidget {
                               context: context,
 
                               builder: (context) {
-                                return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-
-                                  content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-
-                                    children: [
-                                      Icon(
-                                        result == "success"
-                                            ? Icons.check_circle
-                                            : Icons.error,
-
-                                        color: result == "success"
-                                            ? Colors.green
-                                            : Colors.red,
-
-                                        size: 60,
-                                      ),
-
-                                      const SizedBox(height: 12),
-
-                                      Text(
-                                        result == "success"
-                                            ? "Attendance Submitted Successfully"
-                                            : result,
-
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-
-                                  actions: [
-                                    Center(
-                                      child: TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-
-                                        child: const Text("OK"),
-                                      ),
-                                    ),
-                                  ],
-                                );
+                                return AttendanceResultDialog(result: result);
                               },
                             );
                           },

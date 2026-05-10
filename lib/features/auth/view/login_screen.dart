@@ -14,14 +14,23 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final screenHeight = mediaQuery.size.height;
+    final horizontalPadding = screenWidth * 0.06;
+    final topPadding = screenHeight * 0.03;
+    final imageHeight = screenHeight * 0.25;
+    final titleSpacing = screenHeight * 0.008;
+    final fieldSpacing = screenHeight * 0.025;
+    final buttonSpacing = screenHeight * 0.03;
 
     return Scaffold(
       backgroundColor: AppColors.screen,
       resizeToAvoidBottomInset: true,
-
       body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
         child: SafeArea(
           bottom: false,
           child: Column(
@@ -31,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     'assets/images/thapasya_image2.png',
-                    height: 250,
+                    height: imageHeight,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -42,26 +51,22 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: AppColors.splashGradient,
-                    ),
+                    gradient: LinearGradient(colors: AppColors.splashGradient),
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50),
                       topRight: Radius.circular(50),
                     ),
                   ),
-
                   child: SingleChildScrollView(
                     padding: EdgeInsets.only(
-                      left: 25,
-                      right: 25,
-                      top: 25,
+                      left: horizontalPadding,
+                      right: horizontalPadding,
+                      top: topPadding,
                     ),
 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Center(
                           child: Text(
                             AppStrings.loginHeading,
@@ -69,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
 
-                        const SizedBox(height: 5),
+                        SizedBox(height: titleSpacing),
 
                         Center(
                           child: Text(
@@ -78,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
 
-                        const SizedBox(height: 35),
+                        SizedBox(height: fieldSpacing),
 
                         LoginTextField(
                           txt: 'enter username..',
@@ -87,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                           icon: Iconsax.user_tag,
                         ),
 
-                        const SizedBox(height: 25),
+                        SizedBox(height: fieldSpacing),
 
                         LoginTextField(
                           txt: AppStrings.passwordHint,
@@ -96,12 +101,13 @@ class LoginScreen extends StatelessWidget {
                           icon: Iconsax.lock_circle,
                         ),
 
-                        const SizedBox(height: 15),
+                        SizedBox(height: screenHeight * 0.01),
 
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {},
+
                             child: Text(
                               AppStrings.forgotPass,
                               style: AppFonts.poppinsBold,
@@ -109,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
 
-                        const SizedBox(height: 25),
+                        SizedBox(height: buttonSpacing),
 
                         Center(
                           child: LoginButton(

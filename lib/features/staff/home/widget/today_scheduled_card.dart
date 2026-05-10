@@ -11,11 +11,16 @@ class TodayScheduleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final padding = screenWidth * 0.04;
+    final spacing = screenWidth * 0.04;
+
     return Consumer<ScheduleController>(
       builder: (context, controller, _) {
         return Container(
-          width: double.infinity, 
-          padding: const EdgeInsets.all(16),
+          width: double.infinity,
+          padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -27,19 +32,16 @@ class TodayScheduleCard extends StatelessWidget {
             color: AppColors.white,
             borderRadius: BorderRadius.circular(20),
           ),
+
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Today's Schedule",
-                style: AppFonts.poppinsSemiBold7,
-              ),
-              const SizedBox(height: 16),
-
+              const Text("Today's Schedule", style: AppFonts.poppinsSemiBold7),
+              SizedBox(height: spacing),
               if (controller.isLoading)
                 const ScheduleShimmer()
               else if (controller.schedules.isEmpty)
-                const Center( 
+                const Center(
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text("No Schedule"),
@@ -49,7 +51,6 @@ class TodayScheduleCard extends StatelessWidget {
                 Column(
                   children: List.generate(controller.schedules.length, (index) {
                     final item = controller.schedules[index];
-
                     return Column(
                       children: [
                         ScheduleItem(
@@ -57,6 +58,7 @@ class TodayScheduleCard extends StatelessWidget {
                           date: item.classDate,
                           time: item.classTime,
                         ),
+
                         if (index != controller.schedules.length - 1)
                           const Divider(height: 24),
                       ],

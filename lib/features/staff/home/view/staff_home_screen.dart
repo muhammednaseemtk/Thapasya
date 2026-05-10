@@ -13,43 +13,66 @@ class StaffHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final courseController = context.read<StaffCourseController>();
-    final scheduleController = context.read<ScheduleController>();
+    final mediaQuery = MediaQuery.of(context);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (courseController.courses.isEmpty &&
-          !courseController.isLoading) {
-        courseController.fetchStaffCourses();
-        scheduleController.fetchSchedule(0);
-      }
-    });
+    final screenWidth = mediaQuery.size.width;
+
+    final horizontalPadding = screenWidth * 0.025;
+
+    final verticalPadding = screenWidth * 0.02;
 
     return Scaffold(
       backgroundColor: AppColors.screen,
+
       appBar: CommonAppBar(
         color: AppColors.deepBlue,
+
         onProfileTap: () {
           Navigator.pushNamed(context, AppRoutes.staffProfile);
         },
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
-          child: Column(
-            children: const [
-              StaffDashboardCard(
-                name: "Smt. Kavitha Rajan",
-                role:
-                    "Bharatanatyam Faculty | Senior Instructor",
-                students: 24,
-                classes: 3,
-                attendance: 82,
+
+      body: Consumer2<StaffCourseController, ScheduleController>(
+        builder: (context, courseController, scheduleController, _) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (courseController.courses.isEmpty &&
+                !courseController.isLoading) {
+              courseController.fetchStaffCourses();
+
+              scheduleController.fetchSchedule(0);
+            }
+          });
+
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: horizontalPadding,
+
+                vertical: verticalPadding,
               ),
-              SizedBox(height: 10,),
-              TodayScheduleCard(),
-            ],
-          ),
-        ),
+
+              child: Column(
+                children: const [
+                  StaffDashboardCard(
+                    name: "Smt. Kavitha Rajan",
+
+                    role: "Bharatanatyam Faculty | Senior Instructor",
+
+                    students: 24,
+
+                    classes: 3,
+
+                    attendance: 82,
+                  ),
+
+                  SizedBox(height: 10),
+
+                  TodayScheduleCard(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

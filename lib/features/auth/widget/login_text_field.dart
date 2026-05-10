@@ -7,6 +7,7 @@ class LoginTextField extends StatelessWidget {
   final bool obsecureTxt;
   final TextEditingController controller;
   final IconData icon;
+
   const LoginTextField({
     super.key,
     required this.txt,
@@ -17,8 +18,12 @@ class LoginTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final horizontalPadding = screenWidth * 0.02;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 4),
       child: TextField(
         cursorColor: AppColors.darkRed,
         controller: controller,
@@ -26,18 +31,18 @@ class LoginTextField extends StatelessWidget {
         style: AppFonts.poppinsSemiBold,
         decoration: InputDecoration(
           hintText: txt,
-          hintStyle: TextStyle(color: AppColors.textField),
+          hintStyle: const TextStyle(color: AppColors.textField),
           prefixIcon: Icon(icon),
           prefixIconColor: AppColors.darkRed,
           filled: true,
           fillColor: AppColors.white,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColors.darkRed),
+            borderSide: const BorderSide(color: AppColors.darkRed),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: AppColors.darkRed),
+            borderSide: const BorderSide(color: AppColors.darkRed),
           ),
         ),
       ),

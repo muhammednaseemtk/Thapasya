@@ -16,9 +16,12 @@ class StaffLogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-      appBar: CommonAppBar(color: AppColors.deepBlue,onProfileTap: () {
-        Navigator.pushNamed(context, AppRoutes.staffProfile);
-      },),
+      appBar: CommonAppBar(
+        color: AppColors.deepBlue,
+        onProfileTap: () {
+          Navigator.pushNamed(context, AppRoutes.staffProfile);
+        },
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +66,7 @@ class StaffLogScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
 
             Padding(
               padding: const EdgeInsets.only(left: 20),

@@ -24,12 +24,10 @@ class LoginButton extends StatelessWidget {
     );
 
     if (!context.mounted) return;
-
     if (result != null) {
       final route = result['role'] == "student"
           ? AppRoutes.studentMain
           : AppRoutes.staffMain;
-
       Navigator.pushNamedAndRemoveUntil(context, route, (_) => false);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -46,6 +44,8 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
     return Consumer<AuthController>(
       builder: (context, controller, _) {
         return controller.isLoading
@@ -58,10 +58,12 @@ class LoginButton extends StatelessWidget {
                 ),
               )
             : CommonButton(
-                onPressed: () => login(context, controller),
+                onPressed: () {
+                  login(context, controller);
+                },
                 backgroundColor: AppColors.darkRed,
                 txt: AppStrings.login,
-                width: 300,
+                width: screenWidth * 0.55,
               );
       },
     );

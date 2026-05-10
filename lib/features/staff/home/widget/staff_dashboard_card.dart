@@ -25,42 +25,64 @@ class StaffDashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final padding = screenWidth * 0.05;
+    final spacingSmall = screenWidth * 0.015;
+    final spacingMedium = screenWidth * 0.05;
+
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.all(20),
+
+      padding: EdgeInsets.all(padding),
+
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: AppColors.black10,
+
             blurRadius: 10,
+
             offset: const Offset(0, 3),
           ),
         ],
+
         borderRadius: BorderRadius.circular(20),
+
         color: AppColors.deepBlue,
       ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           Text("Good Morning", style: AppFonts.poppinsBold7),
-          const SizedBox(height: 6),
+
+          SizedBox(height: spacingSmall),
+
           Text(name, style: AppFonts.poppinsSemiBold6),
-          const SizedBox(height: 4),
+
+          SizedBox(height: spacingSmall),
+
           Text(role, style: AppFonts.poppinsBold7),
-          const SizedBox(height: 20),
 
-          Consumer<StaffCourseController>(
-            builder: (context, controller, child) {
-              if(controller.isLoading) {
-                return CommonToggleShimmer();
+          SizedBox(height: spacingMedium),
+
+          Consumer2<StaffCourseController, ScheduleController>(
+            builder: (context, courseController, scheduleController, child) {
+              if (courseController.isLoading) {
+                return const CommonToggleShimmer();
               }
-              return CommonToggle(
-                items: controller.courses.map((e) => e.name).toList(),
-                selectedIndex: controller.selectedIndex,
-                onTap: (index) {
-                  controller.selectCourse(index);
 
-                  context.read<ScheduleController>().fetchSchedule(index);
+              return CommonToggle(
+                items: courseController.courses.map((e) => e.name).toList(),
+
+                selectedIndex: courseController.selectedIndex,
+
+                onTap: (index) {
+                  courseController.selectCourse(index);
+
+                  scheduleController.fetchSchedule(index);
                 },
               );
             },
