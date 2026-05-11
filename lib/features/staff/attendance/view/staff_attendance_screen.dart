@@ -15,19 +15,6 @@ import 'package:thapasya/features/staff/students/controller/staff_student_contro
 class StaffAttendanceScreen extends StatelessWidget {
   const StaffAttendanceScreen({super.key});
 
-  Future<void> loadAttendanceData(
-    StaffStudentController studentController,
-    StafffAttendanceController attendanceController,
-  ) async {
-    if (studentController.students.isEmpty && !studentController.isLoading) {
-      await studentController.fetchStudents(1);
-    }
-    if (attendanceController.statusList.length !=
-        studentController.students.length) {
-      attendanceController.init(studentController.students.length);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,87 +28,103 @@ class StaffAttendanceScreen extends StatelessWidget {
 
       body: Consumer2<StaffStudentController, StafffAttendanceController>(
         builder: (context, studentController, attendanceController, _) {
-          return FutureBuilder(
-            future: loadAttendanceData(studentController, attendanceController),
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (studentController.students.isEmpty &&
+                !studentController.isLoading) {
+              studentController.fetchStudents(1);
+            }
 
-            builder: (context, snapshot) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 12,
-                      ),
+            if (attendanceController.statusList.length !=
+                studentController.students.length) {
+              attendanceController.init(studentController.students.length);
+            }
+          });
 
-                      child: Column(
-                        children: [
-                          const AttendanceHeader(),
-
-                          const SizedBox(height: 20),
-
-                          const AttendanceSummary(),
-
-                          const SizedBox(height: 10),
-
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child:
-                                  studentController.isLoading ||
-                                      studentController.students.isEmpty
-                                  ? AttendanceState(
-                                      isLoading: studentController.isLoading,
-                                      isEmpty:
-                                          studentController.students.isEmpty,
-                                    )
-                                  : AttendanceStudentList(
-                                      students: studentController.students,
-                                    ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+          return Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 12,
                   ),
 
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
-                    color: AppColors.screen,
-                    child: CommonButton(
-                      onPressed: attendanceController.isSubmitting
-                          ? () {}
-                          : () async {
-                              final result = await attendanceController.submit(
-                                studentIds: studentController.students
-                                    .map((e) => e.id)
-                                    .toList(),
-                                courseId: 1,
-                              );
+                  child: Column(
+                    children: [
+                      const AttendanceHeader(),
 
-                              if (!context.mounted) {
-                                return;
-                              }
+                      const SizedBox(height: 20),
 
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AttendanceResultDialog(result: result);
-                                },
-                              );
+                      const AttendanceSummary(),
+
+                      const SizedBox(height: 10),
+
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child:
+                              studentController.isLoading ||
+                                  studentController.students.isEmpty
+                              ? AttendanceState(
+                                  isLoading: studentController.isLoading,
+
+                                  isEmpty: studentController.students.isEmpty,
+                                )
+                              : AttendanceStudentList(
+                                  students: studentController.students,
+                                ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+
+                color: AppColors.screen,
+
+                child: CommonButton(
+                  onPressed:
+                      attendanceController.isSubmitting ||
+                          attendanceController.isSubmitted
+                      ? () {}
+                      : () async {
+                          final result = await attendanceController.submit(
+                            studentIds: studentController.students
+                                .map((e) => e.id)
+                                .toList(),
+
+                            courseId: 1,
+                          );
+
+                          if (!context.mounted) {
+                            return;
+                          }
+
+                          showDialog(
+                            context: context,
+
+                            builder: (context) {
+                              return AttendanceResultDialog(result: result);
                             },
+                          );
+                        },
 
-                      backgroundColor: AppColors.deepBlue,
-                      width: double.infinity,
-                      txt: attendanceController.isSubmitting
-                          ? "Submitting..."
-                          : "Submit Attendance",
-                    ),
-                  ),
+                  backgroundColor: AppColors.deepBlue,
 
-                  const SizedBox(height: 85),
-                ],
-              );
-            },
+                  width: double.infinity,
+
+                  txt: attendanceController.isSubmitting
+                      ? "Submitting..."
+                      : attendanceController.isSubmitted
+                      ? "Attendance Submitted"
+                      : "Submit Attendance",
+                ),
+              ),
+
+              const SizedBox(height: 85),
+            ],
           );
         },
       ),

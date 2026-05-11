@@ -12,21 +12,6 @@ import 'package:thapasya/features/staff/students/controller/staff_student_contro
 class StaffHomeScreen extends StatelessWidget {
   const StaffHomeScreen({super.key});
 
-  Future<void> loadInitialData(BuildContext context) async {
-    final courseController = context.read<StaffCourseController>();
-    final scheduleController = context.read<ScheduleController>();
-    final studentController = context.read<StaffStudentController>();
-    if (courseController.courses.isEmpty && !courseController.isLoading) {
-      await courseController.fetchStaffCourses();
-      if (courseController.courses.isNotEmpty) {
-        final courseId =
-            courseController.courses[courseController.selectedIndex].id;
-        await scheduleController.fetchSchedule(courseId);
-        await studentController.fetchStudents(courseId);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -36,41 +21,68 @@ class StaffHomeScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.screen,
+
       appBar: CommonAppBar(
         color: AppColors.deepBlue,
+
         onProfileTap: () {
           Navigator.pushNamed(context, AppRoutes.staffProfile);
         },
       ),
 
-      body: FutureBuilder(
-        future: loadInitialData(context),
-        builder: (context, snapshot) {
-          return SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding,
-                vertical: verticalPadding,
-              ),
+      body:
+          Consumer3<
+            StaffCourseController,
+            ScheduleController,
+            StaffStudentController
+          >(
+            builder:
+                (
+                  context,
+                  courseController,
+                  scheduleController,
+                  studentController,
+                  _,
+                ) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) async {
+                    if (courseController.courses.isEmpty &&
+                        !courseController.isLoading) {
+                      await courseController.fetchStaffCourses();
+                      if (courseController.courses.isNotEmpty) {
+                        final courseId = courseController
+                            .courses[courseController.selectedIndex]
+                            .id;
+                        await scheduleController.fetchSchedule(courseId);
+                        await studentController.fetchStudents(courseId);
+                      }
+                    }
+                  });
 
-              child: const Column(
-                children: [
-                  StaffDashboardCard(
-                    name: "Smt. Kavitha Rajan",
-                    students: 24,
-                    classes: 3,
-                    attendance: 82,
-                  ),
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: horizontalPadding,
+                        vertical: verticalPadding,
+                      ),
 
-                  SizedBox(height: 10),
+                      child: const Column(
+                        children: [
+                          StaffDashboardCard(
+                            name: "Smt. Kavitha Rajan",
+                            students: 24,
+                            classes: 3,
+                            attendance: 82,
+                          ),
 
-                  TodayScheduleCard(),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                          SizedBox(height: 10),
+
+                          TodayScheduleCard(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+          ),
     );
   }
 }

@@ -4,6 +4,7 @@ import '../service/staff_attendance_service.dart';
 
 class StafffAttendanceController extends ChangeNotifier {
   final StaffAttendanceService service = StaffAttendanceService();
+
   List<int> statusList = [];
   bool isSubmitting = false;
   bool isSubmitted = false;
@@ -12,6 +13,7 @@ class StafffAttendanceController extends ChangeNotifier {
     if (statusList.length == count) {
       return;
     }
+
     statusList = List.filled(count, 0);
     notifyListeners();
   }
@@ -27,11 +29,6 @@ class StafffAttendanceController extends ChangeNotifier {
     }
   }
 
-  void clearAttendance() {
-    statusList = List.filled(statusList.length, 0);
-    notifyListeners();
-  }
-
   int get presentCount => statusList.where((e) => e == 1).length;
   int get absentCount => statusList.where((e) => e == 2).length;
   int get lateCount => statusList.where((e) => e == 3).length;
@@ -42,16 +39,14 @@ class StafffAttendanceController extends ChangeNotifier {
   }) async {
     try {
       isSubmitting = true;
-
       notifyListeners();
-
       final List<StaffAttendanceRequestModel> data = [];
-
       for (int i = 0; i < studentIds.length; i++) {
         final status = statusList[i];
         if (status == 0) {
           continue;
         }
+
         data.add(
           StaffAttendanceRequestModel(
             studentId: studentIds[i],
@@ -73,19 +68,21 @@ class StafffAttendanceController extends ChangeNotifier {
 
       final result = await service.submitAttendance(data);
       isSubmitting = false;
-
       if (result == "success") {
         isSubmitted = true;
-        clearAttendance();
       }
-
       notifyListeners();
-
       return result;
     } catch (e) {
       isSubmitting = false;
       notifyListeners();
       return "Something went wrong";
     }
+  }
+
+  void resetAttendance() {
+    isSubmitted = false;
+    statusList = List.filled(statusList.length, 0);
+    notifyListeners();
   }
 }
