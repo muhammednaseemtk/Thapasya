@@ -6,4 +6,6 @@ class AppUrls {
   static const String schedule = "class_schedule/get_schedule";
   static const String staffStudents = "staff/my-students";
   static const String markAttendance = "staff/mark-attendance";
+  static const String submitDailyLog = "daily_log/";
+  static const String getDailyLogs = "daily_log/get_log";
 }
