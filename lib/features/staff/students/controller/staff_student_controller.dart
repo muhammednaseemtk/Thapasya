@@ -4,33 +4,24 @@ import 'package:thapasya/features/staff/students/service/staff_student_service.d
 
 class StaffStudentController extends ChangeNotifier {
   bool isLoading = false;
-
-  List<StaffStudentModel> students = [];
-
-  final service = StaffStudentService();
-
   bool isFetched = false;
+  List<StaffStudentModel> students = [];
+  final StaffStudentService service = StaffStudentService();
+
   Future<void> fetchStudents(int courseId) async {
-    if (isFetched) return;
-
-    isFetched = true;
-
     isLoading = true;
+    isFetched = true;
+    students = [];
     notifyListeners();
-
-    final result = await service.getStudents(
-      courseId: courseId,
-      branchId: 1,
-    );
-
+    final result = await service.getStudents(courseId: courseId, branchId: 1);
     students = result;
-
     isLoading = false;
     notifyListeners();
   }
 
-  void reset() {
+  void resetFetch() {
     isFetched = false;
     students = [];
+    notifyListeners();
   }
 }

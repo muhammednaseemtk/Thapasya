@@ -6,6 +6,7 @@ import 'package:thapasya/core/widget/common_toggle.dart';
 import 'package:thapasya/core/widget/common_toggle_shimmer.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
 import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
+import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
@@ -30,51 +31,54 @@ class StaffDashboardCard extends StatelessWidget {
 
     return Container(
       width: double.maxFinite,
-
       padding: EdgeInsets.all(padding),
-
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: AppColors.black10,
-
             blurRadius: 10,
-
             offset: const Offset(0, 3),
           ),
         ],
-
         borderRadius: BorderRadius.circular(20),
-
         color: AppColors.deepBlue,
       ),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: [
           Text(name, style: AppFonts.poppinsSemiBold6),
 
           SizedBox(height: spacingMedium),
 
-          Consumer2<StaffCourseController, ScheduleController>(
-            builder: (context, courseController, scheduleController, child) {
-              if (courseController.isLoading) {
-                return const CommonToggleShimmer();
-              }
+          Consumer3<
+            StaffCourseController,
+            ScheduleController,
+            StaffStudentController
+          >(
+            builder:
+                (
+                  context,
+                  courseController,
+                  scheduleController,
+                  studentController,
+                  child,
+                ) {
+                  if (courseController.isLoading) {
+                    return const CommonToggleShimmer();
+                  }
+                  return CommonToggle(
+                    items: courseController.courses.map((e) => e.name).toList(),
+                    selectedIndex: courseController.selectedIndex,
 
-              return CommonToggle(
-                items: courseController.courses.map((e) => e.name).toList(),
-
-                selectedIndex: courseController.selectedIndex,
-
-                onTap: (index) {
-                  courseController.selectCourse(index);
-
-                  scheduleController.fetchSchedule(index);
+                    onTap: (index) async {
+                      courseController.selectCourse(index);
+                      final courseId = courseController.courses[index].id;
+                      await studentController.fetchStudents(courseId);
+                      await scheduleController.fetchSchedule(courseId);
+                    },
+                  );
                 },
-              );
-            },
           ),
         ],
       ),

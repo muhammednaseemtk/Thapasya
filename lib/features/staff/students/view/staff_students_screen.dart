@@ -4,6 +4,7 @@ import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
+import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 import 'package:thapasya/features/staff/students/widget/students_card.dart';
 
@@ -14,73 +15,69 @@ class StaffStudentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.screen,
-
       appBar: CommonAppBar(
         color: AppColors.deepBlue,
-
         onProfileTap: () {
           Navigator.pushNamed(context, AppRoutes.staffProfile);
         },
       ),
 
-      body: Consumer<StaffStudentController>(
-        builder: (context, controller, _) {
+      body: Consumer2<StaffStudentController, StaffCourseController>(
+        builder: (context, studentController, courseController, _) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (controller.students.isEmpty && !controller.isLoading) {
-              controller.fetchStudents(1);
+            if (!studentController.isFetched &&
+                !studentController.isLoading &&
+                courseController.courses.isNotEmpty) {
+              final courseId =
+                  courseController.courses[courseController.selectedIndex].id;
+              studentController.fetchStudents(courseId);
             }
           });
 
-          if (!controller.isLoading && controller.students.isEmpty) {
-            return Center(
-              child: Text("No Students", style: AppFonts.poppinsSemiBold7),
-            );
-          }
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("My Students", style: AppFonts.poppinsSemiBold5),
 
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      const Text(
-                        "My Students",
-                        style: AppFonts.poppinsSemiBold5,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
                       ),
-
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-
-                        decoration: BoxDecoration(
-                          color: AppColors.white70,
-
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-
-                        child: Text(
-                          "${controller.students.length} total",
-
-                          style: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.deepBlue,
-                          ),
+                      decoration: BoxDecoration(
+                        color: AppColors.white70,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "${studentController.students.length} total",
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.deepBlue,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+              ),
 
-                const StudentsCard(),
-              ],
-            ),
+              Expanded(
+                child: studentController.isLoading
+                    ? const StudentsCard()
+                    : studentController.students.isEmpty
+                    ? Center(
+                        child: Text(
+                          "No Students",
+                          style: AppFonts.poppinsSemiBold7,
+                        ),
+                      )
+                    : const StudentsCard(),
+              ),
+            ],
           );
         },
       ),

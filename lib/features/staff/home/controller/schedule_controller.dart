@@ -5,28 +5,20 @@ import '../service/schedule_service.dart';
 class ScheduleController extends ChangeNotifier {
   bool isLoading = false;
   int selectedIndex = 0;
+  int? currentCourseId;
   List<ScheduleModel> schedules = [];
+  final ScheduleService service = ScheduleService();
 
-  final service = ScheduleService();
-
-  int getCourseId(int index) {
-    return index + 1;
-  }
-
-  Future<void> fetchSchedule(int index) async {
-    if (selectedIndex == index && schedules.isNotEmpty) return;
-
-    selectedIndex = index;
-
+  Future<void> fetchSchedule(int courseId) async {
+    if (currentCourseId == courseId && schedules.isNotEmpty) {
+      return;
+    }
+    currentCourseId = courseId;
     isLoading = true;
-    schedules = []; 
+    schedules = [];
     notifyListeners();
-
-    final courseId = getCourseId(index);
     final result = await service.getSchedule(courseId);
-
     schedules = result;
-
     isLoading = false;
     notifyListeners();
   }
