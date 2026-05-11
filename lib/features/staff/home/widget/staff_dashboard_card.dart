@@ -9,7 +9,6 @@ import 'package:thapasya/features/staff/home/controller/staff_course_controller.
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
-  final String role;
   final int students;
   final int classes;
   final int attendance;
@@ -17,7 +16,6 @@ class StaffDashboardCard extends StatelessWidget {
   const StaffDashboardCard({
     super.key,
     required this.name,
-    required this.role,
     required this.students,
     required this.classes,
     required this.attendance,
@@ -28,7 +26,6 @@ class StaffDashboardCard extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final padding = screenWidth * 0.05;
-    final spacingSmall = screenWidth * 0.015;
     final spacingMedium = screenWidth * 0.05;
 
     return Container(
@@ -56,15 +53,7 @@ class StaffDashboardCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          Text("Good Morning", style: AppFonts.poppinsBold7),
-
-          SizedBox(height: spacingSmall),
-
           Text(name, style: AppFonts.poppinsSemiBold6),
-
-          SizedBox(height: spacingSmall),
-
-          Text(role, style: AppFonts.poppinsBold7),
 
           SizedBox(height: spacingMedium),
 

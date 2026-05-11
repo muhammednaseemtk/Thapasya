@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
     final imageHeight = screenHeight * 0.25;
     final titleSpacing = screenHeight * 0.008;
     final fieldSpacing = screenHeight * 0.025;
-    final buttonSpacing = screenHeight * 0.03;
+    final buttonSpacing = screenHeight * 0.02;
 
     return Scaffold(
       backgroundColor: AppColors.screen,

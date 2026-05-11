@@ -5,7 +5,6 @@ import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
 import 'package:thapasya/core/widget/common_app_bar.dart';
 import 'package:thapasya/features/staff/log/widget/class_summary_card.dart';
-import 'package:thapasya/features/staff/log/widget/custom_input_card.dart';
 import 'package:thapasya/features/staff/log/widget/past_log_card.dart';
 import 'package:thapasya/features/staff/log/widget/today_date_chip.dart';
 
@@ -23,65 +22,42 @@ class StaffLogScreen extends StatelessWidget {
         },
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Daily Log", style: AppFonts.poppinsSemiBold5),
-            ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Daily Log", style: AppFonts.poppinsSemiBold5),
+              SizedBox(height: 10),
 
-            Padding(padding: const EdgeInsets.all(8.0), child: TodayDateChip()),
+              TodayDateChip(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ClassSummaryCard(),
-            ),
+              SizedBox(height: 10),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: const [
-                  Expanded(
-                    child: CustomInputCard(
-                      title: "Topics Covered",
-                      hintText: 'Enter..',
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: CustomInputCard(
-                      title: "Homework Assigned",
-                      hintText: 'Enter..',
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: CustomInputCard(
-                      title: "Next Class Topic",
-                      hintText: 'Enter..',
-                    ),
-                  ),
-                ],
+              ClassSummaryCard(txt: 'Class Summary',),
+
+              SizedBox(height: 10),
+
+              ClassSummaryCard(txt: 'Topics Covered',),
+              
+              SizedBox(height: 10),
+
+              ClassSummaryCard(txt: 'Next Class Topic',),
+
+              SizedBox(height: 15),
+
+              Center(
+                child: CommonButton(
+                  onPressed: () {},
+                  icon: Icons.send_outlined,
+                  backgroundColor: AppColors.deepBlue,
+                  width: 350,
+                  txt: 'Submit Daily Log',
+                ),
               ),
-            ),
+              SizedBox(height: 15),
 
-            SizedBox(height: 10),
-
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: CommonButton(
-                onPressed: () {},
-                icon: Icons.send_outlined,
-                backgroundColor: AppColors.deepBlue,
-                width: 350,
-                txt: 'Submit Daily Log',
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
+              Text(
                 "Past Logs",
                 style: TextStyle(
                   fontSize: 20,
@@ -89,14 +65,18 @@ class StaffLogScreen extends StatelessWidget {
                   color: Color(0xFF2C2C2C),
                 ),
               ),
-            ),
+              SizedBox(height: 10),
 
-            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
+              PastLogCard(),
+              SizedBox(height: 10),
 
-            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
+              PastLogCard(),
+              SizedBox(height: 10),
 
-            Padding(padding: const EdgeInsets.all(8.0), child: PastLogCard()),
-          ],
+              PastLogCard(),
+              SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
     );

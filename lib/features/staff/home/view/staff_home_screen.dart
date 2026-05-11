@@ -55,9 +55,6 @@ class StaffHomeScreen extends StatelessWidget {
                 children: const [
                   StaffDashboardCard(
                     name: "Smt. Kavitha Rajan",
-
-                    role: "Bharatanatyam Faculty | Senior Instructor",
-
                     students: 24,
 
                     classes: 3,

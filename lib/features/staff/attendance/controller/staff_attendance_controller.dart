@@ -4,38 +4,40 @@ import '../service/staff_attendance_service.dart';
 
 class StafffAttendanceController extends ChangeNotifier {
   final StaffAttendanceService service = StaffAttendanceService();
-
   List<int> statusList = [];
-
   bool isSubmitting = false;
+  bool isSubmitted = false;
 
   void init(int count) {
     if (statusList.length == count) {
       return;
     }
-
     statusList = List.filled(count, 0);
-
     notifyListeners();
   }
 
   void setStatus(int index, int value) {
+    if (isSubmitted) {
+      return;
+    }
+
     if (index >= 0 && index < statusList.length) {
       statusList[index] = value;
-
       notifyListeners();
     }
   }
 
+  void clearAttendance() {
+    statusList = List.filled(statusList.length, 0);
+    notifyListeners();
+  }
+
   int get presentCount => statusList.where((e) => e == 1).length;
-
   int get absentCount => statusList.where((e) => e == 2).length;
-
   int get lateCount => statusList.where((e) => e == 3).length;
 
   Future<String> submit({
     required List<int> studentIds,
-
     required int courseId,
   }) async {
     try {
@@ -47,17 +49,13 @@ class StafffAttendanceController extends ChangeNotifier {
 
       for (int i = 0; i < studentIds.length; i++) {
         final status = statusList[i];
-
         if (status == 0) {
           continue;
         }
-
         data.add(
           StaffAttendanceRequestModel(
             studentId: studentIds[i],
-
             courseId: courseId,
-
             status: status == 1
                 ? "present"
                 : status == 2
@@ -69,24 +67,24 @@ class StafffAttendanceController extends ChangeNotifier {
 
       if (data.isEmpty) {
         isSubmitting = false;
-
         notifyListeners();
-
         return "Please mark attendance";
       }
 
       final result = await service.submitAttendance(data);
-
       isSubmitting = false;
+
+      if (result == "success") {
+        isSubmitted = true;
+        clearAttendance();
+      }
 
       notifyListeners();
 
       return result;
     } catch (e) {
       isSubmitting = false;
-
       notifyListeners();
-
       return "Something went wrong";
     }
   }

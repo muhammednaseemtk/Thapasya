@@ -7,13 +7,10 @@ class DioClient {
       Dio(
           BaseOptions(
             baseUrl: AppUrls.baseUrl,
-
             headers: {
               "Content-Type": "application/json",
-
               "accept": "application/json",
             },
-
             validateStatus: (status) {
               return status != null && status < 500;
             },

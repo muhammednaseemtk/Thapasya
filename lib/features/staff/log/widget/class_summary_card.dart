@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ClassSummaryCard extends StatelessWidget {
-  const ClassSummaryCard({super.key});
+  final String txt;
+  const ClassSummaryCard({super.key,required this.txt});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class ClassSummaryCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Class Summary",
+           Text(
+            txt,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AttendanceStateWidget extends StatelessWidget {
+class AttendanceState extends StatelessWidget {
   final bool isLoading;
-
   final bool isEmpty;
 
-  const AttendanceStateWidget({
+  const AttendanceState({
     super.key,
     required this.isLoading,
     required this.isEmpty,
