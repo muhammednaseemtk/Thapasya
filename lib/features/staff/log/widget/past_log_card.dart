@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
+import '../model/past_log_model.dart';
 
 class PastLogCard extends StatelessWidget {
-  const PastLogCard({super.key});
+  final PastLogModel log;
+
+  const PastLogCard({super.key, required this.log});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
+
       decoration: BoxDecoration(
         color: const Color(0xFFF4F5F7),
         borderRadius: BorderRadius.circular(20),
       ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
             children: [
-              const Text(
-                "March 16, 2026",
-                style: TextStyle(
+              Text(
+                log.date,
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF2563EB),
@@ -27,12 +34,16 @@ class PastLogCard extends StatelessWidget {
               ),
 
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
+
                 decoration: BoxDecoration(
                   color: const Color(0xFFD1FAE5),
                   borderRadius: BorderRadius.circular(12),
                 ),
+
                 child: const Text(
                   "Submitted",
                   style: TextStyle(
@@ -47,12 +58,9 @@ class PastLogCard extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          const Text(
-            "Practiced Shabdam sequence. Focused on abhinaya. 5/7 students showed great improvement.",
-            style: TextStyle(
-              fontSize: 13,
-              color: Color(0xFF4B5563),
-            ),
+          Text(
+            log.classSummary,
+            style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
           ),
         ],
       ),

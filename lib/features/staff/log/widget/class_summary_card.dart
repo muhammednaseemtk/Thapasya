@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 
 class ClassSummaryCard extends StatelessWidget {
   final String txt;
-  const ClassSummaryCard({super.key, required this.txt});
+  final TextEditingController controller;
+  final String hint;
+
+  const ClassSummaryCard({
+    super.key,
+    required this.txt,
+    required this.controller,
+    required this.hint,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +20,13 @@ class ClassSummaryCard extends StatelessWidget {
         color: const Color(0xFFF4F5F7),
         borderRadius: BorderRadius.circular(20),
       ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             txt,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               color: Color(0xFF2C2C2C),
@@ -32,11 +41,12 @@ class ClassSummaryCard extends StatelessWidget {
               color: const Color(0xFFEDE7DD),
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const TextField(
+
+            child: TextField(
+              controller: controller,
               maxLines: 2,
               decoration: InputDecoration(
-                hintText:
-                    "Describe today's class activities, topics covered, student progress, any observations...",
+                hintText: hint,
                 border: InputBorder.none,
               ),
             ),
