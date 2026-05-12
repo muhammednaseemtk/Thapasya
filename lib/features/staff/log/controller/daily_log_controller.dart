@@ -4,14 +4,19 @@ import '../service/daily_log_service.dart';
 
 class DailyLogController extends ChangeNotifier {
   final DailyLogService service = DailyLogService();
+
   final TextEditingController classSummaryController = TextEditingController();
+
   final TextEditingController topicsCoveredController = TextEditingController();
+
   final TextEditingController nextClassTopicController =
       TextEditingController();
 
   bool isLoading = false;
 
   Future<String> submitLog() async {
+    if (isLoading) return "Please wait...";
+
     if (classSummaryController.text.trim().isEmpty ||
         topicsCoveredController.text.trim().isEmpty ||
         nextClassTopicController.text.trim().isEmpty) {
@@ -21,24 +26,36 @@ class DailyLogController extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final DailyLogRequestModel model = DailyLogRequestModel(
-      courseId: 2,
-      classSummary: classSummaryController.text.trim(),
-      topicsCovered: topicsCoveredController.text.trim(),
-      nextClassTopic: nextClassTopicController.text.trim(),
-    );
+    try {
+      final DailyLogRequestModel model = DailyLogRequestModel(
+        courseId: 1,
+        classSummary: classSummaryController.text.trim(),
+        topicsCovered: topicsCoveredController.text.trim(),
+        nextClassTopic: nextClassTopicController.text.trim(),
+      );
 
-    final result = await service.submitLog(model);
+      final result = await service.submitLog(model);
 
-    isLoading = false;
-    notifyListeners();
+      if (result == "success") {
+        classSummaryController.clear();
+        topicsCoveredController.clear();
+        nextClassTopicController.clear();
+      }
 
-    if (result == "success") {
-      classSummaryController.clear();
-      topicsCoveredController.clear();
-      nextClassTopicController.clear();
+      return result;
+    } catch (e) {
+      return "Something went wrong";
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
+  }
 
-    return result;
+  @override
+  void dispose() {
+    classSummaryController.dispose();
+    topicsCoveredController.dispose();
+    nextClassTopicController.dispose();
+    super.dispose();
   }
 }
