@@ -10,6 +10,8 @@ class PastLogService {
         queryParameters: {"staff_id": staffId},
       );
 
+      print("PAST LOG RESPONSE : ${response.data}");
+
       final data = response.data;
 
       if (data is List) {
@@ -18,6 +20,8 @@ class PastLogService {
 
       return [];
     } catch (e) {
+      print("FETCH ERROR : $e");
+
       return [];
     }
   }

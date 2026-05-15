@@ -2,50 +2,100 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/widget/common_button.dart';
+import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
 import 'package:thapasya/features/staff/log/controller/daily_log_controller.dart';
 import 'package:thapasya/features/staff/log/controller/past_log_controller.dart';
 import 'package:thapasya/features/staff/log/widget/success_dialog.dart';
 
 class SubmitLogButton extends StatelessWidget {
-  const SubmitLogButton({super.key});
+  final GlobalKey<FormState> formKey;
+
+  const SubmitLogButton({super.key, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<DailyLogController, PastLogController>(
-      builder: (context, dailyController, pastController, _) {
+    return Consumer3<
+      DailyLogController,
+      PastLogController,
+      StaffCourseController
+    >(
+      builder: (context, dailyController, pastController, courseController, _) {
         return Center(
-          child: IgnorePointer(
-            ignoring: dailyController.isLoading,
-            child: CommonButton(
-              onPressed: () async {
-                final result = await dailyController.submitLog();
+          child: CommonButton(
+            onPressed: dailyController.isLoading
+                ? null
+                : () async {
+                    if (!formKey.currentState!.validate()) return;
 
-                if (!context.mounted) return;
+                    if (courseController.courses.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("No courses available")),
+                      );
+                      return;
+                    }
 
-                if (result == "success") {
-                  await showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (_) {
-                      return const SuccessDialog();
-                    },
-                  );
-                  pastController.isFetched = false;
-                  await pastController.fetchLogs();
-                } else {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(result)));
-                }
-              },
+                    if (dailyController.isTodayLogSubmitted(
+                      pastController.logs,
+                    )) {
+                      showDialog(
+                        context: context,
+                        builder: (_) => AlertDialog(
+                          title: const Text("Already Submitted"),
+                          content: const Text(
+                            "Log already submitted for today",
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                      dailyController.classSummaryController.clear();
+                      dailyController.topicsCoveredController.clear();
+                      dailyController.nextClassTopicController.clear();
+                      return;
+                    }
 
-              icon: dailyController.isLoading ? null : Icons.send_outlined,
-              backgroundColor: AppColors.deepBlue,
-              width: 350,
-              txt: dailyController.isLoading
-                  ? "Submitting..."
-                  : "Submit Daily Log",
-            ),
+                    final courseId = courseController
+                        .courses[courseController.selectedIndex]
+                        .id;
+
+                    final result = await dailyController.submitLog(courseId);
+
+                    debugPrint("SUBMIT RESULT : $result");
+
+                    if (!context.mounted) return;
+
+                    if (result == "success") {
+                      await showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (_) {
+                          return const SuccessDialog();
+                        },
+                      );
+
+                      pastController.isFetched = false;
+
+                      await pastController.fetchLogs();
+                    } else {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(result)));
+                    }
+                  },
+
+            icon: dailyController.isLoading ? null : Icons.send_outlined,
+
+            backgroundColor: AppColors.deepBlue,
+
+            width: 350,
+
+            txt: dailyController.isLoading
+                ? "Submitting..."
+                : "Submit Daily Log",
           ),
         );
       },

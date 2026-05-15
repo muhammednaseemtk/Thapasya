@@ -4,12 +4,14 @@ class ClassSummaryCard extends StatelessWidget {
   final String txt;
   final TextEditingController controller;
   final String hint;
+  final String? Function(String?)? validator;
 
   const ClassSummaryCard({
     super.key,
     required this.txt,
     required this.controller,
     required this.hint,
+    this.validator,
   });
 
   @override
@@ -42,12 +44,14 @@ class ClassSummaryCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
 
-            child: TextField(
+            child: TextFormField(
               controller: controller,
               maxLines: 2,
+              validator: validator,
               decoration: InputDecoration(
                 hintText: hint,
                 border: InputBorder.none,
+                errorStyle: const TextStyle(fontSize: 12),
               ),
             ),
           ),

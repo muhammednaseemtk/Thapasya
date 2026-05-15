@@ -37,6 +37,9 @@ class StafffAttendanceController extends ChangeNotifier {
     required List<int> studentIds,
     required int courseId,
   }) async {
+    if (studentIds.isEmpty) {
+      return "No students to mark attendance";
+    }
     try {
       isSubmitting = true;
       notifyListeners();

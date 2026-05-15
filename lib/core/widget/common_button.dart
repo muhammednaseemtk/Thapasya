@@ -3,7 +3,7 @@ import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 
 class CommonButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String? txt;
   final Color? backgroundColor;
   final Color? textColor;
