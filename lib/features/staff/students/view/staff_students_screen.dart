@@ -13,6 +13,18 @@ class StaffStudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final courseController = context.read<StaffCourseController>();
+      if (courseController.courses.isNotEmpty) {
+        final courseId =
+            courseController.courses[courseController.selectedIndex].id;
+        context.read<StaffStudentController>().fetchIfNeeded(
+          courseId: courseId,
+          branchId: 1,
+        );
+      }
+    });
+
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: CommonAppBar(
@@ -24,16 +36,6 @@ class StaffStudentsScreen extends StatelessWidget {
 
       body: Consumer2<StaffStudentController, StaffCourseController>(
         builder: (context, studentController, courseController, _) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (!studentController.isFetched &&
-                !studentController.isLoading &&
-                courseController.courses.isNotEmpty) {
-              final courseId =
-                  courseController.courses[courseController.selectedIndex].id;
-              studentController.fetchStudents(courseId);
-            }
-          });
-
           return Column(
             children: [
               Padding(

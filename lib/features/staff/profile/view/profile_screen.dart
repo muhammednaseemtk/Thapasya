@@ -25,9 +25,6 @@ class StaffProfileScreen extends StatelessWidget {
         foregroundColor: AppColors.white,
         title: Text('Profile', style: AppFonts.poppinsSemiBold4),
         centerTitle: true,
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-        ],
       ),
       body: Center(
         child: CommonButton(

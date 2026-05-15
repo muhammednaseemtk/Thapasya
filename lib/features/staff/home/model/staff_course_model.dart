@@ -9,8 +9,8 @@ class StaffCourseModel {
 
   factory StaffCourseModel.fromJson(Map<String, dynamic> json) {
     return StaffCourseModel(
-      id: json['id'],
-      name: json['name'],
+      id: json['id'] as int? ?? 0,
+      name: json['name'] as String? ?? 'Unknown',
     );
   }
 }

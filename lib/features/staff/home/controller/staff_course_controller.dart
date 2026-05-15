@@ -1,27 +1,44 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:thapasya/features/staff/home/model/staff_course_model.dart';
 import 'package:thapasya/features/staff/home/service/staff_course_service.dart';
 
 class StaffCourseController extends ChangeNotifier {
   bool isLoading = false;
   bool isFetched = false;
+  String? errorMessage;
   List<StaffCourseModel> courses = [];
   int selectedIndex = 0;
+  bool _fetchAttempted = false;
   final service = StaffCourseService();
 
+  Future<void> fetchIfNeeded() async {
+    if (_fetchAttempted || isLoading || isFetched) {
+      return;
+    }
+    _fetchAttempted = true;
+    await fetchStaffCourses();
+  }
+
   Future<void> fetchStaffCourses() async {
-    if (isLoading || isFetched) {
+    if (isLoading) {
       return;
     }
     isLoading = true;
+    errorMessage = null;
     notifyListeners();
-    final result = await service.getCourses();
-    if (result != null) {
-      courses = result;
+    try {
+      final result = await service.getCourses();
+      if (result != null) {
+        courses = result;
+      }
+    } catch (e) {
+      errorMessage = e.toString();
+      debugPrint("FETCH COURSES ERROR : $e");
+    } finally {
+      isLoading = false;
       isFetched = true;
+      notifyListeners();
     }
-    isLoading = false;
-    notifyListeners();
   }
 
   void selectCourse(int index) {
@@ -29,6 +46,15 @@ class StaffCourseController extends ChangeNotifier {
       return;
     }
     selectedIndex = index;
+    notifyListeners();
+  }
+
+  void resetAll() {
+    isFetched = false;
+    _fetchAttempted = false;
+    courses = [];
+    selectedIndex = 0;
+    errorMessage = null;
     notifyListeners();
   }
 }

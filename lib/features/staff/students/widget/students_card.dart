@@ -13,9 +13,7 @@ class StudentsCard extends StatelessWidget {
     return Consumer<StaffStudentController>(
       builder: (context, controller, _) {
         if (controller.isLoading) {
-          return Column(
-            children: List.generate(2, (index) => const StudentCardShimmer()),
-          );
+          return const _StudentShimmerList();
         }
 
         if (controller.students.isEmpty) {
@@ -78,6 +76,17 @@ class StudentsCard extends StatelessWidget {
           }),
         );
       },
+    );
+  }
+}
+
+class _StudentShimmerList extends StatelessWidget {
+  const _StudentShimmerList();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List.generate(2, (index) => const StudentCardShimmer()),
     );
   }
 }

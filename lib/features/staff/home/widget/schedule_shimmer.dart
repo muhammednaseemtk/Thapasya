@@ -6,13 +6,13 @@ class ScheduleShimmer extends StatelessWidget {
   const ScheduleShimmer({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(1, (_) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 12),
-          child: Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
+      child: Column(
+        children: List.generate(3, (index) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
             child: Container(
               height: 12,
               decoration: BoxDecoration(
@@ -20,9 +20,9 @@ class ScheduleShimmer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

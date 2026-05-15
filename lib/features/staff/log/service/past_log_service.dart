@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
 import 'package:thapasya/core/network/dio_client.dart';
 import '../model/past_log_model.dart';
@@ -10,7 +11,7 @@ class PastLogService {
         queryParameters: {"staff_id": staffId},
       );
 
-      print("PAST LOG RESPONSE : ${response.data}");
+      debugPrint("PAST LOG RESPONSE : ${response.data}");
 
       final data = response.data;
 
@@ -20,7 +21,7 @@ class PastLogService {
 
       return [];
     } catch (e) {
-      print("FETCH ERROR : $e");
+      debugPrint("FETCH ERROR : $e");
 
       return [];
     }

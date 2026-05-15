@@ -12,24 +12,20 @@ import 'package:thapasya/features/staff/log/widget/past_logs_section.dart';
 import 'package:thapasya/features/staff/log/widget/submit_log_button.dart';
 import 'package:thapasya/features/staff/log/widget/today_date_chip.dart';
 
+final _staffLogFormKey = GlobalKey<FormState>();
+
 class StaffLogScreen extends StatelessWidget {
   const StaffLogScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<StaffCourseController>().fetchIfNeeded();
+      context.read<PastLogController>().fetchIfNeeded();
+    });
 
     return Consumer3<DailyLogController, PastLogController, StaffCourseController>(
       builder: (context, dailyController, pastController, courseController, _) {
-        WidgetsBinding.instance.addPostFrameCallback((_) async {
-          if (courseController.courses.isEmpty && !courseController.isLoading) {
-            await courseController.fetchStaffCourses();
-          }
-          if (!pastController.isFetched && !pastController.isLoading) {
-            pastController.fetchLogs();
-          }
-        });
-
         return Scaffold(
           backgroundColor: AppColors.screen,
           appBar: CommonAppBar(
@@ -43,7 +39,7 @@ class StaffLogScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Form(
-                key: formKey,
+                key: _staffLogFormKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -97,7 +93,7 @@ class StaffLogScreen extends StatelessWidget {
 
                     const SizedBox(height: 15),
 
-                    SubmitLogButton(formKey: formKey),
+                    SubmitLogButton(formKey: _staffLogFormKey),
 
                     const SizedBox(height: 20),
 

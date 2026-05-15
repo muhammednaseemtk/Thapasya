@@ -21,7 +21,7 @@ class AttendanceActionCard extends StatelessWidget {
         ? name.substring(0, 2).toUpperCase()
         : name.toUpperCase();
 
-    return Consumer<StafffAttendanceController>(
+    return Consumer<StaffAttendanceController>(
       builder: (context, controller, _) {
         if (controller.statusList.length <= index) {
           return const SizedBox();

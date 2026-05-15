@@ -30,7 +30,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => StaffCourseController()),
         ChangeNotifierProvider(create: (_) => ScheduleController()),
         ChangeNotifierProvider(create: (_) => StaffStudentController()),
-        ChangeNotifierProvider(create: (_) => StafffAttendanceController()),
+        ChangeNotifierProvider(create: (_) => StaffAttendanceController()),
         ChangeNotifierProvider(create: (_) => DailyLogController()),
         ChangeNotifierProvider(create: (_) => PastLogController()),
       ],

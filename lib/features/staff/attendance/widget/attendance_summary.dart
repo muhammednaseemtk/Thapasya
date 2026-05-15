@@ -7,7 +7,7 @@ class AttendanceSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<StafffAttendanceController>(
+    return Consumer<StaffAttendanceController>(
       builder: (context, controller, _) {
         return Container(
           width: double.infinity,

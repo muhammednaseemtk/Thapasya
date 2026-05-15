@@ -10,6 +10,7 @@ class DailyLogController extends ChangeNotifier {
   final TextEditingController nextClassTopicController =
       TextEditingController();
   bool isLoading = false;
+  String? errorMessage;
 
   bool isTodayLogSubmitted(List<PastLogModel> logs) {
     final today = DateTime.now();
@@ -23,6 +24,7 @@ class DailyLogController extends ChangeNotifier {
       return "Please wait...";
     }
     isLoading = true;
+    errorMessage = null;
     notifyListeners();
 
     try {
@@ -36,7 +38,8 @@ class DailyLogController extends ChangeNotifier {
 
       return result;
     } catch (e) {
-      print("CONTROLLER ERROR : $e");
+      errorMessage = e.toString();
+      debugPrint("CONTROLLER ERROR : $e");
       return "Something went wrong";
     } finally {
       isLoading = false;

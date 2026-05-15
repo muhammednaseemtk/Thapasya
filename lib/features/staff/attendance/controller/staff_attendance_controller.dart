@@ -1,20 +1,29 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import '../model/staff_attendance_model.dart';
 import '../service/staff_attendance_service.dart';
 
-class StafffAttendanceController extends ChangeNotifier {
+class StaffAttendanceController extends ChangeNotifier {
   final StaffAttendanceService service = StaffAttendanceService();
 
   List<int> statusList = [];
   bool isSubmitting = false;
   bool isSubmitted = false;
+  bool isInitialized = false;
+  String? errorMessage;
 
-  void init(int count) {
-    if (statusList.length == count) {
+  void initIfNeeded(int count) {
+    if (isInitialized || statusList.length == count) {
       return;
     }
-
     statusList = List.filled(count, 0);
+    isInitialized = true;
+    notifyListeners();
+  }
+
+  void resetForNewCourse() {
+    isInitialized = false;
+    isSubmitted = false;
+    statusList = [];
     notifyListeners();
   }
 
@@ -42,9 +51,11 @@ class StafffAttendanceController extends ChangeNotifier {
     }
     try {
       isSubmitting = true;
+      errorMessage = null;
       notifyListeners();
       final List<StaffAttendanceRequestModel> data = [];
       for (int i = 0; i < studentIds.length; i++) {
+        if (i >= statusList.length) break;
         final status = statusList[i];
         if (status == 0) {
           continue;
@@ -73,11 +84,13 @@ class StafffAttendanceController extends ChangeNotifier {
       isSubmitting = false;
       if (result == "success") {
         isSubmitted = true;
+        statusList = List.filled(statusList.length, 0);
       }
       notifyListeners();
       return result;
     } catch (e) {
       isSubmitting = false;
+      errorMessage = e.toString();
       notifyListeners();
       return "Something went wrong";
     }
@@ -85,7 +98,8 @@ class StafffAttendanceController extends ChangeNotifier {
 
   void resetAttendance() {
     isSubmitted = false;
-    statusList = List.filled(statusList.length, 0);
+    isInitialized = false;
+    statusList = [];
     notifyListeners();
   }
 }

@@ -17,7 +17,7 @@ class StaffBottomNavBar extends StatelessWidget {
     required this.onTap,
   });
 
-  static final List<Widget> pages = [
+  static const List<Widget> pages = [
     StaffHomeScreen(),
     StaffStudentsScreen(),
     StaffAttendanceScreen(),

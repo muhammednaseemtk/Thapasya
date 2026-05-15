@@ -9,8 +9,8 @@ class StaffStudentModel {
 
   factory StaffStudentModel.fromJson(Map<String, dynamic> json) {
     return StaffStudentModel(
-      id: json['id'],
-      name: json['name'],
+      id: json['id'] as int? ?? 0,
+      name: json['name'] as String? ?? 'Unknown',
     );
   }
 }

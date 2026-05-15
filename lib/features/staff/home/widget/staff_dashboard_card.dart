@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
 import 'package:thapasya/core/widget/common_toggle.dart';
 import 'package:thapasya/core/widget/common_toggle_shimmer.dart';
-import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
-import 'package:thapasya/features/staff/home/controller/staff_course_controller.dart';
-import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 
 class StaffDashboardCard extends StatelessWidget {
   final String name;
   final int students;
   final int classes;
   final int attendance;
+  final List<String> courseNames;
+  final int selectedCourseIndex;
+  final bool isLoading;
+  final Function(int) onCourseTap;
 
   const StaffDashboardCard({
     super.key,
@@ -20,18 +20,17 @@ class StaffDashboardCard extends StatelessWidget {
     required this.students,
     required this.classes,
     required this.attendance,
+    required this.courseNames,
+    required this.selectedCourseIndex,
+    required this.isLoading,
+    required this.onCourseTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final screenWidth = mediaQuery.size.width;
-    final padding = screenWidth * 0.05;
-    final spacingMedium = screenWidth * 0.05;
-
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.all(padding),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -49,37 +48,16 @@ class StaffDashboardCard extends StatelessWidget {
         children: [
           Text(name, style: AppFonts.poppinsSemiBold6),
 
-          SizedBox(height: spacingMedium),
+          const SizedBox(height: 20),
 
-          Consumer3<
-            StaffCourseController,
-            ScheduleController,
-            StaffStudentController
-          >(
-            builder:
-                (
-                  context,
-                  courseController,
-                  scheduleController,
-                  studentController,
-                  child,
-                ) {
-                  if (courseController.isLoading) {
-                    return const CommonToggleShimmer();
-                  }
-                  return CommonToggle(
-                    items: courseController.courses.map((e) => e.name).toList(),
-                    selectedIndex: courseController.selectedIndex,
-
-                    onTap: (index) async {
-                      courseController.selectCourse(index);
-                      final courseId = courseController.courses[index].id;
-                      await studentController.fetchStudents(courseId);
-                      await scheduleController.fetchSchedule(courseId);
-                    },
-                  );
-                },
-          ),
+          if (isLoading)
+            const CommonToggleShimmer()
+          else if (courseNames.isNotEmpty)
+            CommonToggle(
+              items: courseNames,
+              selectedIndex: selectedCourseIndex,
+              onTap: onCourseTap,
+            ),
         ],
       ),
     );

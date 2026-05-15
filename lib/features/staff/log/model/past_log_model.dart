@@ -19,13 +19,13 @@ class PastLogModel {
 
   factory PastLogModel.fromJson(Map<String, dynamic> json) {
     return PastLogModel(
-      id: json["id"],
-      staffId: json["staff_id"],
-      courseId: json["course_id"],
-      date: json["date"],
-      classSummary: json["class_summary"],
-      topicsCovered: json["topics_covered"],
-      nextClassTopic: json["next_class_topic"],
+      id: json["id"] as int? ?? 0,
+      staffId: json["staff_id"] as int? ?? 0,
+      courseId: json["course_id"] as int? ?? 0,
+      date: json["date"] as String? ?? '',
+      classSummary: json["class_summary"] as String? ?? '',
+      topicsCovered: json["topics_covered"] as String? ?? '',
+      nextClassTopic: json["next_class_topic"] as String? ?? '',
     );
   }
 }
