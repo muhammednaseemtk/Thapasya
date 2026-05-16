@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
+import 'package:thapasya/features/student/home/model/student_schedule_model.dart';
 import 'class_schedule_item.dart';
 
 class ClassScheduleCard extends StatelessWidget {
-  const ClassScheduleCard({super.key});
+  final List<StudentScheduleModel> schedules;
+  final bool isLoading;
+
+  const ClassScheduleCard({
+    super.key,
+    required this.schedules,
+    required this.isLoading,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +29,29 @@ class ClassScheduleCard extends StatelessWidget {
             ),
           ],
         ),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
+          children: [
+            const Text(
               "Class Schedule",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-
-            SizedBox(height: 16),
-
-            ClassScheduleItem(
-              day: "Monday",
-              subject: "Bharatanatyam",
-              time: "5:00 PM",
-            ),
-
-            ClassScheduleItem(
-              day: "Thursday",
-              subject: "Bharatanatyam",
-              time: "5:00 PM",
-            ),
+            const SizedBox(height: 16),
+            if (isLoading)
+              const Center(child: CircularProgressIndicator())
+            else if (schedules.isEmpty)
+              const Text("No schedule available")
+            else
+              ...schedules.map(
+                (e) => ClassScheduleItem(
+                  day: e.day,
+                  subject: e.subject,
+                  time: e.time,
+                ),
+              ),
           ],
         ),
       ),

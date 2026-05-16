@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
+import 'package:thapasya/features/auth/controller/auth_logout_controller.dart';
 import 'package:thapasya/features/student/profile/widget/profile_header_card.dart';
 import 'package:thapasya/features/student/profile/widget/profile_info_card.dart';
 
@@ -11,6 +12,8 @@ class StudentProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logoutController = context.read<AuthLogoutController>();
+
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: AppBar(
@@ -58,10 +61,14 @@ class StudentProfileScreen extends StatelessWidget {
 
             SizedBox(height: 20),
 
-            CommonButton(onPressed: () {
-              Navigator.pushReplacementNamed(context, AppRoutes.login);
-            },
-            backgroundColor: AppColors.darkRed,width: 320,txt: 'Logout',)
+            CommonButton(
+              onPressed: logoutController.isLoading
+                  ? null
+                  : () => logoutController.logout(context),
+              backgroundColor: AppColors.darkRed,
+              width: 320,
+              txt: logoutController.isLoading ? 'Logging out...' : 'Logout',
+            ),
           ],
         ),
       ),

@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/features/student/home/widget/student_info_card.dart';
+import 'package:thapasya/core/widget/common_toggle.dart';
+import 'package:thapasya/core/widget/common_toggle_shimmer.dart';
 
 class StudentDashboardCard extends StatelessWidget {
   final String studentName;
-  final String course;
-  final String batch;
-  final int attendance;
-  final String pendingFee;
-  final String nextClassTime;
+  final String greeting;
+  final List<String> courseNames;
+  final int selectedCourseIndex;
+  final bool isLoading;
+  final Function(int) onCourseTap;
 
   const StudentDashboardCard({
     super.key,
     required this.studentName,
-    required this.course,
-    required this.batch,
-    required this.attendance,
-    required this.pendingFee,
-    required this.nextClassTime,
+    required this.greeting,
+    required this.courseNames,
+    required this.selectedCourseIndex,
+    required this.isLoading,
+    required this.onCourseTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppColors.darkRed,
@@ -32,43 +34,25 @@ class StudentDashboardCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Good Morning", style: AppFonts.poppinsRegular),
+          Text(greeting, style: AppFonts.poppinsRegular),
 
           SizedBox(height: 8),
 
           Text(studentName, style: AppFonts.poppinsSemiBold4),
 
-          SizedBox(height: 6),
+          SizedBox(height: 12),
 
-          Text(
-            "$course - Level 3 | Batch: $batch",
-            style: AppFonts.poppinsSemiBold2,
-          ),
+          if (isLoading)
+            const CommonToggleShimmer()
+          else if (courseNames.isNotEmpty)
+            CommonToggle(
+              items: courseNames,
+              selectedIndex: selectedCourseIndex,
+              onTap: onCourseTap,
+              selectedTextColor: AppColors.darkRed,
+            ),
 
           SizedBox(height: 8),
-
-          Row(
-            children: [
-              StudentInfoCard(
-                icon: Icons.calendar_today,
-                value: "$attendance%",
-                label: "Attendance",
-                labelStyle: AppFonts.poppinsBold1,
-              ),
-              StudentInfoCard(
-                icon: Icons.currency_rupee,
-                value: pendingFee,
-                label: "Pending Fee",
-                labelStyle: AppFonts.poppinsBold1,
-              ),
-              StudentInfoCard(
-                icon: Icons.access_time,
-                value: nextClassTime,
-                label: "Next Class",
-                labelStyle: AppFonts.poppinsBold1,
-              ),
-            ],
-          ),
         ],
       ),
     );

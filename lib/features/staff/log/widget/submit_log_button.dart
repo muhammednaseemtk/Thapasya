@@ -42,14 +42,22 @@ class SubmitLogButton extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (_) => AlertDialog(
-                          title: const Text("Already Submitted"),
+                          backgroundColor: AppColors.white,
+                          title: const Text(
+                            "Already Submitted",
+                            style: TextStyle(color: AppColors.deepBlue),
+                          ),
                           content: const Text(
                             "Log already submitted for today",
+                            style: TextStyle(color: AppColors.deepBlue),
                           ),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context),
-                              child: const Text("OK"),
+                              child: const Text(
+                                "OK",
+                                style: TextStyle(color: AppColors.deepBlue),
+                              ),
                             ),
                           ],
                         ),
@@ -81,7 +89,7 @@ class SubmitLogButton extends StatelessWidget {
 
                       pastController.resetFetch();
 
-                      await pastController.fetchLogs();
+                      await pastController.fetchLogs(courseId);
                     } else {
                       ScaffoldMessenger.of(
                         context,

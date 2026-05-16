@@ -6,12 +6,20 @@ class CommonToggle extends StatelessWidget {
   final List<String> items;
   final int selectedIndex;
   final Function(int) onTap;
+  final Color? unselectedBgColor;
+  final Color? unselectedTextColor;
+  final Color? selectedBgColor;
+  final Color? selectedTextColor;
 
   const CommonToggle({
     super.key,
     required this.items,
     required this.selectedIndex,
     required this.onTap,
+    this.unselectedBgColor,
+    this.unselectedTextColor,
+    this.selectedBgColor,
+    this.selectedTextColor,
   });
 
   @override
@@ -24,12 +32,12 @@ class CommonToggle extends StatelessWidget {
         children: List.generate(items.length, (index) {
           final isSelected = selectedIndex == index;
 
-          Color bgColor = AppColors.white24;
-          Color textColor = AppColors.white;
+          Color bgColor = unselectedBgColor ?? AppColors.white24;
+          Color textColor = unselectedTextColor ?? AppColors.white;
 
           if (isSelected) {
-            bgColor = AppColors.white;
-            textColor = AppColors.deepBlue;
+            bgColor = selectedBgColor ?? AppColors.white;
+            textColor = selectedTextColor ?? AppColors.deepBlue;
           }
 
           return GestureDetector(

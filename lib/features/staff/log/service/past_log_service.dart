@@ -4,11 +4,11 @@ import 'package:thapasya/core/network/dio_client.dart';
 import '../model/past_log_model.dart';
 
 class PastLogService {
-  Future<List<PastLogModel>> getLogs(int staffId) async {
+  Future<List<PastLogModel>> getLogs(int staffId, int courseId) async {
     try {
       final response = await DioClient.dio.get(
         AppUrls.getDailyLogs,
-        queryParameters: {"staff_id": staffId},
+        queryParameters: {"staff_id": staffId, "course_id": courseId},
       );
 
       debugPrint("PAST LOG RESPONSE : ${response.data}");

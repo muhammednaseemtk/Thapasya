@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 
 class AttendanceResultDialog extends StatelessWidget {
   final String result;
@@ -8,6 +9,7 @@ class AttendanceResultDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: AppColors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 
       content: Column(
@@ -26,6 +28,7 @@ class AttendanceResultDialog extends StatelessWidget {
             result == "success" ? "Attendance Submitted Successfully" : result,
 
             textAlign: TextAlign.center,
+            style: const TextStyle(color: AppColors.deepBlue),
           ),
         ],
       ),
@@ -37,7 +40,10 @@ class AttendanceResultDialog extends StatelessWidget {
               Navigator.pop(context);
             },
 
-            child: const Text("OK"),
+            child: const Text(
+              "OK",
+              style: TextStyle(color: AppColors.deepBlue),
+            ),
           ),
         ),
       ],

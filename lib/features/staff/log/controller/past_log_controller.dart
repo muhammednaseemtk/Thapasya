@@ -9,24 +9,39 @@ class PastLogController extends ChangeNotifier {
   bool isFetched = false;
   String? errorMessage;
   List<PastLogModel> logs = [];
+  bool showAllLogs = false;
+  bool isExpanding = false;
+  int? currentCourseId;
   bool _fetchAttempted = false;
 
-  Future<void> fetchIfNeeded() async {
-    if (_fetchAttempted || isLoading || isFetched) {
-      return;
-    }
-    _fetchAttempted = true;
-    await fetchLogs();
+  Future<void> toggleShowAll() async {
+    isExpanding = true;
+    notifyListeners();
+    await Future.delayed(const Duration(milliseconds: 800));
+    showAllLogs = true;
+    isExpanding = false;
+    notifyListeners();
   }
 
-  Future<void> fetchLogs() async {
+  Future<void> fetchIfNeeded(int courseId) async {
+    if (currentCourseId == courseId && (_fetchAttempted || isLoading || isFetched)) {
+      return;
+    }
+    currentCourseId = courseId;
+    _fetchAttempted = true;
+    await fetchLogs(courseId);
+  }
+
+  Future<void> fetchLogs(int courseId) async {
     if (isLoading) return;
     isLoading = true;
     errorMessage = null;
+    showAllLogs = false;
+    currentCourseId = courseId;
     notifyListeners();
 
     try {
-      logs = await service.getLogs(2);
+      logs = await service.getLogs(2, courseId);
       isFetched = true;
     } catch (e) {
       errorMessage = e.toString();
@@ -43,6 +58,9 @@ class PastLogController extends ChangeNotifier {
     _fetchAttempted = false;
     logs = [];
     errorMessage = null;
+    showAllLogs = false;
+    isExpanding = false;
+    currentCourseId = null;
     notifyListeners();
   }
 }

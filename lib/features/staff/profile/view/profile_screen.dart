@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/core/constants/app_fonts.dart';
-import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/core/widget/common_button.dart';
-import 'package:thapasya/core/network/auth_token.dart';
+import 'package:thapasya/features/auth/controller/auth_logout_controller.dart';
 
 class StaffProfileScreen extends StatelessWidget {
   const StaffProfileScreen({super.key});
 
-  Future<void> logout(BuildContext context) async {
-    await AuthToken.clear();
-
-    if (!context.mounted) return;
-
-    Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (_) => false);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final logoutController = context.read<AuthLogoutController>();
+
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: AppBar(
@@ -28,10 +22,12 @@ class StaffProfileScreen extends StatelessWidget {
       ),
       body: Center(
         child: CommonButton(
-          onPressed: () => logout(context),
+          onPressed: logoutController.isLoading
+              ? null
+              : () => logoutController.logout(context),
           backgroundColor: AppColors.deepBlue,
           width: 350,
-          txt: 'Logout',
+          txt: logoutController.isLoading ? 'Logging out...' : 'Logout',
         ),
       ),
     );

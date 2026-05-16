@@ -5,6 +5,7 @@ import 'package:thapasya/core/routes/app_routes.dart';
 import 'package:thapasya/features/admin/dashboard/controller/drawer_controller.dart';
 import 'package:thapasya/features/admin/programme%20booking/controller/number_stepper_controller.dart';
 import 'package:thapasya/features/auth/controller/auth_controller.dart';
+import 'package:thapasya/features/auth/controller/auth_logout_controller.dart';
 import 'package:thapasya/features/staff/attendance/controller/staff_attendance_controller.dart';
 import 'package:thapasya/features/staff/home/controller/main_controller.dart';
 import 'package:thapasya/features/staff/home/controller/schedule_controller.dart';
@@ -14,6 +15,10 @@ import 'package:thapasya/features/staff/log/controller/past_log_controller.dart'
 import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 import 'package:thapasya/features/student/attendance/controller/attendance_calender_controller.dart';
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
+import 'package:thapasya/features/student/home/controller/student_class_log_controller.dart';
+import 'package:thapasya/features/student/home/controller/student_course_controller.dart';
+import 'package:thapasya/features/student/home/controller/student_dashboard_controller.dart';
+import 'package:thapasya/features/student/home/controller/student_schedule_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +27,10 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => StudentMainController()),
+        ChangeNotifierProvider(create: (_) => StudentCourseController()),
+        ChangeNotifierProvider(create: (_) => StudentDashboardController()),
+        ChangeNotifierProvider(create: (_) => StudentScheduleController()),
+        ChangeNotifierProvider(create: (_) => StudentClassLogController()),
         ChangeNotifierProvider(create: (_) => StaffMainController()),
         ChangeNotifierProvider(create: (_) => AttendanceCalendarController()),
         ChangeNotifierProvider(create: (_) => DrawersController()),
@@ -33,6 +42,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => StaffAttendanceController()),
         ChangeNotifierProvider(create: (_) => DailyLogController()),
         ChangeNotifierProvider(create: (_) => PastLogController()),
+        ChangeNotifierProvider(create: (_) => AuthLogoutController()),
       ],
       child: ThapasyaApp(),
     ),

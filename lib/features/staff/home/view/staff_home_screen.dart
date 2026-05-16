@@ -42,11 +42,21 @@ class StaffHomeScreen extends StatelessWidget {
         },
       ),
 
-      body: Consumer<StaffCourseController>(
-        builder: (context, courseController, _) {
-          final courseNames = courseController.courses
-              .map((e) => e.name)
-              .toList();
+      body: Consumer4<
+        StaffCourseController,
+        ScheduleController,
+        StaffStudentController,
+        StaffAttendanceController
+      >(
+        builder: (
+          context,
+          courseCtrl,
+          scheduleCtrl,
+          studentCtrl,
+          attendanceCtrl,
+          _,
+        ) {
+          final courseNames = courseCtrl.courses.map((e) => e.name).toList();
 
           return SingleChildScrollView(
             child: Padding(
@@ -60,22 +70,17 @@ class StaffHomeScreen extends StatelessWidget {
                     classes: 3,
                     attendance: 82,
                     courseNames: courseNames,
-                    selectedCourseIndex: courseController.selectedIndex,
-                    isLoading: courseController.isLoading,
-                    onCourseTap: (index) async {
-                      courseController.selectCourse(index);
-                      final courseId = courseController.courses[index].id;
-                      if (!context.mounted) return;
-                      context
-                          .read<StaffAttendanceController>()
-                          .resetForNewCourse();
-                      context.read<StaffStudentController>().fetchStudents(
+                    selectedCourseIndex: courseCtrl.selectedIndex,
+                    isLoading: courseCtrl.isLoading,
+                    onCourseTap: (index) {
+                      courseCtrl.selectCourse(index);
+                      final courseId = courseCtrl.courses[index].id;
+                      attendanceCtrl.resetForNewCourse();
+                      studentCtrl.fetchStudents(
                         courseId: courseId,
                         branchId: 1,
                       );
-                      context.read<ScheduleController>().fetchSchedule(
-                        courseId,
-                      );
+                      scheduleCtrl.fetchSchedule(courseId);
                     },
                   ),
 

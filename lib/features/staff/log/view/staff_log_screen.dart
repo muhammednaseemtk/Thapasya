@@ -20,8 +20,14 @@ class StaffLogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<StaffCourseController>().fetchIfNeeded();
-      context.read<PastLogController>().fetchIfNeeded();
+      final courseCtrl = context.read<StaffCourseController>();
+      courseCtrl.fetchIfNeeded().then((_) {
+        if (!context.mounted) return;
+        if (courseCtrl.courses.isNotEmpty) {
+          final courseId = courseCtrl.courses[courseCtrl.selectedIndex].id;
+          context.read<PastLogController>().fetchIfNeeded(courseId);
+        }
+      });
     });
 
     return Consumer3<
