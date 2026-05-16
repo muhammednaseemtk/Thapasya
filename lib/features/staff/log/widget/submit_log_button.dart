@@ -26,7 +26,8 @@ class SubmitLogButton extends StatelessWidget {
                 ? null
                 : () async {
                     final currentState = formKey.currentState;
-                    if (currentState == null || !currentState.validate()) return;
+                    if (currentState == null || !currentState.validate())
+                      return;
 
                     if (courseController.courses.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(

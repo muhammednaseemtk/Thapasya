@@ -24,7 +24,11 @@ class StaffLogScreen extends StatelessWidget {
       context.read<PastLogController>().fetchIfNeeded();
     });
 
-    return Consumer3<DailyLogController, PastLogController, StaffCourseController>(
+    return Consumer3<
+      DailyLogController,
+      PastLogController,
+      StaffCourseController
+    >(
       builder: (context, dailyController, pastController, courseController, _) {
         return Scaffold(
           backgroundColor: AppColors.screen,

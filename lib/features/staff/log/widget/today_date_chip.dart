@@ -16,11 +16,7 @@ class TodayDateChip extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(
-            Icons.access_time,
-            size: 18,
-            color: Color(0xFF1D4ED8),
-          ),
+          const Icon(Icons.access_time, size: 18, color: Color(0xFF1D4ED8)),
           const SizedBox(width: 8),
           Text(
             "Today – $today",

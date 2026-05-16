@@ -46,6 +46,7 @@ class DailyLogController extends ChangeNotifier {
       notifyListeners();
     }
   }
+
   @override
   void dispose() {
     classSummaryController.dispose();

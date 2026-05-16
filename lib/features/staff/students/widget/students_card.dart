@@ -56,10 +56,7 @@ class StudentsCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Center(
-                        child: Text(
-                          initials,
-                          style: AppFonts.poppinsSemiBold2,
-                        ),
+                        child: Text(initials, style: AppFonts.poppinsSemiBold2),
                       ),
                     ),
                     const SizedBox(width: 12),
