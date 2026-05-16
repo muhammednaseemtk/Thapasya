@@ -6,7 +6,6 @@ class ScheduleItem extends StatelessWidget {
   final String date;
   final String time;
 
-
   const ScheduleItem({
     super.key,
     required this.title,
@@ -19,18 +18,9 @@ class ScheduleItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: AppFonts.poppinsSemiBold9
-        ),
-        Text(
-          date,
-          style: AppFonts.poppinsRegular1,
-        ),
-        Text(
-          time,
-          style: AppFonts.poppinsRegular1,
-        ),
+        Text(title, style: AppFonts.poppinsSemiBold9),
+        Text(date, style: AppFonts.poppinsRegular1),
+        Text(time, style: AppFonts.poppinsRegular1),
       ],
     );
   }

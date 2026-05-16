@@ -50,10 +50,7 @@ class StaffAttendanceScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
 
               child: Column(
                 children: [
@@ -97,64 +94,63 @@ class StaffAttendanceScreen extends StatelessWidget {
             StaffStudentController,
             StaffAttendanceController
           >(
-            builder: (
-              context,
-              courseController,
-              studentController,
-              attendanceController,
-              _,
-            ) {
-              return Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+            builder:
+                (
+                  context,
+                  courseController,
+                  studentController,
+                  attendanceController,
+                  _,
+                ) {
+                  return Container(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
 
-                color: AppColors.screen,
+                    color: AppColors.screen,
 
-                child: CommonButton(
-                  onPressed:
-                      attendanceController.isSubmitting ||
-                          attendanceController.isSubmitted ||
-                          studentController.students.isEmpty
-                      ? null
-                      : () async {
-                          final result = await attendanceController.submit(
-                            studentIds: studentController.students
-                                .map((e) => e.id)
-                                .toList(),
+                    child: CommonButton(
+                      onPressed:
+                          attendanceController.isSubmitting ||
+                              attendanceController.isSubmitted ||
+                              studentController.students.isEmpty
+                          ? null
+                          : () async {
+                              final result = await attendanceController.submit(
+                                studentIds: studentController.students
+                                    .map((e) => e.id)
+                                    .toList(),
 
-                            courseId: courseController
-                                .courses[courseController.selectedIndex]
-                                .id,
-                          );
+                                courseId: courseController
+                                    .courses[courseController.selectedIndex]
+                                    .id,
+                              );
 
-                          if (!context.mounted) {
-                            return;
-                          }
+                              if (!context.mounted) {
+                                return;
+                              }
 
-                          showDialog(
-                            context: context,
+                              showDialog(
+                                context: context,
 
-                            builder: (context) {
-                              return AttendanceResultDialog(
-                                result: result,
+                                builder: (context) {
+                                  return AttendanceResultDialog(result: result);
+                                },
                               );
                             },
-                          );
-                        },
 
-                  backgroundColor: AppColors.deepBlue,
+                      backgroundColor: AppColors.deepBlue,
 
-                  width: double.infinity,
+                      width: double.infinity,
 
-                  txt: attendanceController.isSubmitting
-                      ? "Submitting..."
-                      : attendanceController.isSubmitted
-                      ? "Attendance Submitted"
-                      : studentController.students.isEmpty
-                      ? "No Students Available"
-                      : "Submit Attendance",
-                ),
-              );
-            },
+                      txt: attendanceController.isSubmitting
+                          ? "Submitting..."
+                          : attendanceController.isSubmitted
+                          ? "Attendance Submitted"
+                          : studentController.students.isEmpty
+                          ? "No Students Available"
+                          : "Submit Attendance",
+                    ),
+                  );
+                },
           ),
 
           const SizedBox(height: 85),

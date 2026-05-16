@@ -8,14 +8,14 @@ class StaffCourseController extends ChangeNotifier {
   String? errorMessage;
   List<StaffCourseModel> courses = [];
   int selectedIndex = 0;
-  bool _fetchAttempted = false;
+  bool fetchAttempted = false;
   final service = StaffCourseService();
 
   Future<void> fetchIfNeeded() async {
-    if (_fetchAttempted || isLoading || isFetched) {
+    if (fetchAttempted || isLoading || isFetched) {
       return;
     }
-    _fetchAttempted = true;
+    fetchAttempted = true;
     await fetchStaffCourses();
   }
 
@@ -51,7 +51,7 @@ class StaffCourseController extends ChangeNotifier {
 
   void resetAll() {
     isFetched = false;
-    _fetchAttempted = false;
+    fetchAttempted = false;
     courses = [];
     selectedIndex = 0;
     errorMessage = null;

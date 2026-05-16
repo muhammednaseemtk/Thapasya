@@ -9,14 +9,14 @@ class ScheduleController extends ChangeNotifier {
   int selectedIndex = 0;
   int? currentCourseId;
   List<ScheduleModel> schedules = [];
-  bool _fetchAttempted = false;
+  bool fetchAttempted = false;
   final ScheduleService service = ScheduleService();
 
   Future<void> fetchIfNeeded(int courseId) async {
-    if (_fetchAttempted || (currentCourseId == courseId && isFetched)) {
+    if (fetchAttempted || (currentCourseId == courseId && isFetched)) {
       return;
     }
-    _fetchAttempted = true;
+    fetchAttempted = true;
     await fetchSchedule(courseId);
   }
 
@@ -45,7 +45,7 @@ class ScheduleController extends ChangeNotifier {
 
   void resetAll() {
     isFetched = false;
-    _fetchAttempted = false;
+    fetchAttempted = false;
     currentCourseId = null;
     schedules = [];
     errorMessage = null;

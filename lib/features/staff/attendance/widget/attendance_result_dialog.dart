@@ -16,9 +16,7 @@ class AttendanceResultDialog extends StatelessWidget {
         children: [
           Icon(
             result == "success" ? Icons.check_circle : Icons.error,
-
             color: result == "success" ? Colors.green : Colors.red,
-
             size: 60,
           ),
 

@@ -46,10 +46,7 @@ class StaffBottomNavBar extends StatelessWidget {
         items: [
           LiquidGlassNavItem(icon: Iconsax.house, label: 'Home'),
           LiquidGlassNavItem(icon: Iconsax.profile_2user, label: 'Students'),
-          LiquidGlassNavItem(
-            icon: Iconsax.calendar_1,
-            label: 'Attend',
-          ),
+          LiquidGlassNavItem(icon: Iconsax.calendar_1, label: 'Attend'),
           LiquidGlassNavItem(icon: Iconsax.document, label: 'Log'),
         ],
       ),

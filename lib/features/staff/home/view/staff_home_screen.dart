@@ -44,15 +44,13 @@ class StaffHomeScreen extends StatelessWidget {
 
       body: Consumer<StaffCourseController>(
         builder: (context, courseController, _) {
-          final courseNames =
-              courseController.courses.map((e) => e.name).toList();
+          final courseNames = courseController.courses
+              .map((e) => e.name)
+              .toList();
 
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 10,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
 
               child: Column(
                 children: [
@@ -68,7 +66,9 @@ class StaffHomeScreen extends StatelessWidget {
                       courseController.selectCourse(index);
                       final courseId = courseController.courses[index].id;
                       if (!context.mounted) return;
-                      context.read<StaffAttendanceController>().resetForNewCourse();
+                      context
+                          .read<StaffAttendanceController>()
+                          .resetForNewCourse();
                       context.read<StaffStudentController>().fetchStudents(
                         courseId: courseId,
                         branchId: 1,
