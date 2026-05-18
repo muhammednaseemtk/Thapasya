@@ -58,10 +58,56 @@ class PastLogCard extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          Text(
+          if (log.classSummary.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            const Text(
+              "Class Sammary:",  
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
             log.classSummary,
             style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
           ),
+          ],
+
+          if (log.topicsCovered.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            const Text(
+              "Topics Covered:",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              log.topicsCovered,
+              style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
+            ),
+          ],
+
+          if (log.nextClassTopic.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            const Text(
+              "Next Class Topic:",
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF6B7280),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              log.nextClassTopic,
+              style: const TextStyle(fontSize: 13, color: Color(0xFF4B5563)),
+            ),
+          ],
         ],
       ),
     );

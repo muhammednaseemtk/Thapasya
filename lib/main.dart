@@ -23,6 +23,7 @@ import 'package:thapasya/features/student/home/controller/student_schedule_contr
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AuthToken.loadToken();
+  
   runApp(
     MultiProvider(
       providers: [
@@ -44,13 +45,14 @@ void main() async {
         ChangeNotifierProvider(create: (_) => PastLogController()),
         ChangeNotifierProvider(create: (_) => AuthLogoutController()),
       ],
-      child: ThapasyaApp(),
+      child: const ThapasyaApp(),
     ),
   );
 }
 
 class ThapasyaApp extends StatelessWidget {
   const ThapasyaApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

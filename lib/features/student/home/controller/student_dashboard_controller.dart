@@ -4,48 +4,36 @@ import 'package:thapasya/features/student/home/service/student_dashboard_service
 
 class StudentDashboardController extends ChangeNotifier {
   bool isLoading = false;
-  bool isFetched = false;
   String? errorMessage;
   StudentDashboardModel? dashboard;
-  int? currentCourseId;
-  bool fetchAttempted = false;
   final service = StudentDashboardService();
 
-  Future<void> fetchIfNeeded(int courseId) async {
-    if (fetchAttempted || (currentCourseId == courseId && isFetched)) {
-      return;
-    }
-    fetchAttempted = true;
-    await fetchDashboard(courseId);
-  }
+  Future<void> fetchData(int courseId) async {
+    if (courseId <= 0) return;
 
-  Future<void> fetchDashboard(int courseId) async {
-    if (currentCourseId == courseId && dashboard != null) {
-      return;
-    }
-    currentCourseId = courseId;
     isLoading = true;
     errorMessage = null;
+    dashboard = null;
     notifyListeners();
+
     try {
       final result = await service.getDashboard(courseId);
       if (result != null) {
         dashboard = result;
+      } else {
+        errorMessage = "Failed to load dashboard data";
       }
     } catch (e) {
       errorMessage = e.toString();
-      debugPrint("FETCH STUDENT DASHBOARD ERROR : $e");
+      debugPrint("FETCH STUDENT DASHBOARD ERROR: $e");
     } finally {
       isLoading = false;
-      isFetched = true;
       notifyListeners();
     }
   }
 
   void resetAll() {
-    isFetched = false;
-    fetchAttempted = false;
-    currentCourseId = null;
+    isLoading = false;
     dashboard = null;
     errorMessage = null;
     notifyListeners();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:thapasya/core/constants/app_colors.dart';
 
 class TodayDateChip extends StatelessWidget {
   const TodayDateChip({super.key});
@@ -16,14 +17,14 @@ class TodayDateChip extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.access_time, size: 18, color: Color(0xFF1D4ED8)),
+          const Icon(Icons.access_time, size: 18, color: AppColors.deepBlue),
           const SizedBox(width: 8),
           Text(
             "Today – $today",
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF1D4ED8),
+              color: AppColors.deepBlue,
             ),
           ),
         ],
