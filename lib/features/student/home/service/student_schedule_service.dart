@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
 import 'package:thapasya/core/network/dio_client.dart';
 import 'package:thapasya/features/student/home/model/student_schedule_model.dart';
@@ -6,9 +7,12 @@ class StudentScheduleService {
   Future<List<StudentScheduleModel>> getSchedule(int courseId) async {
     try {
       final response = await DioClient.dio.get(
-        AppUrls.schedule,
+        AppUrls.studentSchedule,
         queryParameters: {"course_id": courseId},
       );
+
+      debugPrint("Schedule API Response: ${response.data}");
+      debugPrint("Schedule API Status: ${response.statusCode}");
 
       final res = response.data;
 
@@ -26,6 +30,7 @@ class StudentScheduleService {
 
       return [];
     } catch (e) {
+      debugPrint("StudentScheduleService ERROR: $e");
       return [];
     }
   }

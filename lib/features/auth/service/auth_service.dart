@@ -33,7 +33,12 @@ class AuthService {
           }
         }
 
-        return response.data;
+        final data = response.data;
+        if (data != null && data['role'] != null) {
+          await AuthToken.setRole(data['role']);
+        }
+
+        return data;
       }
 
       return {"message": "Login failed"};

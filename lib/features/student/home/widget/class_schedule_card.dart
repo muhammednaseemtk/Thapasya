@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/features/student/home/model/student_schedule_model.dart';
 import 'class_schedule_item.dart';
+import 'class_schedule_shimmer.dart';
 
 class ClassScheduleCard extends StatelessWidget {
   final List<StudentScheduleModel> schedules;
@@ -17,6 +18,7 @@ class ClassScheduleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        width: double.infinity,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -41,7 +43,7 @@ class ClassScheduleCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             if (isLoading)
-              const Center(child: CircularProgressIndicator())
+              const ClassScheduleShimmer()
             else if (schedules.isEmpty)
               const Text("No schedule available")
             else

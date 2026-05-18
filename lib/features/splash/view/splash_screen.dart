@@ -28,7 +28,10 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!mounted) return;
 
     if (AuthToken.token != null) {
-      Navigator.pushReplacementNamed(context, AppRoutes.staffMain);
+      final route = AuthToken.userRole == "student"
+          ? AppRoutes.studentMain
+          : AppRoutes.staffMain;
+      Navigator.pushReplacementNamed(context, route);
     } else {
       Navigator.pushReplacementNamed(context, AppRoutes.login);
     }

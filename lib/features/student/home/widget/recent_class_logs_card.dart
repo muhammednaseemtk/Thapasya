@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:thapasya/core/constants/app_colors.dart';
 import 'package:thapasya/features/student/home/model/student_class_log_model.dart';
 import 'class_log_tile.dart';
+import 'class_log_shimmer.dart';
 
 class RecentClassLogsCard extends StatelessWidget {
   final List<StudentClassLogModel> logs;
@@ -46,7 +47,7 @@ class RecentClassLogsCard extends StatelessWidget {
           ),
           const Divider(height: 1),
           if (isLoading)
-            const Center(child: CircularProgressIndicator())
+            const ClassLogShimmer()
           else if (logs.isEmpty)
             const Padding(
               padding: EdgeInsets.all(16),

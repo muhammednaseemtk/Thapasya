@@ -11,4 +11,6 @@ class AppUrls {
   static const String getDailyLogs = "daily_log/get_log";
   static const String studentCourse = "student/my-courses";
   static const String studentDashboard = "student/dashboard/";
+  static const String studentSchedule = "student/class-schedule";
+  static const String studentClassLogs = "student/my-logs";
 }

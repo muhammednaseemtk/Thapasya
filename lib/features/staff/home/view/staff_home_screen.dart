@@ -15,22 +15,6 @@ class StaffHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<StaffCourseController>().fetchIfNeeded().then((_) {
-        if (!context.mounted) return;
-        final courseController = context.read<StaffCourseController>();
-        if (courseController.courses.isNotEmpty) {
-          final courseId =
-              courseController.courses[courseController.selectedIndex].id;
-          context.read<ScheduleController>().fetchIfNeeded(courseId);
-          context.read<StaffStudentController>().fetchIfNeeded(
-            courseId: courseId,
-            branchId: 1,
-          );
-        }
-      });
-    });
-
     return Scaffold(
       backgroundColor: AppColors.screen,
 
@@ -42,57 +26,81 @@ class StaffHomeScreen extends StatelessWidget {
         },
       ),
 
-      body: Consumer4<
-        StaffCourseController,
-        ScheduleController,
-        StaffStudentController,
-        StaffAttendanceController
-      >(
-        builder: (
-          context,
-          courseCtrl,
-          scheduleCtrl,
-          studentCtrl,
-          attendanceCtrl,
-          _,
-        ) {
-          final courseNames = courseCtrl.courses.map((e) => e.name).toList();
+      body:
+          Consumer4<
+            StaffCourseController,
+            ScheduleController,
+            StaffStudentController,
+            StaffAttendanceController
+          >(
+            builder:
+                (
+                  context,
+                  courseCtrl,
+                  scheduleCtrl,
+                  studentCtrl,
+                  attendanceCtrl,
+                  _,
+                ) {
+                  if (!courseCtrl.fetchAttempted) {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      courseCtrl.fetchIfNeeded().then((_) {
+                        if (!context.mounted) return;
+                        if (courseCtrl.courses.isNotEmpty) {
+                          final courseId =
+                              courseCtrl.courses[courseCtrl.selectedIndex].id;
+                          scheduleCtrl.fetchIfNeeded(courseId);
+                          studentCtrl.fetchIfNeeded(
+                            courseId: courseId,
+                            branchId: 1,
+                          );
+                        }
+                      });
+                    });
+                  }
 
-          return SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  final courseNames = courseCtrl.courses
+                      .map((e) => e.name)
+                      .toList();
 
-              child: Column(
-                children: [
-                  StaffDashboardCard(
-                    name: "Smt. Kavitha Rajan",
-                    students: 24,
-                    classes: 3,
-                    attendance: 82,
-                    courseNames: courseNames,
-                    selectedCourseIndex: courseCtrl.selectedIndex,
-                    isLoading: courseCtrl.isLoading,
-                    onCourseTap: (index) {
-                      courseCtrl.selectCourse(index);
-                      final courseId = courseCtrl.courses[index].id;
-                      attendanceCtrl.resetForNewCourse();
-                      studentCtrl.fetchStudents(
-                        courseId: courseId,
-                        branchId: 1,
-                      );
-                      scheduleCtrl.fetchSchedule(courseId);
-                    },
-                  ),
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
 
-                  const SizedBox(height: 10),
+                      child: Column(
+                        children: [
+                          StaffDashboardCard(
+                            name: "Smt. Kavitha Rajan",
+                            students: 24,
+                            classes: 3,
+                            attendance: 82,
+                            courseNames: courseNames,
+                            selectedCourseIndex: courseCtrl.selectedIndex,
+                            isLoading: courseCtrl.isLoading,
+                            onCourseTap: (index) {
+                              courseCtrl.selectCourse(index);
+                              final courseId = courseCtrl.courses[index].id;
+                              attendanceCtrl.resetForNewCourse();
+                              studentCtrl.fetchStudents(
+                                courseId: courseId,
+                                branchId: 1,
+                              );
+                              scheduleCtrl.fetchSchedule(courseId);
+                            },
+                          ),
 
-                  const TodayScheduleCard(),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                          const SizedBox(height: 10),
+
+                          const TodayScheduleCard(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+          ),
     );
   }
 }
