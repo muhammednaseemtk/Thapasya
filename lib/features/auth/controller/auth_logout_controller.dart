@@ -20,6 +20,8 @@ class AuthLogoutController extends ChangeNotifier {
     if (!context.mounted) return;
 
     isLoading = false;
+    notifyListeners();
+
     Navigator.pushNamedAndRemoveUntil(context, AppRoutes.login, (_) => false);
   }
 }

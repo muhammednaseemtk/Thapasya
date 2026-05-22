@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:thapasya/core/constants/app_urls.dart';
 import 'package:thapasya/core/network/dio_client.dart';
@@ -16,6 +17,20 @@ class StudentCourseService {
         return data.map((e) => StudentCourseModel.fromJson(e)).toList();
       }
 
+      if (response.statusCode == 401) {
+        throw DioException(
+          requestOptions: response.requestOptions,
+          response: response,
+          message: 'Unauthorized - Token error',
+        );
+      }
+
+      return null;
+    } on DioException catch (e) {
+      debugPrint("StudentCourseService ERROR: $e");
+      if (e.response?.statusCode == 401) {
+        rethrow;
+      }
       return null;
     } catch (e) {
       debugPrint("StudentCourseService ERROR: $e");

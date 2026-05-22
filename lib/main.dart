@@ -15,10 +15,8 @@ import 'package:thapasya/features/staff/log/controller/past_log_controller.dart'
 import 'package:thapasya/features/staff/students/controller/staff_student_controller.dart';
 import 'package:thapasya/features/student/attendance/controller/attendance_calender_controller.dart';
 import 'package:thapasya/features/student/home/controller/main_controller.dart';
-import 'package:thapasya/features/student/home/controller/student_class_log_controller.dart';
 import 'package:thapasya/features/student/home/controller/student_course_controller.dart';
 import 'package:thapasya/features/student/home/controller/student_dashboard_controller.dart';
-import 'package:thapasya/features/student/home/controller/student_schedule_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +28,6 @@ void main() async {
         ChangeNotifierProvider(create: (_) => StudentMainController()),
         ChangeNotifierProvider(create: (_) => StudentCourseController()),
         ChangeNotifierProvider(create: (_) => StudentDashboardController()),
-        ChangeNotifierProvider(create: (_) => StudentScheduleController()),
-        ChangeNotifierProvider(create: (_) => StudentClassLogController()),
         ChangeNotifierProvider(create: (_) => StaffMainController()),
         ChangeNotifierProvider(create: (_) => AttendanceCalendarController()),
         ChangeNotifierProvider(create: (_) => DrawersController()),

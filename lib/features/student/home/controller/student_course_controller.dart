@@ -3,54 +3,77 @@ import 'package:thapasya/features/student/home/model/student_course_model.dart';
 import 'package:thapasya/features/student/home/service/student_course_service.dart';
 
 class StudentCourseController extends ChangeNotifier {
-  bool _isLoading = false;
-  String? _errorMessage;
-  List<StudentCourseModel> _courses = [];
-  int _selectedIndex = 0;
-  final _service = StudentCourseService();
+  bool isLoading = false;
+  bool isFetched = false;
+  bool fetchAttempted = false;
+  String? errorMessage;
+  List<StudentCourseModel> courses = [];
+  int selectedIndex = 0;
 
-  bool get isLoading => _isLoading;
-  String? get errorMessage => _errorMessage;
-  List<StudentCourseModel> get courses => _courses;
-  List<String> get courseNames => _courses.map((e) => e.name).toList();
-  int get selectedIndex => _selectedIndex;
+  final StudentCourseService service = StudentCourseService();
+  List<String> get courseNames => courses.map((course) => course.name).toList();
+
+  Future<void> fetchIfNeeded() async {
+    if (isLoading || fetchAttempted) return;
+
+    fetchAttempted = true;
+    await fetchCourses();
+  }
 
   Future<void> fetchCourses() async {
-    if (_isLoading) return;
+    if (isLoading) return;
 
-    _isLoading = true;
-    _errorMessage = null;
+    isLoading = true;
+    errorMessage = null;
     notifyListeners();
 
     try {
-      final result = await _service.getCourses();
-      _courses = result ?? [];
+      final result = await service.getCourses();
+
+      if (result != null) {
+        courses = result;
+      }
     } catch (e) {
-      _errorMessage = e.toString();
+      errorMessage = e.toString();
+
       debugPrint("FETCH STUDENT COURSES ERROR: $e");
+
+      if (errorMessage?.contains('401') == true ||
+          errorMessage?.contains('Unauthorized') == true) {
+        errorMessage = 'Session expired. Please login again.';
+      }
     } finally {
-      _isLoading = false;
+      isLoading = false;
+      isFetched = true;
       notifyListeners();
     }
   }
 
   void selectCourse(int index) {
-    if (_selectedIndex == index || _courses.isEmpty) return;
-    if (index < 0 || index >= _courses.length) return;
-    _selectedIndex = index;
+    if (selectedIndex == index || courses.isEmpty) return;
+
+    if (index < 0 || index >= courses.length) return;
+
+    selectedIndex = index;
     notifyListeners();
   }
 
   int get selectedCourseId {
-    if (_courses.isEmpty || _selectedIndex >= _courses.length) return 0;
-    return _courses[_selectedIndex].id;
+    if (courses.isEmpty || selectedIndex >= courses.length) {
+      return 0;
+    }
+
+    return courses[selectedIndex].id;
   }
 
   void resetAll() {
-    _isLoading = false;
-    _courses = [];
-    _selectedIndex = 0;
-    _errorMessage = null;
+    isLoading = false;
+    isFetched = false;
+    fetchAttempted = false;
+    courses = [];
+    selectedIndex = 0;
+    errorMessage = null;
+
     notifyListeners();
   }
 }
