@@ -10,8 +10,6 @@ class StaffProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logoutController = context.read<AuthLogoutController>();
-
     return Scaffold(
       backgroundColor: AppColors.screen,
       appBar: AppBar(
@@ -21,13 +19,17 @@ class StaffProfileScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: CommonButton(
-          onPressed: logoutController.isLoading
-              ? null
-              : () => logoutController.logout(context),
-          backgroundColor: AppColors.deepBlue,
-          width: 350,
-          txt: logoutController.isLoading ? 'Logging out...' : 'Logout',
+        child: Consumer<AuthLogoutController>(
+          builder: (context, logoutController, child) {
+            return CommonButton(
+              onPressed: logoutController.isLoading
+                  ? null
+                  : () => logoutController.logout(context),
+              backgroundColor: AppColors.deepBlue,
+              width: 350,
+              txt: logoutController.isLoading ? 'Logging out...' : 'Logout',
+            );
+          },
         ),
       ),
     );
